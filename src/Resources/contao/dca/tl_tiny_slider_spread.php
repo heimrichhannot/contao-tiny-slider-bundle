@@ -479,7 +479,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_autoplayButtonOutput'      => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoplayHoverPause'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoplayButtonOutput'],
             'inputType' => 'checkbox',
             'default'   => true,
             'exclude'   => true,
