@@ -1,0 +1,11 @@
+# prev text
+huh.tiny_slider.prev.default: prev
+
+# next text
+huh.tiny_slider.next.default: next
+
+# start text
+huh.tiny_slider.start.default: start
+
+# stop text
+huh.tiny_slider.stop.default: stop

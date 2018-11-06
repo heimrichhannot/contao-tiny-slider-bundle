@@ -1,0 +1,7 @@
+<?php $this->extend('block_tiny_slider'); ?>
+
+<?php $this->block('content'); ?>
+
+<?php echo $this->images; ?>
+
+<?php $this->endblock(); ?>
