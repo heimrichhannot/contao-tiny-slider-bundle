@@ -1,10 +1,10 @@
 .tiny-slider {
   opacity: 0;
-  transform: scale(0,0);
+  transform: scaleY(0);
   transition: opacity 500ms linear, transform 500ms ease;
 
   &.tiny-slider-initialized {
     opacity: 1;
-    transform: scale(1,1);
+    transform: scaleY(1);
   }
 }
