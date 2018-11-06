@@ -11,6 +11,7 @@ namespace HeimrichHannot\TinySliderBundle\Element;
 use Contao\BackendTemplate;
 use Contao\ContentElement;
 use Contao\System;
+use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 
 class ContentStart extends ContentElement
 {
@@ -24,27 +25,28 @@ class ContentStart extends ContentElement
     public function generate()
     {
         if (System::getContainer()->get('huh.utils.container')->isBackend()) {
-            $this->strTemplate = 'be_wildcard';
-            $this->Template = new BackendTemplate($this->strTemplate);
+            $this->strTemplate     = 'be_wildcard';
+            $this->Template        = new BackendTemplate($this->strTemplate);
             $this->Template->title = $this->headline;
         }
 
         parent::generate();
 
-        if (!$this->slickConfig) {
+        if (!$this->tinySliderConfig) {
             return '';
         }
 
-        $container = System::getContainer();
+        $framework = System::getContainer()->get('contao.framework');
 
-        $objConfig = $container->get('huh.slick.model.config')->findByPk($this->slickConfig);
+        /** @var TinySliderConfigModel $tinyConfigModel */
+        $tinyConfigModel = $framework->getAdapter(TinySliderConfigModel::class);
 
-        if (null === $objConfig) {
+        if (null === ($config = $tinyConfigModel->findByPk($this->tinySliderConfig))) {
             return '';
         }
 
-        $this->Template->class .= ' '.System::getContainer()->get('huh.slick.config')->getCssClassFromModel($objConfig);
-        $this->Template->attributes .= System::getContainer()->get('huh.slick.config')->getAttributesFromModel($objConfig);
+        $this->Template->class      .= ' '.System::getContainer()->get('huh.tiny_slider.util.config')->getCssClassFromModel($config);
+        $this->Template->attributes .= System::getContainer()->get('huh.tiny_slider.util.config')->getAttributesFromModel($config);
 
         return $this->Template->parse();
     }

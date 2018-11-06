@@ -40,9 +40,9 @@ class ContentGallery extends \Contao\ContentGallery
             return '';
         }
 
-        $configModelAdapter = System::getContainer()->get('contao.framework')->getAdapter(TinySliderConfigModel::class);
+        $tinyConfigModel = System::getContainer()->get('contao.framework')->getAdapter(TinySliderConfigModel::class);
 
-        if (null === ($config = $configModelAdapter->findByPk($this->tinySliderConfig))) {
+        if (null === ($config = $tinyConfigModel->findByPk($this->tinySliderConfig))) {
             return '';
         }
 
