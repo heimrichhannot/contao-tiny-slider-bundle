@@ -59,7 +59,6 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
                             tinySlider_loop,
                             tinySlider_rewind,
                             tinySlider_autoHeight,
-                            tinySlider_responsive,
                             tinySlider_lazyload,
                             tinySlider_lazyloadSelector,
                             tinySlider_touch,
@@ -69,9 +68,10 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
                             tinySlider_nested,
                             tinySlider_freezable,
                             tinySlider_disable,
+                            tinySlider_useLocalStorage,
+                            tinySlider_responsive,
                             tinySlider_startIndex,
                             tinySlider_onInit,
-                            tinySlider_useLocalStorage,
 							cssClass
 							',
         'addGallery'           => 'tinySliderMultiSRC,tinySliderSortBy,tinySliderUseHomeDir,tinySliderSize,tinySliderFullsize,tinySliderNumberOfItems,tinySliderGalleryTpl,tinySliderCustomTpl',
@@ -203,7 +203,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "varchar(10) NOT NULL default ''",
         ],
         'tinySlider_items'                     => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_items'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_items'],
             'inputType' => 'text',
             'default'   => 1,
             'exclude'   => true,
@@ -214,7 +214,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
         'tinySlider_gutter'                    => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_gutter'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_gutter'],
             'inputType' => 'text',
             'default'   => 0,
             'exclude'   => true,
@@ -225,7 +225,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
         'tinySlider_edgePadding'               => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_edgePadding'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_edgePadding'],
             'inputType' => 'text',
             'default'   => 0,
             'exclude'   => true,
@@ -236,7 +236,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
         'tinySlider_fixedWidth'                => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_fixedWidth'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_fixedWidth'],
             'inputType' => 'text',
             'default'   => 0,
             'exclude'   => true,
@@ -247,7 +247,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
         'tinySlider_autoWidth'                 => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_autoWidth'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoWidth'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
@@ -256,7 +256,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_viewportMax'               => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_viewportMax'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_viewportMax'],
             'inputType' => 'text',
             'default'   => 0,
             'exclude'   => true,
@@ -267,7 +267,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
         'tinySlider_slideBy'                   => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_slideBy'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_slideBy'],
             'inputType' => 'text',
             'default'   => 1,
             'exclude'   => true,
@@ -278,7 +278,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
         'tinySlider_controls'                  => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_controls'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_controls'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'default'   => true,
@@ -299,7 +299,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "varchar(6) NOT NULL default ''",
         ],
         'tinySlider_controlsTextPrev'          => [
-            'label'            => &$GLOBALS['TL_LANG']['tl_filter_config_element']['tinySliderControlsTextPrev'],
+            'label'            => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySliderControlsTextPrev'],
             'exclude'          => true,
             'inputType'        => 'select',
             'default'          => 'huh.tiny_slider.prev.default',
@@ -310,7 +310,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'              => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_controlsTextNext'          => [
-            'label'            => &$GLOBALS['TL_LANG']['tl_filter_config_element']['tinySliderControlsTextPrev'],
+            'label'            => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySliderControlsTextPrev'],
             'exclude'          => true,
             'default'          => 'huh.tiny_slider.next.default',
             'inputType'        => 'select',
@@ -321,28 +321,28 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'              => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_controlsContainer'         => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_filter_config_element']['tinySlider_controlsContainer'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_controlsContainer'],
             'exclude'   => true,
             'inputType' => 'text',
             'eval'      => ['maxlength' => 128, 'tl_class' => 'w50', 'allowHtml' => true],
             'sql'       => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_prevButton'                => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_filter_config_element']['tinySlider_prevButton'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_prevButton'],
             'exclude'   => true,
             'inputType' => 'text',
             'eval'      => ['maxlength' => 128, 'tl_class' => 'w50', 'allowHtml' => true],
             'sql'       => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_nextButton'                => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_filter_config_element']['tinySlider_nextButton'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_nextButton'],
             'exclude'   => true,
             'inputType' => 'text',
             'eval'      => ['maxlength' => 128, 'tl_class' => 'w50', 'allowHtml' => true],
             'sql'       => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_nav'                       => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_nav'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_nav'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'default'   => true,
@@ -363,14 +363,14 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "varchar(6) NOT NULL default ''",
         ],
         'tinySlider_navContainer'              => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_filter_config_element']['tinySlider_navContainer'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_navContainer'],
             'exclude'   => true,
             'inputType' => 'text',
             'eval'      => ['maxlength' => 128, 'tl_class' => 'w50', 'allowHtml' => true],
             'sql'       => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_navAsThumbnails'           => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_navAsThumbnails'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_navAsThumbnails'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
@@ -379,16 +379,16 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_arrowKeys'                 => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_arrowKeys'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_arrowKeys'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
-                'tl_class' => 'clr w50',
+                'tl_class' => 'w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_speed'                     => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_speed'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_speed'],
             'inputType' => 'text',
             'default'   => 300,
             'exclude'   => true,
@@ -399,7 +399,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
         'tinySlider_autoplay'                  => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_autoplay'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoplay'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
@@ -419,7 +419,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "varchar(6) NOT NULL default ''",
         ],
         'tinySlider_autoplayTimeout'           => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_autoplayTimeout'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoplayTimeout'],
             'inputType' => 'text',
             'default'   => 5000,
             'exclude'   => true,
@@ -441,7 +441,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "varchar(8) NOT NULL default ''",
         ],
         'tinySlider_autoplayTextStart'         => [
-            'label'            => &$GLOBALS['TL_LANG']['tl_filter_config_element']['tinySlider_autoplayTextStart'],
+            'label'            => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoplayTextStart'],
             'exclude'          => true,
             'inputType'        => 'select',
             'default'          => 'huh.tiny_slider.prev.default',
@@ -452,7 +452,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'              => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_autoplayTextStop'          => [
-            'label'            => &$GLOBALS['TL_LANG']['tl_filter_config_element']['tinySlider_autoplayTextStop'],
+            'label'            => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoplayTextStop'],
             'exclude'          => true,
             'default'          => 'huh.tiny_slider.next.default',
             'inputType'        => 'select',
@@ -463,7 +463,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'              => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_autoplayHoverPause'        => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_autoplayHoverPause'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoplayHoverPause'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
@@ -472,14 +472,14 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_autoplayButton'            => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_filter_config_element']['tinySlider_autoplayButton'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoplayButton'],
             'exclude'   => true,
             'inputType' => 'text',
-            'eval'      => ['maxlength' => 128, 'tl_class' => 'w50', 'allowHtml' => true],
+            'eval'      => ['maxlength' => 128, 'tl_class' => 'clr w50', 'allowHtml' => true],
             'sql'       => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_autoplayButtonOutput'      => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_autoplayHoverPause'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoplayHoverPause'],
             'inputType' => 'checkbox',
             'default'   => true,
             'exclude'   => true,
@@ -489,25 +489,25 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_autoplayResetOnVisibility' => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_autoplayResetOnVisibility'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoplayResetOnVisibility'],
             'inputType' => 'checkbox',
             'default'   => true,
             'exclude'   => true,
             'eval'      => [
-                'tl_class' => 'clr w50',
+                'tl_class' => 'w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_animateIn'                 => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_filter_config_element']['tinySlider_animateIn'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_animateIn'],
             'exclude'   => true,
             'default'   => 'tns-fadeIn',
             'inputType' => 'text',
-            'eval'      => ['maxlength' => 128, 'tl_class' => 'w50', 'allowHtml' => true],
+            'eval'      => ['maxlength' => 128, 'tl_class' => 'clr w50', 'allowHtml' => true],
             'sql'       => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_animateOut'                => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_filter_config_element']['tinySlider_animateOut'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_animateOut'],
             'exclude'   => true,
             'default'   => 'tns-fadeIn',
             'inputType' => 'text',
@@ -515,7 +515,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_animateNormal'             => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_filter_config_element']['tinySlider_animateNormal'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_animateNormal'],
             'exclude'   => true,
             'default'   => 'tns-normal',
             'inputType' => 'text',
@@ -523,7 +523,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_animateDelay'              => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_animateDelay'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_animateDelay'],
             'inputType' => 'text',
             'exclude'   => true,
             'eval'      => [
@@ -533,7 +533,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
         'tinySlider_loop'                      => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_loop'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_loop'],
             'inputType' => 'checkbox',
             'default'   => true,
             'exclude'   => true,
@@ -543,20 +543,20 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_rewind'                    => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_rewind'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_rewind'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
-                'tl_class' => 'clr w50',
+                'tl_class' => 'w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_autoHeight'                => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_autoHeight'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoHeight'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
-                'tl_class' => 'clr w50',
+                'tl_class' => 'w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
@@ -592,7 +592,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "blob NULL",
         ],
         'tinySlider_lazyload'                  => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_lazyload'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_lazyload'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'default'   => true,
@@ -602,7 +602,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_lazyloadSelector'          => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_filter_config_element']['tinySlider_lazyloadSelector'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_lazyloadSelector'],
             'exclude'   => true,
             'default'   => '.tns-lazy-img',
             'inputType' => 'text',
@@ -610,7 +610,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_touch'                     => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_touch'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_touch'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'default'   => true,
@@ -620,30 +620,30 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_mouseDrag'                 => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_mouseDrag'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_mouseDrag'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
-                'tl_class' => 'clr w50',
+                'tl_class' => 'w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_preventActionWhenRunning'  => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_preventActionWhenRunning'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_preventActionWhenRunning'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
-                'tl_class' => 'clr w50',
+                'tl_class' => 'w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_swipeAngle'                => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_swipeAngle'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_swipeAngle'],
             'inputType' => 'text',
             'exclude'   => true,
             'default'   => 15,
             'eval'      => [
-                'tl_class' => 'w50',
+                'tl_class' => 'clr w50',
                 'rgxp'     => 'digit',
             ],
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
@@ -660,7 +660,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "varchar(8) NOT NULL default ''",
         ],
         'tinySlider_freezable'                 => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_freezable'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_freezable'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'default'   => true,
@@ -670,16 +670,16 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_disable'                 => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_disable'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_disable'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
-                'tl_class' => 'clr w50',
+                'tl_class' => 'w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
         'tinySlider_startIndex'                => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_startIndex'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_startIndex'],
             'inputType' => 'text',
             'exclude'   => true,
             'default'   => 0,
@@ -690,12 +690,12 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
         'tinySlider_useLocalStorage'                 => [
-            'label'     => &$GLOBALS['TL_LANG']['tl_slick_spread']['tinySlider_useLocalStorage'],
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_useLocalStorage'],
             'inputType' => 'checkbox',
             'exclude'   => true,
             'default'   => true,
             'eval'      => [
-                'tl_class' => 'clr w50',
+                'tl_class' => 'w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
