@@ -1,5 +1,5 @@
 huh:
     encore:
         entries:
-            - { name: contao-tiny-slider-bundle, file: "vendor/heimrichhannot/contao-tiny-slider-bundle/src/Resources/public/js/contao-tiny-slider-bundle.es6.js"}
+            - { name: contao-tiny-slider-bundle, file: "vendor/heimrichhannot/contao-tiny-slider-bundle/src/Resources/public/js/contao-tiny-slider-bundle.es6.js", requiresCss: true }
             - { name: contao-tiny-slider-bundle-theme, file: "vendor/heimrichhannot/contao-tiny-slider-bundle/src/Resources/public/js/contao-tiny-slider-bundle-theme.es6.js", requiresCss: true }
