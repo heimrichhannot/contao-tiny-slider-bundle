@@ -19,7 +19,7 @@ class ContentStart extends ContentElement
      *
      * @var string
      */
-    protected $strTemplate = 'ce_tiny_content_start';
+    protected $strTemplate = 'ce_tiny_slider_content_start';
 
     public function generate()
     {

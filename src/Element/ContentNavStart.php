@@ -20,7 +20,7 @@ class ContentNavStart extends ContentElement
      *
      * @var string
      */
-    protected $strTemplate = 'ce_tiny_nav_start';
+    protected $strTemplate = 'ce_tiny_slider_nav_start';
 
     public function generate()
     {

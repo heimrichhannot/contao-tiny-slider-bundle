@@ -19,7 +19,7 @@ class ContentStop extends ContentElement
      *
      * @var string
      */
-    protected $strTemplate = 'ce_tiny_content_stop';
+    protected $strTemplate = 'ce_tiny_slider_content_stop';
 
     /**
      * Generate the content element.

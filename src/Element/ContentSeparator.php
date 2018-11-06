@@ -19,7 +19,7 @@ class ContentSeparator extends ContentElement
      *
      * @var string
      */
-    protected $strTemplate = 'ce_tiny_content_separator';
+    protected $strTemplate = 'ce_tiny_slider_content_separator';
 
     /**
      * Generate the content element.
