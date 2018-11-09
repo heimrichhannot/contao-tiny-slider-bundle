@@ -1,11 +1,15 @@
 # prev text
-huh.tiny_slider.prev.default: prev
+huh.tiny_slider.prev.default: <span class="title">Previous</span>
+huh.tiny_slider.prev.default.text-sr-only: <span class="title sr-only">Previous</span>
 
 # next text
-huh.tiny_slider.next.default: next
+huh.tiny_slider.next.default: <span class="title">Next</span>
+huh.tiny_slider.next.default.text-sr-only: <span class="title sr-only">Next</span>
 
 # start text
-huh.tiny_slider.start.default: start
+huh.tiny_slider.start.default: <span class="title">Play</span>
+huh.tiny_slider.start.text-sr-only: <span class="title sr-only">Play</span>
 
 # stop text
-huh.tiny_slider.stop.default: stop
+huh.tiny_slider.stop.default: <span class="title">Stop</title>
+huh.tiny_slider.stop.default.text-sr-only: <span class="title sr-only">Stop</span>
