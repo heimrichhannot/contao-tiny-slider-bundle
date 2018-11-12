@@ -15,18 +15,32 @@ use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 
 class Config
 {
-    public function getAttributesFromModel($objConfig)
+    /**
+     * Get tiny slider attributes from config model or config model id
+     *
+     * @param int|TinySliderConfigModel $config
+     *
+     * @return string
+     */
+    public function getAttributes($config, $container = '.tiny-slider-container'): string
     {
-        $arrData = $this->createConfig($objConfig);
+        if (is_numeric($config)) {
+            /** @var TinySliderConfigModel $adapter */
+            $adapter = System::getContainer()->get('contao.framework')->getAdapter(TinySliderConfigModel::class);
+            $config  = $adapter->findByPk((int)$config);
+        }
+
+        if (null === $config) {
+            return '';
+        }
+
+        $arrData                        = $this->createConfig($config);
+        $arrData['config']['container'] = $container;
 
         $attributes = ' data-tiny-slider-config="'.htmlspecialchars(json_encode($arrData['config']), ENT_QUOTES, \Contao\Config::get('characterSet')).'"';
 
-        if ('' !== $objConfig->initCallback) {
-            $attributes .= ' data-tiny-slider-init-callback="'.htmlspecialchars($objConfig->initCallback, ENT_QUOTES, \Contao\Config::get('characterSet')).'"';
-        }
-
-        if ('' !== $objConfig->afterInitCallback) {
-            $attributes .= ' data-tiny-slider-after-init-callback="'.htmlspecialchars($objConfig->afterInitCallback, ENT_QUOTES, \Contao\Config::get('characterSet')).'"';
+        if ('' !== $config->initCallback) {
+            $attributes .= ' data-tiny-slider-init-callback="'.htmlspecialchars($config->initCallback, ENT_QUOTES, \Contao\Config::get('characterSet')).'"';
         }
 
         return $attributes;
@@ -157,9 +171,26 @@ class Config
         return $classname;
     }
 
-    public function getCssClassFromModel($objConfig)
+    /**
+     * Get CSS Class from config model or config model id
+     *
+     * @param int|TinySliderConfigModel $config
+     *
+     * @return string
+     */
+    public function getCssClass($config): string
     {
-        return $this->getTinySliderCssClassFromModel($objConfig).(strlen($objConfig->cssClass) > 0 ? ' '.$objConfig->cssClass : '').' tiny-slider-uid-'.uniqid().' tiny-slider';
+        if (is_numeric($config)) {
+            /** @var TinySliderConfigModel $adapter */
+            $adapter = System::getContainer()->get('contao.framework')->getAdapter(TinySliderConfigModel::class);
+            $config  = $adapter->findByPk((int)$config);
+        }
+
+        if (null === $config) {
+            return '';
+        }
+
+        return $this->getTinySliderCssClassFromModel($config).(strlen($config->cssClass) > 0 ? ' '.$config->cssClass : '').' tiny-slider-uid-'.uniqid().' tiny-slider';
     }
 
     /**

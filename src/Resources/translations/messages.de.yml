@@ -13,3 +13,6 @@ huh.tiny_slider.start.default.text-sr-only: <span class="title sr-only">Abspiele
 # stop text
 huh.tiny_slider.stop.default: <span class="title">Anhalten</title>
 huh.tiny_slider.stop.default.text-sr-only: <span class="title sr-only">Anhalten</span>
+
+# back end
+huh.tiny_slider.backend.editConfig: Tiny-Slider Konfiguration ID %id% bearbeiten

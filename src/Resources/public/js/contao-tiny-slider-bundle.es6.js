@@ -15,7 +15,7 @@ TinySliderBundle.prototype.init = function (element) {
     let container = element.querySelector('.tiny-slider-container'),
         config = JSON.parse(container.getAttribute('data-tiny-slider-config'));
 
-    config.container = element.querySelector('.tiny-slider-container');
+    config.container = element.querySelector(config.container);
 
     let onInit = config.onInit;
 

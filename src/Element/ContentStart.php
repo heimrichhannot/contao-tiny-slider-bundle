@@ -45,8 +45,8 @@ class ContentStart extends ContentElement
             return '';
         }
 
-        $this->Template->class      .= ' '.System::getContainer()->get('huh.tiny_slider.util.config')->getCssClassFromModel($config);
-        $this->Template->attributes .= System::getContainer()->get('huh.tiny_slider.util.config')->getAttributesFromModel($config);
+        $this->Template->class      .= ' '.System::getContainer()->get('huh.tiny_slider.util.config')->getCssClass($config);
+        $this->Template->attributes .= System::getContainer()->get('huh.tiny_slider.util.config')->getAttributes($config);
 
         return $this->Template->parse();
     }
