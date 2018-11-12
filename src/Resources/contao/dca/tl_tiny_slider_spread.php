@@ -72,13 +72,13 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
     ],
     'fields'      => [
         'tinySliderConfig'                     => [
-            'label'      => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySliderConfig'],
-            'inputType'  => 'select',
-            'exclude'    => true,
-            'foreignKey' => 'tl_tiny_slider_config.title',
-            'sql'        => "int(10) unsigned NOT NULL default '0'",
-            'eval'       => ['tl_class' => 'w50'],
-            'wizard'     => [
+            'label'            => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySliderConfig'],
+            'inputType'        => 'select',
+            'exclude'          => true,
+            'options_callback' => ['huh.tiny_slider.backend.tiny_slider_spread', 'getBaseConfigurations'],
+            'sql'              => "int(10) unsigned NOT NULL default '0'",
+            'eval'             => ['tl_class' => 'w50'],
+            'wizard'           => [
                 ['huh.tiny_slider.backend.tiny_slider_spread', 'editTinySliderConfig'],
             ],
         ],
