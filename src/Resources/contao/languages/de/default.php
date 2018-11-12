@@ -1,12 +1,4 @@
 <?php
-/**
- * Contao Open Source CMS
- *
- * Copyright (c) 2015 Heimrich & Hannot GmbH
- * @package slick
- * @author Rico Kaltofen <r.kaltofen@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
- */
 $GLOBALS['TL_LANG']['CTE']['tiny-slider']                      = 'Tiny-Slider';
 $GLOBALS['TL_LANG']['CTE']['tiny-slider-gallery'][0]           = 'Bilder-Slider';
 $GLOBALS['TL_LANG']['CTE']['tiny-slider-gallery'][1]           = 'Erstellt einen Bilder-Slider.';

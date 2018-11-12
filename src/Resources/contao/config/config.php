@@ -16,7 +16,6 @@ define('TINY_SLIDER_PALETTE_CONTENT_SLIDER_END', 'tiny-slider-content-end');
  * Hooks
  */
 $GLOBALS['TL_HOOKS']['loadDataContainer'][] = ['HeimrichHannot\TinySliderBundle\Backend\Hooks', 'loadDataContainerHook'];
-$GLOBALS['TL_HOOKS']['parseArticles'][]     = ['HeimrichHannot\TinySliderBundle\Backend\Hooks', 'parseArticlesHook'];
 
 /**
  * Supported TL_DCA Entities, spreading efa palette to
@@ -36,7 +35,6 @@ $GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_content']['tiny-slider-content-start
 // Carousel config support
 $GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_tiny_slider_config']['default'] = 'title;[[TINY_SLIDER_PALETTE_CONFIG_BASE]]';
 $GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_tiny_slider_config']['responsive'] = 'title;[[TINY_SLIDER_PALETTE_CONFIG_RESPONSIVE]]';
-$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_module']['slick_combinedlist']  = 'type;[[TINY_SLIDER_PALETTE_PRESETCONFIG]]';
 
 /**
  * Back end modules

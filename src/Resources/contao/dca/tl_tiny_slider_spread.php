@@ -728,8 +728,8 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
 $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['palettes'][TINY_SLIDER_PALETTE_CONFIG_BASE] = str_replace('addTinySlider', $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['subpalettes']['addTinySlider'], $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['palettes']['default']);
 
 // Gallery Support -- not tl_content type present, set isGallery as default for multiSRC
-$GLOBALS['TL_DCA']['tl_tiny_slider_spread']['fields']['slickMultiSRC']['eval']['orderField'] = 'tinySliderOrderSRC';
-$GLOBALS['TL_DCA']['tl_tiny_slider_spread']['fields']['slickMultiSRC']['eval']['isGallery']  = true;
+$GLOBALS['TL_DCA']['tl_tiny_slider_spread']['fields']['tinySliderMultiSRC']['eval']['orderField'] = 'tinySliderOrderSRC';
+$GLOBALS['TL_DCA']['tl_tiny_slider_spread']['fields']['tinySliderMultiSRC']['eval']['isGallery']  = true;
 
 // Content Support -- set isGallery by type
 $GLOBALS['TL_DCA']['tl_content']['fields']['multiSRC']['load_callback'][] = ['huh.tiny_slider.backend.tiny_slider_spread', 'setFileTreeFlags'];

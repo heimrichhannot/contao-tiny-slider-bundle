@@ -57,10 +57,10 @@ class Hooks extends \Controller
             $pos = strpos($replace, '[['.$strConstant.']]');
             $search = str_replace('[['.$strConstant.']]', '', $replace);
 
-            // prepend slick config palette
+            // prepend config palette
             if ($pos < 1) {
                 $replace = $GLOBALS['TL_DCA'][static::$strSpreadDca]['palettes'][$strReplacePalette].$search;
-            } // append slick config palette
+            } // append config palette
             else {
                 $replace = $search.$GLOBALS['TL_DCA'][static::$strSpreadDca]['palettes'][$strReplacePalette];
             }

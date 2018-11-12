@@ -10,6 +10,7 @@ namespace HeimrichHannot\TinySliderBundle\Backend;
 
 
 use Contao\Backend;
+use Contao\Controller;
 use Contao\CoreBundle\Framework\FrameworkAwareInterface;
 use Contao\CoreBundle\Framework\FrameworkAwareTrait;
 use Contao\DataContainer;
@@ -45,7 +46,7 @@ class TinySliderSpread implements FrameworkAwareInterface
     {
         return ($dc->value < 1)
             ? ''
-            : ' <a href="contao/main.php?do=tiny_slider_config&amp;act=edit&amp;id='.$dc->value.'&amp;popup=1&amp;nb=1&amp;rt='.REQUEST_TOKEN.'" title="'.sprintf(specialchars($GLOBALS['TL_LANG']['tl_tiny_slider_spread']['editSlickConfig'][1]), $dc->value).'" style="padding-left:3px" onclick="Backend.openModalIframe({\'width\':768,\'title\':\''.specialchars(
+            : ' <a href="contao/main.php?do=tiny_slider_config&amp;act=edit&amp;id='.$dc->value.'&amp;popup=1&amp;nb=1&amp;rt='.REQUEST_TOKEN.'" title="'.sprintf(specialchars($GLOBALS['TL_LANG']['tl_tiny_slider_spread']['editTinySliderConfig'][1]), $dc->value).'" style="padding-left:3px" onclick="Backend.openModalIframe({\'width\':768,\'title\':\''.specialchars(
                 str_replace(
                     "'",
                     "\\'",

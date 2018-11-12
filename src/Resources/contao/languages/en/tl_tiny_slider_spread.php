@@ -84,5 +84,5 @@ $lang['tiny_slider_config']  = 'Tiny slider settings';
 /**
  * Popup
  */
-$GLOBALS['TL_LANG']['tl_carousel_spread']['editSlickConfig'][0] = 'Edit slick configuration';
-$GLOBALS['TL_LANG']['tl_carousel_spread']['editSlickConfig'][1] = 'Edit slick configuration ID %s';
+$lang['editTinySliderConfig'][0] = 'Edit tiny slider configuration';
+$lang['editTinySliderConfig'][1] = 'Edit tiny slider configuration ID %s';

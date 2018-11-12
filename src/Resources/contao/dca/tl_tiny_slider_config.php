@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Table tl_slick_config
- */
-
 $GLOBALS['TL_DCA']['tl_tiny_slider_config'] = [
 
     // Config

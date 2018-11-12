@@ -1,13 +1,4 @@
 <?php
-/**
- * Contao Open Source CMS
- *
- * Copyright (c) 2015 Heimrich & Hannot GmbH
- *
- * @package slick
- * @author  Rico Kaltofen <r.kaltofen@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
- */
 
 $lang = &$GLOBALS['TL_LANG']['tl_tiny_slider_spread'];
 
@@ -34,12 +25,13 @@ $lang['cssClass']                         = ['CSS-Klasse', 'Hier können Sie CSS
 /**
  * Legends
  */
-$lang['slick_legend']  = 'Slick Karussell Einstellungen';
-$lang['slick_gallery'] = 'Galerie-Einstellungen';
-$lang['slick_config']  = 'Slick Karussell Einstellungen';
+$lang['tiny_slider_legend']  = 'Tiny-Slider Einstellungen';
+$lang['tiny_slider_gallery'] = 'Galerie-Einstellungen';
+$lang['tiny_slider_config']  = 'Tiny-Slider Konfiguration';
+
 
 /**
  * Popup
  */
-$GLOBALS['TL_LANG']['tl_carousel_spread']['editTinySliderConfig'][0] = 'Tiny-Slider Konfiguration bearbeiten';
-$GLOBALS['TL_LANG']['tl_carousel_spread']['editTinySliderConfig'][1] = 'Tiny-Slider Konfiguration ID %s bearbeiten';
+$lang['editTinySliderConfig'][0] = 'Tiny-Slider Konfiguration bearbeiten';
+$lang['editTinySliderConfig'][1] = 'Tiny-Slider Konfiguration ID %s bearbeiten';
