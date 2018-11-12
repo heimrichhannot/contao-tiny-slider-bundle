@@ -9,7 +9,6 @@
 namespace HeimrichHannot\TinySliderBundle\Element;
 
 use Contao\System;
-use HeimrichHannot\SlickBundle\Frontend\Slick;
 use HeimrichHannot\TinySliderBundle\Frontend\Gallery;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 
@@ -46,7 +45,7 @@ class ContentGallery extends \Contao\ContentGallery
             return '';
         }
 
-        // Map content fields to slick fields
+        // Map content fields to tiny slider fields
         $this->arrData['tinySliderMultiSRC']      = $this->arrData['multiSRC'];
         $this->arrData['tinySliderOrderSRC']      = $this->arrData['orderSRC'];
         $this->arrData['tinySliderSortBy']        = $this->arrData['sortBy'];

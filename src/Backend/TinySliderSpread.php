@@ -33,7 +33,7 @@ class TinySliderSpread implements FrameworkAwareInterface
     public function setFileTreeFlags($varValue, DataContainer $dc)
     {
         if ($dc->activeRecord) {
-            if ($dc->activeRecord->type == 'slick') {
+            if ($dc->activeRecord->type == 'tiny-slider-gallery') {
                 $GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['isGallery'] = true;
             }
         }
@@ -54,14 +54,14 @@ class TinySliderSpread implements FrameworkAwareInterface
             ).'\',\'url\':this.href});return false">'.Image::getHtml('alias.gif', $GLOBALS['TL_LANG']['tl_tiny_slider_spread']['editTinySliderConfig'][0], 'style="vertical-align:top"').'</a>';
     }
 
-    public function getConfigurations($dc)
+    public function getResponsiveConfigurations($dc)
     {
         $options = [];
 
         /** @var TinySliderConfigModel $configAdapter */
         $configAdapter = $this->framework->getAdapter(TinySliderConfigModel::class);
 
-        if (null === ($configs = $configAdapter->findBy(['id != ?'], $dc->activeRecord->id))) {
+        if (null === ($configs = $configAdapter->findBy(['type = ?'], 'responsive'))) {
             return $options;
         }
 

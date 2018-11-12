@@ -4,7 +4,8 @@
  * Constants
  */
 define('TINY_SLIDER_PALETTE_DEFAULT', 'default');
-define('TINY_SLIDER_PALETTE_FLAT', 'flat');
+define('TINY_SLIDER_PALETTE_CONFIG_BASE', 'flat');
+define('TINY_SLIDER_PALETTE_CONFIG_RESPONSIVE', 'responsive');
 define('TINY_SLIDER_PALETTE_PRESETCONFIG', 'presetConfig');
 define('TINY_SLIDER_PALETTE_GALLERY', 'gallery');
 define('TINY_SLIDER_PALETTE_CONTENT', 'tiny-slider');
@@ -32,8 +33,9 @@ $GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_module']['tiny-slider_eventlist'] = 
 $GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_content']['tiny-slider-gallery']       = '[[TINY_SLIDER_PALETTE_CONTENT]]';
 $GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_content']['tiny-slider-content-start'] = '[[TINY_SLIDER_PALETTE_CONTENT_SLIDER_START]]';
 
-// Owl carousel config support
-$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_tiny_slider_config']['default'] = 'title;[[TINY_SLIDER_PALETTE_FLAT]]';
+// Carousel config support
+$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_tiny_slider_config']['default'] = 'title;[[TINY_SLIDER_PALETTE_CONFIG_BASE]]';
+$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_tiny_slider_config']['responsive'] = 'title;[[TINY_SLIDER_PALETTE_CONFIG_RESPONSIVE]]';
 $GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_module']['slick_combinedlist']  = 'type;[[TINY_SLIDER_PALETTE_PRESETCONFIG]]';
 
 /**

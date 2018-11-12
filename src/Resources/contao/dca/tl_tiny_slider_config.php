@@ -1,17 +1,8 @@
 <?php
-/**
- * Contao Open Source CMS
- *
- * Copyright (c) 2015 Heimrich & Hannot GmbH
- * @package slick
- * @author Rico Kaltofen <r.kaltofen@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
- */
 
 /**
  * Table tl_slick_config
  */
-
 
 $GLOBALS['TL_DCA']['tl_tiny_slider_config'] = [
 
@@ -22,82 +13,91 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_config'] = [
         'sql'              => [
             'keys' => [
                 'id' => 'primary',
-            ]
+            ],
         ],
     ],
 
     // List
     'list'     => [
         'sorting'           => [
-            'mode'        => 1,
-            'flag'        => 3,
-            'panelLayout' => 'filter;search,limit',
-            'fields'      => ['title']
+            'mode'        => 2,
+            'panelLayout' => 'filter,sort;search,limit',
+            'fields'      => ['type'],
         ],
         'label'             => [
-            'fields' => ['title'],
-            'format' => '%s'
+            'fields' => ['title', 'type'],
+            'format' => '%s',
         ],
         'global_operations' => [
             'all' => [
                 'label'      => &$GLOBALS['TL_LANG']['MSC']['all'],
                 'href'       => 'act=select',
                 'class'      => 'header_edit_all',
-                'attributes' => 'onclick="Backend.getScrollOffset();" accesskey="e"'
-            ]
+                'attributes' => 'onclick="Backend.getScrollOffset();" accesskey="e"',
+            ],
         ],
         'operations'        => [
             'edit'   => [
                 'label' => &$GLOBALS['TL_LANG']['tl_tiny_slider_config']['edit'],
                 'href'  => 'act=edit',
-                'icon'  => 'edit.gif'
+                'icon'  => 'edit.gif',
             ],
             'copy'   => [
                 'label' => &$GLOBALS['TL_LANG']['tl_tiny_slider_config']['copy'],
                 'href'  => 'act=copy',
-                'icon'  => 'copy.gif'
+                'icon'  => 'copy.gif',
             ],
             'delete' => [
                 'label'      => &$GLOBALS['TL_LANG']['tl_tiny_slider_config']['delete'],
                 'href'       => 'act=delete',
                 'icon'       => 'delete.gif',
-                'attributes' => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
+                'attributes' => 'onclick="if(!confirm(\''.$GLOBALS['TL_LANG']['MSC']['deleteConfirm'].'\'))return false;Backend.getScrollOffset()"',
             ],
             'show'   => [
                 'label' => &$GLOBALS['TL_LANG']['tl_tiny_slider_config']['show'],
                 'href'  => 'act=show',
-                'icon'  => 'show.gif'
-            ]
-        ]
+                'icon'  => 'show.gif',
+            ],
+        ],
     ],
 
     // Palettes
     'palettes' => [
-        'default' => '{title_legend},title;'
+        '__selector__' => ['type'],
+        'default'      => '{title_legend},type,title;',
+        'responsive'   => '{title_legend},type,title;',
     ],
 
     // Fields
     'fields'   => [
         'id'      => [
-            'sql' => "int(10) unsigned NOT NULL auto_increment"
-        ],
-        'sorting' => [
-            'sorting' => true,
-            'flag'    => 2,
-            'sql'     => "int(10) unsigned NOT NULL default '0'"
+            'sql' => "int(10) unsigned NOT NULL auto_increment",
         ],
         'tstamp'  => [
-            'sql' => "int(10) unsigned NOT NULL default '0'"
+            'sql' => "int(10) unsigned NOT NULL default '0'",
+        ],
+        'type'    => [
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_config']['type'],
+            'exclude'   => true,
+            'search'    => true,
+            'flag'      => 12,
+            'sorting'   => true,
+            'default'   => 'base',
+            'inputType' => 'select',
+            'options'   => ['base', 'responsive'],
+            'reference' => $GLOBALS['TL_LANG']['tl_tiny_slider_config']['reference']['type'],
+            'eval'      => ['mandatory' => true, 'submitOnChange' => true],
+            'sql'       => "varchar(12) NOT NULL default ''",
         ],
         'title'   => [
             'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_config']['title'],
+            'flag'      => 1,
             'exclude'   => true,
             'search'    => true,
             'sorting'   => true,
-            'flag'      => 1,
             'inputType' => 'text',
             'eval'      => ['mandatory' => true, 'maxlength' => 255],
-            'sql'       => "varchar(255) NOT NULL default ''"
-        ]
-    ]
+            'sql'       => "varchar(255) NOT NULL default ''",
+        ],
+    ],
 ];

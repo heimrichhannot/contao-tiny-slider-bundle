@@ -32,7 +32,7 @@ class Config
         return $attributes;
     }
 
-    public function createConfig($objConfig, $responsive = false)
+    public function createConfig($objConfig, $palette = 'default')
     {
         Controller::loadDataContainer('tl_tiny_slider_spread');
 
@@ -45,7 +45,11 @@ class Config
         $translations = System::getContainer()->get('translator')->getCatalogue()->all();
         $messages     = $translations['messages'];
 
-        foreach ($objConfig->row() as $key => $value) {
+        $fields = System::getContainer()->get('huh.tiny_slider.util.dca')->getPaletteFields($palette, $GLOBALS['TL_DCA']['tl_tiny_slider_spread'], 'tl_tiny_slider_config');
+
+        $data = array_intersect_key($objConfig->row(), $fields);
+
+        foreach ($data as $key => $value) {
             if (false === strstr($key, 'tinySlider_')) {
                 continue;
             }
@@ -55,10 +59,6 @@ class Config
             }
 
             $arrData = $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['fields'][$key];
-
-            if (true === $responsive && (!isset($arrData['eval']['responsive']) || true !== $arrData['eval']['responsive'])) {
-                continue;
-            }
 
             $tinySliderKey = substr($key, strlen('tinySlider_')); // trim tinySlider_ prefix
 
@@ -81,7 +81,7 @@ class Config
             }
 
             if ($arrData['eval']['multiple'] || 'multiColumnEditor' == $arrData['inputType']) {
-                $value = deserialize($value, true);
+                $value = StringUtil::deserialize($value, true);
             }
 
             if ($arrData['eval']['isJsObject']) {
@@ -93,41 +93,37 @@ class Config
                 continue;
             }
 
-            if ('tinySlider_responsive' == $key) {
-                $arrResponsive = [];
-
-                foreach ($value as $config) {
-                    if (empty($config['configuration'])) {
-                        continue;
-                    }
-
-                    $objResponsiveConfig = $configModelAdapter->findByPk($config['configuration']);
-
-                    if (null === $objResponsiveConfig) {
-                        continue;
-                    }
-
-                    $settings = $this->createConfig($objResponsiveConfig, true);
-                    unset($config['configuration']);
-
-                    $arrResponsive[$config['breakpoint']] = $settings['config'];
-                }
-
-                if (empty($arrResponsive)) {
-                    $value = false;
-                } else {
-                    $value = $arrResponsive;
-                }
-            }
-
             if ($key) {
                 $arrConfig[$tinySliderKey] = $value;
             }
         }
 
-        // remove responsive settings, otherwise center wont work
-        if (empty($arrResponsive)) {
+        $arrResponsive = [];
+
+        if ($palette !== 'responsive' && isset($arrConfig['responsive'])) {
+
+            $value = $arrConfig['responsive'];
+
+            foreach ($value as $config) {
+                if (empty($config['configuration'])) {
+                    continue;
+                }
+
+                $objResponsiveConfig = $configModelAdapter->findByPk($config['configuration']);
+
+                if (null === $objResponsiveConfig) {
+                    continue;
+                }
+
+                $settings                             = $this->createConfig($objResponsiveConfig, 'responsive');
+                $arrResponsive[$config['breakpoint']] = array_diff_assoc($settings['config'], $arrConfig); // only differences
+            }
+
             unset($arrConfig['responsive']);
+        }
+
+        if (!empty($arrResponsive)) {
+            $arrConfig['responsive'] = $arrResponsive;
         }
 
         $arrReturn = [
@@ -138,12 +134,12 @@ class Config
         return $arrReturn;
     }
 
-    public function getSlickContainerSelectorFromModel($objConfig)
+    public function getTinySliderContainerSelectorFromModel($objConfig)
     {
-        return '.'.$this->getSlickCssClassFromModel($objConfig).' .tiny-slider-container';
+        return '.'.$this->getTinySliderCssClassFromModel($objConfig).' .tiny-slider-container';
     }
 
-    public function getSlickCssClassFromModel($objConfig)
+    public function getTinySliderCssClassFromModel($objConfig)
     {
         $strClass = $this->stripNamespaceFromClassName($objConfig);
 
@@ -163,7 +159,7 @@ class Config
 
     public function getCssClassFromModel($objConfig)
     {
-        return $this->getSlickCssClassFromModel($objConfig).(strlen($objConfig->cssClass) > 0 ? ' '.$objConfig->cssClass : '').' tiny-slider-uid-'.uniqid().' tiny-slider';
+        return $this->getTinySliderCssClassFromModel($objConfig).(strlen($objConfig->cssClass) > 0 ? ' '.$objConfig->cssClass : '').' tiny-slider-uid-'.uniqid().' tiny-slider';
     }
 
     /**

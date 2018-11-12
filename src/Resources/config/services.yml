@@ -6,6 +6,9 @@ services:
   huh.tiny_slider.util.config:
     class: HeimrichHannot\TinySliderBundle\Util\Config
     public: true
+  huh.tiny_slider.util.dca:
+    class: HeimrichHannot\TinySliderBundle\Util\Dca
+    public: true
   huh.tiny_slider.backend.tiny_slider_spread:
     class: HeimrichHannot\TinySliderBundle\Backend\TinySliderSpread
     public: true

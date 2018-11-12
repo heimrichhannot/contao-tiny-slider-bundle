@@ -11,12 +11,19 @@
 /**
  * Fields
  */
+$GLOBALS['TL_LANG']['tl_tiny_slider_config']['type'] = ['Type', 'Select a config type.'];
 $GLOBALS['TL_LANG']['tl_tiny_slider_config']['title'] = ['Title', 'Please provide a title.'];
 
 /**
  * Legends
  */
 $GLOBALS['TL_LANG']['tl_tiny_slider_config']['title_legend'] = 'Title';
+
+/**
+ * References
+ */
+$GLOBALS['TL_LANG']['tl_tiny_slider_config']['reference']['type']['base']       = 'Base config';
+$GLOBALS['TL_LANG']['tl_tiny_slider_config']['reference']['type']['responsive'] = 'Responsive config';
 
 /**
  * Buttons

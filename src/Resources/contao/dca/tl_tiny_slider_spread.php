@@ -1,22 +1,14 @@
 <?php
-/**
- * Contao Open Source CMS
- *
- * Copyright (c) 2015 Heimrich & Hannot GmbH
- *
- * @package slick
- * @author  Rico Kaltofen <r.kaltofen@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
- */
 
 // reusable palettes extension for tl_news, tl_content, tl_module etc
 $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
     'palettes'    => [
-        '__selector__'                   => ['addTinySlider', 'addGallery', 'tinySlider_pausePlay'],
-        TINY_SLIDER_PALETTE_DEFAULT      => '{tiny_slider_legend},addTinySlider;',
-        TINY_SLIDER_PALETTE_PRESETCONFIG => '{tiny_slider_config},tinySliderConfig;',
-        TINY_SLIDER_PALETTE_GALLERY      => '{tiny_slider_gallery},addGallery;',
-        TINY_SLIDER_PALETTE_CONTENT      => '{type_legend},type,headline;{tiny_slider_config},tinySliderConfig;{source_legend},multiSRC,sortBy,useHomeDir;{image_legend},size,fullsize,numberOfItems;{template_legend:hide},tinySliderGalleryTpl,customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space;{invisible_legend:hide},invisible,start,stop',
+        '__selector__'                        => ['addTinySlider', 'addGallery', 'tinySlider_pausePlay'],
+        TINY_SLIDER_PALETTE_DEFAULT           => '{tiny_slider_legend},addTinySlider;',
+        TINY_SLIDER_PALETTE_PRESETCONFIG      => '{tiny_slider_config},tinySliderConfig;',
+        TINY_SLIDER_PALETTE_GALLERY           => '{tiny_slider_gallery},addGallery;',
+        TINY_SLIDER_PALETTE_CONTENT           => '{type_legend},type,headline;{tiny_slider_config},tinySliderConfig;{source_legend},multiSRC,sortBy,useHomeDir;{image_legend},size,fullsize,numberOfItems;{template_legend:hide},tinySliderGalleryTpl,customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space;{invisible_legend:hide},invisible,start,stop',
+        TINY_SLIDER_PALETTE_CONFIG_RESPONSIVE => '{tiny_slider_config},tinySlider_items,tinySlider_slideBy,tinySlider_speed,tinySlider_autoHeight,tinySlider_fixedWidth,tinySlider_edgePadding,tinySlider_gutter,tinySlider_controls,tinySlider_controlsTextPrev,tinySlider_controlsTextNext,tinySlider_nav,tinySlider_autoplay,tinySlider_autoplayHoverPause,tinySlider_autoplayResetOnVisibility,tinySlider_autoplayTextStart,tinySlider_autoplayTextStop,tinySlider_autoplayTimeout,tinySlider_touch,tinySlider_mouseDrag,tinySlider_arrowKeys,tinySlider_disable,tinySlider_startIndex;',
     ],
     'subpalettes' => [
         'addTinySlider'        => '
@@ -209,9 +201,8 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'default'   => 1,
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'w50',
-                'rgxp'       => 'digit',
-                'responsive' => true,
+                'tl_class' => 'w50',
+                'rgxp'     => 'digit',
             ],
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
@@ -221,9 +212,8 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'default'   => 0,
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'w50',
-                'rgxp'       => 'digit',
-                'responsive' => true,
+                'tl_class' => 'w50',
+                'rgxp'     => 'digit',
             ],
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
@@ -233,9 +223,8 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'default'   => 0,
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'w50',
-                'rgxp'       => 'digit',
-                'responsive' => true,
+                'tl_class' => 'w50',
+                'rgxp'     => 'digit',
             ],
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
@@ -245,9 +234,8 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'default'   => 0,
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'w50',
-                'rgxp'       => 'digit',
-                'responsive' => true,
+                'tl_class' => 'w50',
+                'rgxp'     => 'digit',
             ],
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
@@ -266,9 +254,8 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'default'   => 0,
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'w50',
-                'rgxp'       => 'digit',
-                'responsive' => true,
+                'tl_class' => 'w50',
+                'rgxp'     => 'digit',
             ],
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
@@ -289,8 +276,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'exclude'   => true,
             'default'   => true,
             'eval'      => [
-                'tl_class'   => 'clr w50',
-                'responsive' => true,
+                'tl_class' => 'clr w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
@@ -313,7 +299,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'options_callback' => function (\DataContainer $dc) {
                 return \Contao\System::getContainer()->get('huh.utils.choice.message')->getCachedChoices('huh.tiny_slider.prev');
             },
-            'eval'             => ['chosen' => true, 'maxlength' => 128, 'includeBlankOption' => true, 'tl_class' => 'w50', 'tinySliderArray' => ['controlsText' => 0], 'responsive' => true,],
+            'eval'             => ['chosen' => true, 'maxlength' => 128, 'includeBlankOption' => true, 'tl_class' => 'w50', 'tinySliderArray' => ['controlsText' => 0]],
             'sql'              => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_controlsTextNext'          => [
@@ -324,7 +310,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'options_callback' => function (\DataContainer $dc) {
                 return \Contao\System::getContainer()->get('huh.utils.choice.message')->getCachedChoices('huh.tiny_slider.next');
             },
-            'eval'             => ['chosen' => true, 'maxlength' => 128, 'includeBlankOption' => true, 'tl_class' => 'w50', 'tinySliderArray' => ['controlsText' => 1], 'responsive' => true,],
+            'eval'             => ['chosen' => true, 'maxlength' => 128, 'includeBlankOption' => true, 'tl_class' => 'w50', 'tinySliderArray' => ['controlsText' => 1]],
             'sql'              => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_controlsContainer'         => [
@@ -354,8 +340,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'exclude'   => true,
             'default'   => true,
             'eval'      => [
-                'tl_class'   => 'clr w50',
-                'responsive' => true,
+                'tl_class' => 'clr w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
@@ -391,8 +376,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'w50',
-                'responsive' => true,
+                'tl_class' => 'w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
@@ -402,9 +386,8 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'default'   => 300,
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'w50',
-                'rgxp'       => 'digit',
-                'responsive' => true,
+                'tl_class' => 'w50',
+                'rgxp'     => 'digit',
             ],
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
@@ -413,8 +396,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'clr w50',
-                'responsive' => true,
+                'tl_class' => 'clr w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
@@ -435,9 +417,8 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'default'   => 5000,
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'w50',
-                'rgxp'       => 'digit',
-                'responsive' => true,
+                'tl_class' => 'w50',
+                'rgxp'     => 'digit',
             ],
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
@@ -460,7 +441,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'options_callback' => function (\DataContainer $dc) {
                 return \Contao\System::getContainer()->get('huh.utils.choice.message')->getCachedChoices('huh.tiny_slider.start');
             },
-            'eval'             => ['chosen' => true, 'maxlength' => 128, 'includeBlankOption' => true, 'tl_class' => 'w50', 'tinySliderArray' => ['autoplayText' => 0], 'responsive' => true,],
+            'eval'             => ['chosen' => true, 'maxlength' => 128, 'includeBlankOption' => true, 'tl_class' => 'w50', 'tinySliderArray' => ['autoplayText' => 0]],
             'sql'              => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_autoplayTextStop'          => [
@@ -471,7 +452,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'options_callback' => function (\DataContainer $dc) {
                 return \Contao\System::getContainer()->get('huh.utils.choice.message')->getCachedChoices('huh.tiny_slider.stop');
             },
-            'eval'             => ['chosen' => true, 'maxlength' => 128, 'includeBlankOption' => true, 'tl_class' => 'w50', 'tinySliderArray' => ['autoplayText' => 1], 'responsive' => true,],
+            'eval'             => ['chosen' => true, 'maxlength' => 128, 'includeBlankOption' => true, 'tl_class' => 'w50', 'tinySliderArray' => ['autoplayText' => 1]],
             'sql'              => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_autoplayHoverPause'        => [
@@ -479,8 +460,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'clr w50',
-                'responsive' => true,
+                'tl_class' => 'clr w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
@@ -507,8 +487,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'default'   => true,
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'w50',
-                'responsive' => true,
+                'tl_class' => 'w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
@@ -570,8 +549,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'w50',
-                'responsive' => true,
+                'tl_class' => 'w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
@@ -595,7 +573,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
                         'configuration' => [
                             'label'            => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_responsive_configuration'],
                             'inputType'        => 'select',
-                            'options_callback' => ['huh.tiny_slider.backend.tiny_slider_spread', 'getConfigurations'],
+                            'options_callback' => ['huh.tiny_slider.backend.tiny_slider_spread', 'getResponsiveConfigurations'],
                             'eval'             => [
                                 'groupStyle'         => 'width:400px',
                                 'includeBlankOption' => true,
@@ -630,8 +608,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'exclude'   => true,
             'default'   => true,
             'eval'      => [
-                'tl_class'   => 'clr w50',
-                'responsive' => true,
+                'tl_class' => 'clr w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
@@ -640,8 +617,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'w50',
-                'responsive' => true,
+                'tl_class' => 'w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
@@ -702,8 +678,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'inputType' => 'checkbox',
             'exclude'   => true,
             'eval'      => [
-                'tl_class'   => 'w50',
-                'responsive' => true,
+                'tl_class' => 'w50',
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
@@ -713,9 +688,8 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'exclude'   => true,
             'default'   => 0,
             'eval'      => [
-                'tl_class'   => 'w50',
-                'rgxp'       => 'digit',
-                'responsive' => true,
+                'tl_class' => 'w50',
+                'rgxp'     => 'digit',
             ],
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
@@ -749,9 +723,8 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
     ],
 ];
 
-// flat palette, renders widtout submitOnChange Field
-$GLOBALS['TL_DCA']['tl_tiny_slider_spread']['palettes'][TINY_SLIDER_PALETTE_FLAT] = str_replace('addTinySlider', $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['subpalettes']['addTinySlider'], $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['palettes']['default']);
-
+// flat & responsive palette, renders widtout submitOnChange Field
+$GLOBALS['TL_DCA']['tl_tiny_slider_spread']['palettes'][TINY_SLIDER_PALETTE_CONFIG_BASE] = str_replace('addTinySlider', $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['subpalettes']['addTinySlider'], $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['palettes']['default']);
 
 // Gallery Support -- not tl_content type present, set isGallery as default for multiSRC
 $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['fields']['slickMultiSRC']['eval']['orderField'] = 'tinySliderOrderSRC';
