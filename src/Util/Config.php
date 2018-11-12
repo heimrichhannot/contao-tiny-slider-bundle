@@ -32,7 +32,7 @@ class Config
         return $attributes;
     }
 
-    public function createConfig($objConfig)
+    public function createConfig($objConfig, $responsive = false)
     {
         Controller::loadDataContainer('tl_tiny_slider_spread');
 
@@ -43,7 +43,7 @@ class Config
         $arrObjects = [];
 
         $translations = System::getContainer()->get('translator')->getCatalogue()->all();
-        $messages = $translations['messages'];
+        $messages     = $translations['messages'];
 
         foreach ($objConfig->row() as $key => $value) {
             if (false === strstr($key, 'tinySlider_')) {
@@ -56,6 +56,10 @@ class Config
 
             $arrData = $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['fields'][$key];
 
+            if (true === $responsive && (!isset($arrData['eval']['responsive']) || true !== $arrData['eval']['responsive'])) {
+                continue;
+            }
+
             $tinySliderKey = substr($key, strlen('tinySlider_')); // trim tinySlider_ prefix
 
             if ($arrData['eval']['rgxp'] == 'digit') {
@@ -66,13 +70,12 @@ class Config
                 $value = (bool)filter_var($value, FILTER_VALIDATE_BOOLEAN);
             }
 
-            if(is_string($value) && isset($messages[$value]))
-            {
+            if (is_string($value) && isset($messages[$value])) {
                 $value = System::getContainer()->get('translator')->trans($value);
             }
 
-            if(isset($arrData['eval']['tinySliderArray'])){
-                $arrayKey = key($arrData['eval']['tinySliderArray']);
+            if (isset($arrData['eval']['tinySliderArray'])) {
+                $arrayKey                                                             = key($arrData['eval']['tinySliderArray']);
                 $arrConfig[$arrayKey][$arrData['eval']['tinySliderArray'][$arrayKey]] = $value;
                 continue;
             }
@@ -104,7 +107,7 @@ class Config
                         continue;
                     }
 
-                    $settings = $this->createConfig($objResponsiveConfig);
+                    $settings = $this->createConfig($objResponsiveConfig, true);
                     unset($config['configuration']);
 
                     $arrResponsive[$config['breakpoint']] = $settings['config'];
