@@ -63,6 +63,7 @@ $lang['tinySlider_lazyloadSelector']          = ['Lazy load selector', 'The CSS 
 $lang['tinySlider_touch']                     = ['Touch', 'Activates input detection for touch devices. Default: true'];
 $lang['tinySlider_mouseDrag']                 = ['Mouse drag', 'Changing slides by dragging them. Default: false'];
 $lang['tinySlider_preventActionWhenRunning']  = ['Prevent action while transforming', 'Prevent next transition while slider is transforming. Default: false'];
+$lang['tinySlider_preventScrollOnTouch']      = ['Prevent page from scrolling on touchmove.', 'Prevent page from scrolling on touchmove. If set to "auto", the slider will first check if the touch direction matches the slider axis, then decide whether prevent the page scrolling or not. If set to "force", the slider will always prevent the page scrolling. Default: auto'];
 $lang['tinySlider_swipeAngle']                = ['Swipe angle', 'Swipe or drag will not be triggered if the angle is not inside the range when set. Default: 15'];
 $lang['tinySlider_nested']                    = ['Nested', 'Define the relationship between nested sliders. Make sure you run the inner slider first, otherwise the height of the inner slider container will be wrong. Default: false'];
 $lang['tinySlider_freezable']                 = ['Freezable', 'Indicate whether the slider will be frozen (controls, nav, autoplay and other functions will stop work) when all slides can be displayed in one page. Default: true'];

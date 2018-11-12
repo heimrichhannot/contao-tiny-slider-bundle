@@ -64,6 +64,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
                             tinySlider_touch,
                             tinySlider_mouseDrag,
                             tinySlider_preventActionWhenRunning,
+                            tinySlider_preventScrollOnTouch,
                             tinySlider_swipeAngle,
                             tinySlider_nested,
                             tinySlider_freezable,
@@ -637,6 +638,17 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
+        'tinySlider_preventScrollOnTouch'      => [
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_preventScrollOnTouch'],
+            'inputType' => 'select',
+            'default'   => 'auto',
+            'exclude'   => true,
+            'options'   => ['auto', 'force'],
+            'eval'      => [
+                'tl_class' => 'w50',
+            ],
+            'sql'       => "varchar(5) NOT NULL default ''",
+        ],
         'tinySlider_swipeAngle'                => [
             'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_swipeAngle'],
             'inputType' => 'text',
@@ -669,7 +681,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
-        'tinySlider_disable'                 => [
+        'tinySlider_disable'                   => [
             'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_disable'],
             'inputType' => 'checkbox',
             'exclude'   => true,
@@ -689,7 +701,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             ],
             'sql'       => "smallint(5) unsigned NOT NULL default '0'",
         ],
-        'tinySlider_useLocalStorage'                 => [
+        'tinySlider_useLocalStorage'           => [
             'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_useLocalStorage'],
             'inputType' => 'checkbox',
             'exclude'   => true,
@@ -699,7 +711,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             ],
             'sql'       => "char(1) NOT NULL default ''",
         ],
-        'tinySlider_onInit'                         => [
+        'tinySlider_onInit'                    => [
             'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_onInit'],
             'inputType' => 'text',
             'exclude'   => true,
