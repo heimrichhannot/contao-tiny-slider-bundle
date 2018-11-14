@@ -19,16 +19,21 @@ TinySliderBundle.prototype.init = function (element) {
 
     let onInit = config.onInit;
 
+    console.log(element);
+    console.log(config);
+
     config.onInit = function () {
-        element.classList.add('tiny-slider-initialized');
         onInit ? onInit() : null;
     };
 
     let slider = tns(config);
 
+    element.classList.add('tiny-slider-initialized');
+
     this.sliders.push(slider);
 };
 
 document.addEventListener("DOMContentLoaded", function () {
+    new TinySliderBundle('.tiny-slider');
 });
-new TinySliderBundle('.tiny-slider');
+

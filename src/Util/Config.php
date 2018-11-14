@@ -12,6 +12,7 @@ use Contao\Controller;
 use Contao\StringUtil;
 use Contao\System;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 class Config
 {
@@ -24,24 +25,32 @@ class Config
      */
     public function getAttributes($config, $container = '.tiny-slider-container'): string
     {
-        if (is_numeric($config)) {
-            /** @var TinySliderConfigModel $adapter */
-            $adapter = System::getContainer()->get('contao.framework')->getAdapter(TinySliderConfigModel::class);
-            $config  = $adapter->findByPk((int)$config);
+        $cache      = new FilesystemAdapter('', 0, System::getContainer()->get('kernel')->getCacheDir());
+        $cacheKey   = 'tinySliderConfig_'.(is_numeric($config) ? $config : $config->id);
+        $cacheItem  = $cache->getItem($cacheKey);
+        $configData = $cacheItem->get();
+
+        if (true === System::getContainer()->getParameter('kernel.debug') || !$cacheItem->isHit() || empty($configData)) {
+            if (is_numeric($config)) {
+                /** @var TinySliderConfigModel $adapter */
+                $adapter = System::getContainer()->get('contao.framework')->getAdapter(TinySliderConfigModel::class);
+                $config  = $adapter->findByPk((int)$config);
+            }
+
+            if (null === $config) {
+                return '';
+            }
+
+            $configData              = $this->createConfig($config);
+            $configData['container'] = $container;
+
+            $cacheItem->expiresAfter(\DateInterval::createFromDateString('4 hour'));
+            $cacheItem->set($configData);
+
+            $cache->save($cacheItem);
         }
 
-        if (null === $config) {
-            return '';
-        }
-
-        $arrData                        = $this->createConfig($config);
-        $arrData['config']['container'] = $container;
-
-        $attributes = ' data-tiny-slider-config="'.htmlspecialchars(json_encode($arrData['config']), ENT_QUOTES, \Contao\Config::get('characterSet')).'"';
-
-        if ('' !== $config->initCallback) {
-            $attributes .= ' data-tiny-slider-init-callback="'.htmlspecialchars($config->initCallback, ENT_QUOTES, \Contao\Config::get('characterSet')).'"';
-        }
+        $attributes = ' data-tiny-slider-config="'.htmlspecialchars(json_encode($configData), ENT_QUOTES, \Contao\Config::get('characterSet')).'"';
 
         return $attributes;
     }
@@ -53,8 +62,7 @@ class Config
         /** @var TinySliderConfigModel $modelAdapter */
         $configModelAdapter = System::getContainer()->get('contao.framework')->getAdapter(TinySliderConfigModel::class);
 
-        $arrConfig  = [];
-        $arrObjects = [];
+        $arrConfig = [];
 
         $translations = System::getContainer()->get('translator')->getCatalogue()->all();
         $messages     = $translations['messages'];
@@ -88,7 +96,7 @@ class Config
                 $value = System::getContainer()->get('translator')->trans($value);
             }
 
-            if (isset($arrData['eval']['tinySliderArray'])) {
+            if (isset($arrData['eval']['tinySliderArray']) && '' != $value) {
                 $arrayKey                                                             = key($arrData['eval']['tinySliderArray']);
                 $arrConfig[$arrayKey][$arrData['eval']['tinySliderArray'][$arrayKey]] = $value;
                 continue;
@@ -98,12 +106,12 @@ class Config
                 $value = StringUtil::deserialize($value, true);
             }
 
-            if ($arrData['eval']['isJsObject']) {
-                $arrObjects[] = $tinySliderKey;
-            }
-
             // check type as well, otherwise
             if ('' === $value) {
+                continue;
+            }
+
+            if ($value == $arrData['default']) {
                 continue;
             }
 
@@ -129,8 +137,8 @@ class Config
                     continue;
                 }
 
-                $settings                             = $this->createConfig($objResponsiveConfig, 'responsive');
-                $arrResponsive[$config['breakpoint']] = array_diff_assoc($settings['config'], $arrConfig); // only differences
+                $responsiveConfig                     = $this->createConfig($objResponsiveConfig, 'responsive');
+                $arrResponsive[$config['breakpoint']] = array_diff_assoc($responsiveConfig, $arrConfig); // only differences
             }
 
             unset($arrConfig['responsive']);
@@ -140,12 +148,7 @@ class Config
             $arrConfig['responsive'] = $arrResponsive;
         }
 
-        $arrReturn = [
-            'config'  => $arrConfig,
-            'objects' => $arrObjects,
-        ];
-
-        return $arrReturn;
+        return $arrConfig;
     }
 
     public function getTinySliderContainerSelectorFromModel($objConfig)
