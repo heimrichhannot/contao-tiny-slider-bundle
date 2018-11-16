@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2018-11-14
+
+### Fixed
+- `animateNormal` translation
+- added `fadeAnimation` howto in README.md
+
 ## [1.1.1] - 2018-11-14
 
 ### Fixed
