@@ -26,7 +26,7 @@ class Config
     public function getAttributes($config, $container = '.tiny-slider-container'): string
     {
         $cache      = new FilesystemAdapter('', 0, System::getContainer()->get('kernel')->getCacheDir());
-        $cacheKey   = 'tinySliderConfig_'.(is_numeric($config) ? $config : $config->id);
+        $cacheKey   = 'tinySliderConfig_'.(is_numeric($config) ? $config : $config->id). '' . $container;
         $cacheItem  = $cache->getItem($cacheKey);
         $configData = $cacheItem->get();
 

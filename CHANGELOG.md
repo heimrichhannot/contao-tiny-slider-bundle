@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.3] - 2018-12-05
+
+### Fixed
+- caching in production mode, cacheKey should contain $container paramter
+
 ## [1.1.2] - 2018-11-14
 
 ### Fixed
