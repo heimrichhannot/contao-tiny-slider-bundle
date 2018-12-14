@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.4] - 2018-12-14
+
+### Fixed
+- call of custom `onInit` callbacks (provide public function name)
+
 ## [1.1.3] - 2018-12-05
 
 ### Fixed

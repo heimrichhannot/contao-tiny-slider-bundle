@@ -21,7 +21,10 @@ TinySliderBundle.prototype.init = function (element) {
 
     config.onInit = function () {
         element.classList.add('tiny-slider-initialized');
-        onInit ? onInit() : null;
+        if(onInit){
+            let onInitFunction = new Function(onInit + '()');
+            onInitFunction();
+        }
     };
 
     let slider = tns(config);
@@ -32,4 +35,5 @@ TinySliderBundle.prototype.init = function (element) {
 document.addEventListener("DOMContentLoaded", function () {
     new TinySliderBundle('.tiny-slider');
 });
+
 
