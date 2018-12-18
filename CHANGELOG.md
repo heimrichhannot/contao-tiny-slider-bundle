@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.5] - 2018-12-18
+
+### Fixed
+- added environment (`prod`, `dev`) to config cache key
+
 ## [1.1.4] - 2018-12-14
 
 ### Fixed
