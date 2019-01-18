@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.6] - 2019-01-18
+
+### Added
+- Translations (cs, pl, ru)
+
 ## [1.1.5] - 2018-12-18
 
 ### Fixed

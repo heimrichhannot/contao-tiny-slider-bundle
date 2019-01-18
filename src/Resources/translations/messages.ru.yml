@@ -1,0 +1,15 @@
+# prev text
+huh.tiny_slider.prev.default: <span class="title">Предыдущая</span>
+huh.tiny_slider.prev.default.text-sr-only: <span class="title sr-only">Предыдущая</span>
+
+# next text
+huh.tiny_slider.next.default: <span class="title">Следующая</span>
+huh.tiny_slider.next.default.text-sr-only: <span class="title sr-only">Следующая</span>
+
+# start text
+huh.tiny_slider.start.default: <span class="title">Играть</span>
+huh.tiny_slider.start.default.text-sr-only: <span class="title sr-only">Играть</span>
+
+# stop text
+huh.tiny_slider.stop.default: <span class="title">Стоп</title>
+huh.tiny_slider.stop.default.text-sr-only: <span class="title sr-only">Стоп</span>
