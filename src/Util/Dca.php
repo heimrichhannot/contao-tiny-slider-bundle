@@ -12,6 +12,8 @@ class Dca
 {
     public function getPaletteFields($strPalette, $dc, $table = 'tl_tiny_slider_spread', $type = 'palettes')
     {
+        \Controller::loadDataContainer($table);
+
         $boxes = trimsplit(';', $GLOBALS['TL_DCA'][$table][$type][$strPalette]);
 
         $arrFields = [];

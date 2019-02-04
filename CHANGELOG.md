@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.7] - 2019-02-04
+
+### Fixed
+- empty `tl_tiny_slider_config` palette in production environment
+
 ## [1.1.6] - 2019-01-18
 
 ### Added
