@@ -111,7 +111,7 @@ class Config
                 continue;
             }
 
-            if ($value == $arrData['default']) {
+            if ($value == $arrData['default'] && $palette === 'default') {
                 continue;
             }
 

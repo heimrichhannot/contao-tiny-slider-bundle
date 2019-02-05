@@ -19,7 +19,7 @@ TinySliderBundle.prototype.init = function (element) {
 
     let onInit = config.onInit;
 
-    config.onInit = function () {
+    config.onInit = function (e) {
         element.classList.add('tiny-slider-initialized');
         if(onInit){
             let onInitFunction = new Function(onInit + '()');

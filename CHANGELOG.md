@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.9] - 2019-02-05
+
+### Fixed
+- config now contains default values in non `default` palettes again in order to reset params in responsive config properly
+
 ## [1.1.8] - 2019-02-04
 
 ### Fixed

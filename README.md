@@ -22,3 +22,9 @@ In order to use custom transitions for example using [animate.css](https://daned
 - set tiny slider config parameter `Intro animation` to 'fadeIn'
 - set tiny slider config parameter`Outro animation` to 'fadeOut'
 - empty tiny slider config parameter `Normal animation`
+
+## Known Issues
+
+### Lazyload
+
+If you use tiny-slider together with `https://github.com/heimrichhannot/contao-speed-bundle` and its lazyload compoment enabled in page layout, ensure that you enabled `Lazy load` in tiny slider configuration as well and keep the `Lazy load selector` default value to `.tns-lazy-img`. 
