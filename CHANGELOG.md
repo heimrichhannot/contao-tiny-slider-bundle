@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.11] - 2019-02-05
+
+### Fixed
+- rollback to `tiny-slider` version `2.8.8` as long as `https://github.com/ganlanyuan/tiny-slider/issues/361` is not fixed
+
 ## [1.1.10] - 2019-02-05
 
 ### Fixed

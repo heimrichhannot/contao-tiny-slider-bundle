@@ -2,6 +2,6 @@
   "name": "contao-tiny-slider-bundle",
   "version": "1.0.0",
   "dependencies": {
-    "tiny-slider": "^2.9.1"
+    "tiny-slider": "2.8.8"
   }
 }
