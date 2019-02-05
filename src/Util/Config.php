@@ -111,10 +111,6 @@ class Config
                 continue;
             }
 
-            if ($value == $arrData['default'] && $palette === 'default') {
-                continue;
-            }
-
             if ($key) {
                 $arrConfig[$tinySliderKey] = $value;
             }
