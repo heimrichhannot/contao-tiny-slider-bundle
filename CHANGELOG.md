@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.12] - 2019-03-11
+
+### Fixed
+- multi column editor issue
+
 ## [1.1.11] - 2019-02-05
 
 ### Fixed

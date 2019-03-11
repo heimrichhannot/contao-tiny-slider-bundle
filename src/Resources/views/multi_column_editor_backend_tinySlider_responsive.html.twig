@@ -21,7 +21,7 @@
                     {% endfor %}
                     <div class="actions">
                         {% set config = row['tinySlider_responsive_configuration_' ~ index] %}
-                        {% if config|default() and config.value > 0 %}
+                        {% if config|default() and config.value|default(0) > 0 %}
                             <a href="contao/main.php?do=tiny_slider_config&amp;act=edit&amp;id={{ config.value }}&amp;popup=1&amp;nb=1&amp;rt={{ '{{request_token}}' }}" title="{{ 'huh.tiny_slider.backend.editConfig'|trans({'%id%': config.value}) }}" onclick="Backend.openModalIframe({'title':'{{ "huh.tiny_slider.backend.editConfig"|trans({"%id%": config.value}) }}','url':this.href});return false"><img src="/system/themes/flexible/icons/edit.svg" width="16" height="16"/></a>
                         {% endif %}
                         <a href="{{ ajaxAddUrl }}" class="add" title="{{ 'huh.multicolumneditor.add.default'|trans }}">
