@@ -10,10 +10,8 @@ Encore
     })
     .configureBabel(function (babelConfig) {
     }, {
-        exclude: (filePath) => {
-            // do not exclude anything from babel!
-            return false;
-        }
+        // include to babel processing
+        includeNodeModules: ['@hundh/contao-tiny-slider-bundle']
     })
     .enableSourceMaps(!Encore.isProduction())
 ;
