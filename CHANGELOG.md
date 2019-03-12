@@ -1,6 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2019-03-12
+
+### Changed
+- removed encore from dependencies (now also usable without encore)
+- modernized js generation process using webpack
+
+### Added
+- skipInit option
+
 ## [1.1.12] - 2019-03-11
 
 ### Fixed

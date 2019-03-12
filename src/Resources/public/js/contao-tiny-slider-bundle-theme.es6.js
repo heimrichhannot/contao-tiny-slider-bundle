@@ -1,1 +1,0 @@
-require('../../assets/scss/tiny-slider-bundle-default.scss');

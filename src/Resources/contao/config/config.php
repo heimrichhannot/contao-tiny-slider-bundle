@@ -70,6 +70,16 @@ array_insert(
 );
 
 /**
+ * Assets
+ */
+if (System::getContainer()->get('huh.utils.container')->isFrontend()) {
+    $GLOBALS['TL_CSS']['tiny-slider']        = 'assets/tiny-slider/tiny-slider/dist/tiny-slider.css|static';
+
+    $GLOBALS['TL_JAVASCRIPT']['tiny-slider'] = 'assets/tiny-slider/tiny-slider/dist/min/tiny-slider.js|static';
+    $GLOBALS['TL_JAVASCRIPT']['contao-tiny-slider-bundle'] = 'bundles/contaotinyslider/js/contao-tiny-slider-bundle.js|static';
+}
+
+/**
  * Intend elements
  */
 $GLOBALS['TL_WRAPPERS']['start'][]     = 'tiny-slider-content-start';

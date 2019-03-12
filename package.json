@@ -2,6 +2,13 @@
   "name": "contao-tiny-slider-bundle",
   "version": "1.0.0",
   "dependencies": {
-    "tiny-slider": "2.8.8"
+    "@hundh/contao-tiny-slider-bundle": "^1.0"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.24"
+  },
+  "scripts": {
+    "build-dev": "yarn encore dev",
+    "build-production": "yarn encore production"
   }
 }

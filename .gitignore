@@ -7,3 +7,6 @@ composer.lock
 composer.json~
 composer.phar
 yarn.lock
+yarn-error.log
+src/Resources/public/js/entrypoints.json
+src/Resources/public/js/manifest.json
