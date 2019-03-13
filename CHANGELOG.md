@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2019-03-12
+
+### Changed
+- responsive settings now takes all values from it responsive config values, not only differences between parent config and responsive config
+
 ## [1.2.1] - 2019-03-12
 
 ### Changed

@@ -16,17 +16,20 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 class Config
 {
+
     /**
      * Get tiny slider attributes from config model or config model id
      *
-     * @param int|TinySliderConfigModel $config
+     * @param $config
+     * @param string $container Selector of the tiny slider container
      *
      * @return string
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     public function getAttributes($config, $container = '.tiny-slider-container'): string
     {
         $cache      = new FilesystemAdapter('', 0, System::getContainer()->get('kernel')->getCacheDir());
-        $cacheKey   = 'tinySliderConfig_'.System::getContainer()->get('kernel')->getEnvironment().'_'.(is_numeric($config) ? $config : $config->id).''.$container;
+        $cacheKey   = 'tinySliderConfig_' . System::getContainer()->get('kernel')->getEnvironment() . '_' . (is_numeric($config) ? $config : $config->id) . '' . $container;
         $cacheItem  = $cache->getItem($cacheKey);
         $configData = $cacheItem->get();
 
@@ -50,7 +53,7 @@ class Config
             $cache->save($cacheItem);
         }
 
-        $attributes = ' data-tiny-slider-config="'.htmlspecialchars(json_encode($configData), ENT_QUOTES, \Contao\Config::get('characterSet')).'"';
+        $attributes = ' data-tiny-slider-config="' . htmlspecialchars(json_encode($configData), ENT_QUOTES, \Contao\Config::get('characterSet')) . '"';
 
         return $attributes;
     }
@@ -134,7 +137,7 @@ class Config
                 }
 
                 $responsiveConfig                     = $this->createConfig($objResponsiveConfig, 'responsive');
-                $arrResponsive[$config['breakpoint']] = array_diff_assoc($responsiveConfig, $arrConfig); // only differences
+                $arrResponsive[$config['breakpoint']] = $responsiveConfig;
             }
 
             unset($arrConfig['responsive']);
@@ -149,14 +152,14 @@ class Config
 
     public function getTinySliderContainerSelectorFromModel($objConfig)
     {
-        return '.'.$this->getTinySliderCssClassFromModel($objConfig).' .tiny-slider-container';
+        return '.' . $this->getTinySliderCssClassFromModel($objConfig) . ' .tiny-slider-container';
     }
 
     public function getTinySliderCssClassFromModel($objConfig)
     {
         $strClass = $this->stripNamespaceFromClassName($objConfig);
 
-        return 'tiny-slider-'.substr(md5($strClass.'_'.$objConfig->id), 0, 6);
+        return 'tiny-slider-' . substr(md5($strClass . '_' . $objConfig->id), 0, 6);
     }
 
     public function stripNamespaceFromClassName($obj)
@@ -189,11 +192,11 @@ class Config
             return '';
         }
 
-        return $this->getTinySliderCssClassFromModel($config).(strlen($config->cssClass) > 0 ? ' '.$config->cssClass : '').' tiny-slider-uid-'.uniqid().' tiny-slider';
+        return $this->getTinySliderCssClassFromModel($config) . (strlen($config->cssClass) > 0 ? ' ' . $config->cssClass : '') . ' tiny-slider-uid-' . uniqid() . ' tiny-slider';
     }
 
     /**
-     * @param array                 $data
+     * @param array $data
      * @param TinySliderConfigModel $config
      *
      * @return TinySliderConfigModel
@@ -221,3 +224,4 @@ class Config
         return $settings;
     }
 }
+
