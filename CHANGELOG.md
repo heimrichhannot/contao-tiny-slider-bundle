@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2019-03-14
+
+### Changed
+- maintain config differences between parent config, and responsive config in mobile first order
+
 ## [1.3.0] - 2019-03-12
 
 ### Changed

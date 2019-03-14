@@ -125,6 +125,11 @@ class Config
 
             $value = $arrConfig['responsive'];
 
+            // sort by breakpoint asc in order to maintain mobile first
+            usort($value, function ($a, $b) {
+                return $a['breakpoint'] <=> $b['breakpoint'];
+            });
+
             foreach ($value as $config) {
                 if (empty($config['configuration'])) {
                     continue;
@@ -136,7 +141,16 @@ class Config
                     continue;
                 }
 
-                $responsiveConfig                     = $this->createConfig($objResponsiveConfig, 'responsive');
+                $responsiveConfig = $this->createConfig($objResponsiveConfig, 'responsive');
+
+                // only add differences between parent config or previous breakpoint responsive config
+                if (empty($arrResponsive)) {
+                    $arrResponsive[$config['breakpoint']] = array_merge(array_intersect($responsiveConfig, $arrConfig), $responsiveConfig);
+                } else {
+                    $prevResponsiveConfig              = end($arrResponsive);
+                    $arrResponsive[$config['breakpoint']] = array_merge($prevResponsiveConfig, $responsiveConfig);
+                }
+
                 $arrResponsive[$config['breakpoint']] = $responsiveConfig;
             }
 
@@ -224,4 +238,3 @@ class Config
         return $settings;
     }
 }
-
