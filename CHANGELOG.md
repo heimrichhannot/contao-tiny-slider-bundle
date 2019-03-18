@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2019-03-18
+
+### Changed
+- SCSS integration for encore
+
 ## [1.4.0] - 2019-03-14
 
 ### Changed
