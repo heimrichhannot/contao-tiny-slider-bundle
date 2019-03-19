@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2019-03-19
+
+### Fixed
+- version 2 of `heimrichhannot/contao-multi-column-editor-bundle` as dependency
+
 ## [1.4.2] - 2019-03-18
 
 ### Fixed
