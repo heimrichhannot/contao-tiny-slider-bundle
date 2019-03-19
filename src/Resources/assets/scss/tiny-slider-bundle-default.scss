@@ -5,9 +5,19 @@
   &.tiny-slider-initialized {
     opacity: 1;
   }
+
+  .tns-lazy-img {
+    opacity: .6;
+    transition: opacity 0.6s;
+  }
 }
 
-.tiny-slider-container{
+.tns-lazy-img {
+  opacity: 1;
+  transition: none;
+}
+
+.tiny-slider-container {
   min-width: 100%;
   min-height: 100%;
 }
