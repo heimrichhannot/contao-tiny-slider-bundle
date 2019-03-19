@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.5.1] - 2019-03-19
+
+### Fixed
+- multi column editor twig template
+
 ## [1.5.0] - 2019-03-19
 
 ### Fixed

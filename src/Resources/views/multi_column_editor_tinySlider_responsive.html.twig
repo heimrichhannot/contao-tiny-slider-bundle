@@ -1,8 +1,8 @@
-<div class="{{ ('multi-column-editor ' ~ cssClass)| trim }}" data-field="{{ fieldName }}" data-table="{{ table }}" data-min-row-count="{{ minRowCount }}" data-max-row-count="{{ maxRowCount }}">
+<div class="{{ ('multi-column-editor ' ~ cssClass)| trim }}" data-env="{{ isBackend ? 'backend' : 'frontend' }}" data-field="{{ fieldName }}" data-table="{{ table }}" data-min-row-count="{{ minRowCount }}" data-max-row-count="{{ maxRowCount }}">
     {{ renderedRowCount|raw }}
 
     {% if(rowCount.value < 1 ) %}
-        <a href="{{ ajaxAddUrl }}" class="add first tl_submit" title="{{ 'huh.multicolumneditor.add.default'|trans }}">
+        <a href="{{ ajaxAddUrl }}" class="add first{% if isBackend %} tl_submit{% endif %}" title="{{ 'huh.multicolumneditor.add.default'|trans }}">
             <span>{{ 'huh.multicolumneditor.add.default'|trans }}</span>
         </a>
     {% else %}
@@ -14,7 +14,7 @@
                         {% if widget.type == "hidden" %}
                             {{ widget.parse()|raw }}
                         {% else %}
-                            <div class="{{ ('form-group ' ~ field  ~ (widget.datepicker|default() ? ' wizard' : '')) | trim }}" data-name="{{ widget.noIndex }}"{% if widget.groupStyle|default() %} style="{{ widget.groupStyle }}"{% endif %}>
+                            <div class="{{ ('form-group ' ~ field  ~ (widget.datepicker|default() ? ' wizard' : '') ~ (isBackend ? ' col' : '')) | trim }}" data-name="{{ widget.noIndex }}"{% if widget.groupStyle|default() %} style="{{ widget.groupStyle }}"{% endif %}>
                                 {{ widget.parse()|raw }}
                             </div>
                         {% endif %}
@@ -25,16 +25,28 @@
                             <a href="contao/main.php?do=tiny_slider_config&amp;act=edit&amp;id={{ config.value }}&amp;popup=1&amp;nb=1&amp;rt={{ '{{request_token}}' }}" title="{{ 'huh.tiny_slider.backend.editConfig'|trans({'%id%': config.value}) }}" onclick="Backend.openModalIframe({'title':'{{ "huh.tiny_slider.backend.editConfig"|trans({"%id%": config.value}) }}','url':this.href});return false"><img src="/system/themes/flexible/icons/edit.svg" width="16" height="16"/></a>
                         {% endif %}
                         <a href="{{ ajaxAddUrl }}" class="add" title="{{ 'huh.multicolumneditor.add.default'|trans }}">
-                            <img src="/system/themes/flexible/icons/copy.svg" width="16" height="16">
+                            {% if isBackend %}
+                                <img src="system/themes/flexible/icons/copy.svg" width="16" height="16">
+                            {% else %}
+                                <span>{{ 'huh.multicolumneditor.add.default'|trans }}</span>
+                            {% endif %}
                         </a>
 
                         <a href="{{ ajaxDeleteUrl }}" class="delete" title="{{ 'huh.multicolumneditor.delete.default'|trans }}">
-                            <img src="/system/themes/flexible/icons/delete.svg" width="16" height="16">
+                            {% if isBackend %}
+                                <img src="system/themes/flexible/icons/delete.svg" width="16" height="16">
+                            {% else %}
+                                <span>{{ 'huh.multicolumneditor.delete.default'|trans }}</span>
+                            {% endif %}
                         </a>
 
                         {% if sortable|default() %}
-                            <a href="{{ ajaxSortUrl }}" class="drag-handle" title="{{ 'huh.multicolumneditor.sort.default'|trans }}">
-                                <img src="/system/themes/flexible/icons/drag.svg" width="16" height="16" alt="">
+                            <a class="drag-handle" href="{{ ajaxSortUrl }}" title="{{ 'huh.multicolumneditor.sort.default'|trans }}">
+                                {% if isBackend %}
+                                    <img src="system/themes/flexible/icons/drag.svg" width="16" height="16" alt="">
+                                {% else %}
+                                    <span>{{ 'huh.multicolumneditor.sort.default'|trans }}</span>
+                                {% endif %}
                             </a>
                         {% endif %}
                     </div>
