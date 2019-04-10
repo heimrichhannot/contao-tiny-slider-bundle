@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.5.2] - 2019-03-19
+
+### Fixed
+- multi column editor version 2.1 compatibility and fixed missing configuration language key
+
 ## [1.5.1] - 2019-03-19
 
 ### Fixed

@@ -577,7 +577,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
                             'inputType'        => 'select',
                             'options_callback' => ['huh.tiny_slider.backend.tiny_slider_spread', 'getResponsiveConfigurations'],
                             'eval'             => [
-                                'groupStyle'         => 'width:400px',
+                                'groupStyle'         => 'width:300px',
                                 'includeBlankOption' => true,
                             ],
                         ],

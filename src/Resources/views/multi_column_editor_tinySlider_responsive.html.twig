@@ -1,15 +1,12 @@
 <div class="{{ ('multi-column-editor ' ~ cssClass)| trim }}" data-env="{{ isBackend ? 'backend' : 'frontend' }}" data-field="{{ fieldName }}" data-table="{{ table }}" data-min-row-count="{{ minRowCount }}" data-max-row-count="{{ maxRowCount }}">
-    {{ renderedRowCount|raw }}
-
-    {% if(rowCount.value < 1 ) %}
+    {% if(rows|length < 1 ) %}
         <a href="{{ ajaxAddUrl }}" class="add first{% if isBackend %} tl_submit{% endif %}" title="{{ 'huh.multicolumneditor.add.default'|trans }}">
             <span>{{ 'huh.multicolumneditor.add.default'|trans }}</span>
         </a>
     {% else %}
         <div class="{{ 'rows ' ~ (sortable|default() ? 'sortable' : '') | trim }}">
             {% for iterator, row in rows %}
-                {% set index = ( iterator + 1 ) %}
-                <div class="{{ 'mce-row row_' ~ index | trim }}" data-index="{{ index }}">
+                <div class="{{ 'mce-row row_' ~ iterator | trim }}" data-index="{{ iterator }}">
                     {% for field, widget in row %}
                         {% if widget.type == "hidden" %}
                             {{ widget.parse()|raw }}
@@ -20,7 +17,7 @@
                         {% endif %}
                     {% endfor %}
                     <div class="actions">
-                        {% set config = row['tinySlider_responsive_configuration_' ~ index] %}
+                        {% set config = row['tinySlider_responsive_' ~ iterator ~ '_configuration'] %}
                         {% if config|default() and config.value|default(0) > 0 %}
                             <a href="contao/main.php?do=tiny_slider_config&amp;act=edit&amp;id={{ config.value }}&amp;popup=1&amp;nb=1&amp;rt={{ '{{request_token}}' }}" title="{{ 'huh.tiny_slider.backend.editConfig'|trans({'%id%': config.value}) }}" onclick="Backend.openModalIframe({'title':'{{ "huh.tiny_slider.backend.editConfig"|trans({"%id%": config.value}) }}','url':this.href});return false"><img src="/system/themes/flexible/icons/edit.svg" width="16" height="16"/></a>
                         {% endif %}
