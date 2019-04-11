@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.5.3] - 2019-04-11
+
+### Fixed
+- accessibility bug, remove `tabindex="0"` from `tns-controls`
+- updated tiny-slider
+
 ## [1.5.2] - 2019-03-19
 
 ### Fixed
