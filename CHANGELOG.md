@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.6.0] - 2019-04-12
+
+### Added
+- accessibility support for sliders without focusable elments inside (tab/shift-tab support added, triggers slider goTo)
+- accessibility support for sliders with focusable elments inside (tab/shift-tab support added, triggers slider goTo)
+
 ## [1.5.3] - 2019-04-11
 
 ### Fixed

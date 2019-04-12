@@ -2,7 +2,7 @@
   "name": "contao-tiny-slider-bundle",
   "version": "1.0.0",
   "dependencies": {
-    "@hundh/contao-tiny-slider-bundle": "^1.0"
+    "@hundh/contao-tiny-slider-bundle": "^1.1"
   },
   "devDependencies": {
     "@symfony/webpack-encore": "^0.24"
