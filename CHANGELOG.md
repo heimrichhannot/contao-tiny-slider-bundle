@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.0] - 2019-05-02
+
+### Changed
+* replaced global constants to class constants of `TinySliderSpreadContainer`
+* deprecated global constants
+
 ## [1.6.1] - 2019-04-12
 
 ### Fixed

@@ -1,14 +1,17 @@
 <?php
 
+use HeimrichHannot\TinySliderBundle\DataContainer\TinySliderSpreadContainer;
+
 // reusable palettes extension for tl_news, tl_content, tl_module etc
+
 $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
     'palettes'    => [
         '__selector__'                        => ['addTinySlider', 'addGallery', 'tinySlider_pausePlay'],
-        TINY_SLIDER_PALETTE_DEFAULT           => '{tiny_slider_legend},addTinySlider;',
-        TINY_SLIDER_PALETTE_PRESETCONFIG      => '{tiny_slider_config},tinySliderConfig;',
-        TINY_SLIDER_PALETTE_GALLERY           => '{tiny_slider_gallery},addGallery;',
-        TINY_SLIDER_PALETTE_CONTENT           => '{type_legend},type,headline;{tiny_slider_config},tinySliderConfig;{source_legend},multiSRC,sortBy,useHomeDir;{image_legend},size,fullsize,numberOfItems;{template_legend:hide},tinySliderGalleryTpl,customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space;{invisible_legend:hide},invisible,start,stop',
-        TINY_SLIDER_PALETTE_CONFIG_RESPONSIVE => '{tiny_slider_config},tinySlider_items,tinySlider_slideBy,tinySlider_speed,tinySlider_autoHeight,tinySlider_fixedWidth,tinySlider_edgePadding,tinySlider_gutter,tinySlider_controls,tinySlider_controlsTextPrev,tinySlider_controlsTextNext,tinySlider_nav,tinySlider_autoplay,tinySlider_autoplayHoverPause,tinySlider_autoplayResetOnVisibility,tinySlider_autoplayTextStart,tinySlider_autoplayTextStop,tinySlider_autoplayTimeout,tinySlider_touch,tinySlider_mouseDrag,tinySlider_arrowKeys,tinySlider_disable,tinySlider_skipInit,tinySlider_startIndex;',
+        TinySliderSpreadContainer::PALETTE_DEFAULT           => '{tiny_slider_legend},addTinySlider;',
+        TinySliderSpreadContainer::PALETTE_PRESETCONFIG      => '{tiny_slider_config},tinySliderConfig;',
+        TinySliderSpreadContainer::PALETTE_GALLERY           => '{tiny_slider_gallery},addGallery;',
+        TinySliderSpreadContainer::PALETTE_CONTENT           => '{type_legend},type,headline;{tiny_slider_config},tinySliderConfig;{source_legend},multiSRC,sortBy,useHomeDir;{image_legend},size,fullsize,numberOfItems;{template_legend:hide},tinySliderGalleryTpl,customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space;{invisible_legend:hide},invisible,start,stop',
+        TinySliderSpreadContainer::PALETTE_CONFIG_RESPONSIVE => '{tiny_slider_config},tinySlider_items,tinySlider_slideBy,tinySlider_speed,tinySlider_autoHeight,tinySlider_fixedWidth,tinySlider_edgePadding,tinySlider_gutter,tinySlider_controls,tinySlider_controlsTextPrev,tinySlider_controlsTextNext,tinySlider_nav,tinySlider_autoplay,tinySlider_autoplayHoverPause,tinySlider_autoplayResetOnVisibility,tinySlider_autoplayTextStart,tinySlider_autoplayTextStop,tinySlider_autoplayTimeout,tinySlider_touch,tinySlider_mouseDrag,tinySlider_arrowKeys,tinySlider_disable,tinySlider_skipInit,tinySlider_startIndex;',
     ],
     'subpalettes' => [
         'addTinySlider'        => '
@@ -735,7 +738,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
 ];
 
 // flat & responsive palette, renders widtout submitOnChange Field
-$GLOBALS['TL_DCA']['tl_tiny_slider_spread']['palettes'][TINY_SLIDER_PALETTE_CONFIG_BASE] = str_replace('addTinySlider', $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['subpalettes']['addTinySlider'], $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['palettes']['default']);
+$GLOBALS['TL_DCA']['tl_tiny_slider_spread']['palettes'][TinySliderSpreadContainer::PALETTE_CONFIG_BASE] = str_replace('addTinySlider', $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['subpalettes']['addTinySlider'], $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['palettes']['default']);
 
 // Gallery Support -- not tl_content type present, set isGallery as default for multiSRC
 $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['fields']['tinySliderMultiSRC']['eval']['orderField'] = 'tinySliderOrderSRC';

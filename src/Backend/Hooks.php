@@ -38,34 +38,45 @@ class Hooks extends \Controller
         if (null === $dc) {
             return;
         }
-        
+
         if(isset($dc['config']['ctable']) && is_array($dc['config']['ctable']) && in_array('tl_content', $dc['config']['ctable']))
         {
             \Controller::loadDataContainer('tl_content');
         }
 
         foreach ($GLOBALS['TL_TINY_SLIDER']['SUPPORTED'][$strName] as $strPalette => $replace) {
-            preg_match_all('#\[\[(?P<constant>.+)\]\]#', $replace, $matches);
+            preg_match_all('#\[\[(?P<placeholder>.+)\]\]#', $replace, $matches);
 
-            if (!isset($matches['constant'][0])) {
+            if (!isset($matches['placeholder'][0])) {
                 continue;
             }
 
-            $strConstant = $matches['constant'][0];
-            $strReplacePalette = @constant($matches['constant'][0]);
+            $placeholder = $matches['placeholder'][0];
 
-            $pos = strpos($replace, '[['.$strConstant.']]');
-            $search = str_replace('[['.$strConstant.']]', '', $replace);
+            $replacePaletteName = $matches['placeholder'][0];
+
+            /**
+             * Backward compatibility with palette constants (before version 1.7, should be removed with version 2.0)
+             *
+             * @ToDo Remove with version 2.0
+             */
+            if (null !== ($replacePaletteNameConstant = @constant($matches['placeholder'][0])))
+            {
+                $replacePaletteName = $replacePaletteNameConstant;
+            }
+
+            $pos = strpos($replace, '[['.$placeholder.']]');
+            $search = str_replace('[['.$placeholder.']]', '', $replace);
 
             // prepend config palette
             if ($pos < 1) {
-                $replace = $GLOBALS['TL_DCA'][static::$strSpreadDca]['palettes'][$strReplacePalette].$search;
+                $replace = $GLOBALS['TL_DCA'][static::$strSpreadDca]['palettes'][$replacePaletteName].$search;
             } // append config palette
             else {
-                $replace = $search.$GLOBALS['TL_DCA'][static::$strSpreadDca]['palettes'][$strReplacePalette];
+                $replace = $search.$GLOBALS['TL_DCA'][static::$strSpreadDca]['palettes'][$replacePaletteName];
             }
 
-            $arrFields = System::getContainer()->get('huh.tiny_slider.util.dca')->getPaletteFields($strReplacePalette, $dc);
+            $arrFields = System::getContainer()->get('huh.tiny_slider.util.dca')->getPaletteFields($replacePaletteName, $dc);
 
             $arrFieldKeys = array_keys($arrFields);
 

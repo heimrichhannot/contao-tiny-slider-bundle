@@ -1,16 +1,26 @@
 <?php
 
+use HeimrichHannot\TinySliderBundle\DataContainer\TinySliderSpreadContainer;
+
 /**
  * Constants
  */
-define('TINY_SLIDER_PALETTE_DEFAULT', 'default');
-define('TINY_SLIDER_PALETTE_CONFIG_BASE', 'flat');
-define('TINY_SLIDER_PALETTE_CONFIG_RESPONSIVE', 'responsive');
-define('TINY_SLIDER_PALETTE_PRESETCONFIG', 'presetConfig');
-define('TINY_SLIDER_PALETTE_GALLERY', 'gallery');
-define('TINY_SLIDER_PALETTE_CONTENT', 'tiny-slider');
-define('TINY_SLIDER_PALETTE_CONTENT_SLIDER_START', 'tiny-slider-content-start');
-define('TINY_SLIDER_PALETTE_CONTENT_SLIDER_END', 'tiny-slider-content-end');
+/** @deprecated Use TinySliderSpreadContainer::PALETTE_DEFAULT instead */
+define('TINY_SLIDER_PALETTE_DEFAULT', TinySliderSpreadContainer::PALETTE_DEFAULT);
+/** @deprecated Use TinySliderSpreadContainer::PALETTE_CONFIG_BASE instead */
+define('TINY_SLIDER_PALETTE_CONFIG_BASE', TinySliderSpreadContainer::PALETTE_CONFIG_BASE);
+/** @deprecated Use TinySliderSpreadContainer::PALETTE_CONFIG_RESPONSIVE instead */
+define('TINY_SLIDER_PALETTE_CONFIG_RESPONSIVE', TinySliderSpreadContainer::PALETTE_CONFIG_RESPONSIVE);
+/** @deprecated Use TinySliderSpreadContainer::PALETTE_PRESETCONFIG instead */
+define('TINY_SLIDER_PALETTE_PRESETCONFIG', TinySliderSpreadContainer::PALETTE_PRESETCONFIG);
+/** @deprecated Use TinySliderSpreadContainer::PALETTE_GALLERY instead */
+define('TINY_SLIDER_PALETTE_GALLERY', TinySliderSpreadContainer::PALETTE_GALLERY);
+/** @deprecated Use TinySliderSpreadContainer::PALETTE_CONTENT instead */
+define('TINY_SLIDER_PALETTE_CONTENT', TinySliderSpreadContainer::PALETTE_CONTENT);
+/** @deprecated Use TinySliderSpreadContainer::PALETTE_CONTENT_SLIDER_START instead */
+define('TINY_SLIDER_PALETTE_CONTENT_SLIDER_START', TinySliderSpreadContainer::PALETTE_CONTENT_SLIDER_START);
+/** @deprecated Use TinySliderSpreadContainer::PALETTE_CONTENT_SLIDER_END instead */
+define('TINY_SLIDER_PALETTE_CONTENT_SLIDER_END', TinySliderSpreadContainer::PALETTE_CONTENT_SLIDER_END);
 
 /**
  * Hooks
@@ -21,20 +31,20 @@ $GLOBALS['TL_HOOKS']['loadDataContainer'][] = ['HeimrichHannot\TinySliderBundle\
  * Supported TL_DCA Entities, spreading efa palette to
  */
 // News support
-$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_module']['tiny-slider_newslist'] = 'type;[[TINY_SLIDER_PALETTE_PRESETCONFIG]]';
-$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_news_archive']['default']        = '[[TINY_SLIDER_PALETTE_PRESETCONFIG]]{comments_legend';
-$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_news']['default']                = '[[TINY_SLIDER_PALETTE_GALLERY]]{enclosure_legend';
+$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_module']['tiny-slider_newslist'] = 'type;[['.TinySliderSpreadContainer::PALETTE_PRESETCONFIG.']]';
+$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_news_archive']['default']        = '[['.TinySliderSpreadContainer::PALETTE_PRESETCONFIG.']]{comments_legend';
+$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_news']['default']                = '[['.TinySliderSpreadContainer::PALETTE_GALLERY.']]{enclosure_legend';
 
 // Event support
-$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_module']['tiny-slider_eventlist'] = 'type;[[TINY_SLIDER_PALETTE_PRESETCONFIG]]';
+$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_module']['tiny-slider_eventlist'] = 'type;[['.TinySliderSpreadContainer::PALETTE_PRESETCONFIG.']]';
 
 // Content support
-$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_content']['tiny-slider-gallery']       = '[[TINY_SLIDER_PALETTE_CONTENT]]';
-$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_content']['tiny-slider-content-start'] = '[[TINY_SLIDER_PALETTE_CONTENT_SLIDER_START]]';
+$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_content']['tiny-slider-gallery']       = '[['.TinySliderSpreadContainer::PALETTE_GALLERY.']]';
+$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_content']['tiny-slider-content-start'] = '[['.TinySliderSpreadContainer::PALETTE_CONTENT_SLIDER_START.']]';
 
 // Carousel config support
-$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_tiny_slider_config']['default'] = 'title;[[TINY_SLIDER_PALETTE_CONFIG_BASE]]';
-$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_tiny_slider_config']['responsive'] = 'title;[[TINY_SLIDER_PALETTE_CONFIG_RESPONSIVE]]';
+$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_tiny_slider_config']['default'] = 'title;[['. TinySliderSpreadContainer::PALETTE_CONFIG_BASE.']]';
+$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_tiny_slider_config']['responsive'] = 'title;[['.TinySliderSpreadContainer::PALETTE_CONFIG_RESPONSIVE.']]';
 
 /**
  * Back end modules
