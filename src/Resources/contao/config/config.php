@@ -39,7 +39,7 @@ $GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_news']['default']                = '
 $GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_module']['tiny-slider_eventlist'] = 'type;[['.TinySliderSpreadContainer::PALETTE_PRESETCONFIG.']]';
 
 // Content support
-$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_content']['tiny-slider-gallery']       = '[['.TinySliderSpreadContainer::PALETTE_GALLERY.']]';
+$GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_content']['tiny-slider-gallery']       = '[['.TinySliderSpreadContainer::PALETTE_CONTENT.']]';
 $GLOBALS['TL_TINY_SLIDER']['SUPPORTED']['tl_content']['tiny-slider-content-start'] = '[['.TinySliderSpreadContainer::PALETTE_CONTENT_SLIDER_START.']]';
 
 // Carousel config support

@@ -1,7 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.8.0] - 2019-05-09
+## [1.8.1] - 2019-05-08
+
+### Fixed
+* missing tl_content palette fields restored
+
+## [1.8.0] - 2019-05-08
 
 ### Added
 * center option
