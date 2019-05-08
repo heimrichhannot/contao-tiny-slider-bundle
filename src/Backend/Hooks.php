@@ -8,9 +8,10 @@
 
 namespace HeimrichHannot\TinySliderBundle\Backend;
 
+use Contao\Controller;
 use Contao\System;
 
-class Hooks extends \Controller
+class Hooks extends Controller
 {
     private static $strSpreadDca = 'tl_tiny_slider_spread';
 
@@ -23,7 +24,7 @@ class Hooks extends \Controller
      */
     public function loadDataContainerHook($strName)
     {
-        \Controller::loadDataContainer(static::$strSpreadDca);
+        Controller::loadDataContainer(static::$strSpreadDca);
 
         if (!is_array($GLOBALS['TL_TINY_SLIDER']['SUPPORTED']) || !in_array($strName, array_keys($GLOBALS['TL_TINY_SLIDER']['SUPPORTED']), true)) {
             return false;
@@ -41,7 +42,7 @@ class Hooks extends \Controller
 
         if(isset($dc['config']['ctable']) && is_array($dc['config']['ctable']) && in_array('tl_content', $dc['config']['ctable']))
         {
-            \Controller::loadDataContainer('tl_content');
+            Controller::loadDataContainer('tl_content');
         }
 
         foreach ($GLOBALS['TL_TINY_SLIDER']['SUPPORTED'][$strName] as $strPalette => $replace) {
@@ -118,8 +119,8 @@ class Hooks extends \Controller
             $dc['fields'] = array_merge($arrFields, (is_array($dc['fields']) ? $dc['fields'] : []));
         }
 
-        \System::loadLanguageFile(static::$strSpreadDca);
-        \System::loadLanguageFile($strName);
+        Controller::loadLanguageFile(static::$strSpreadDca);
+        Controller::loadLanguageFile($strName);
 
         // add language to TL_LANG palette
         if (is_array($GLOBALS['TL_LANG'][static::$strSpreadDca])) {

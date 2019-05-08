@@ -1,6 +1,16 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.8.0] - 2019-05-09
+
+### Added
+* center option
+
+### Fixed
+* some namespaces
+* some deprecation warnings
+* some translations
+
 ## [1.7.1] - 2019-05-08
 
 ### Changed

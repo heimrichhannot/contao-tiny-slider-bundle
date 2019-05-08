@@ -11,7 +11,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
         TinySliderSpreadContainer::PALETTE_PRESETCONFIG      => '{tiny_slider_config},tinySliderConfig;',
         TinySliderSpreadContainer::PALETTE_GALLERY           => '{tiny_slider_gallery},addGallery;',
         TinySliderSpreadContainer::PALETTE_CONTENT           => '{type_legend},type,headline;{tiny_slider_config},tinySliderConfig;{source_legend},multiSRC,sortBy,useHomeDir;{image_legend},size,fullsize,numberOfItems;{template_legend:hide},tinySliderGalleryTpl,customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space;{invisible_legend:hide},invisible,start,stop',
-        TinySliderSpreadContainer::PALETTE_CONFIG_RESPONSIVE => '{tiny_slider_config},tinySlider_items,tinySlider_slideBy,tinySlider_speed,tinySlider_autoHeight,tinySlider_fixedWidth,tinySlider_edgePadding,tinySlider_gutter,tinySlider_controls,tinySlider_controlsTextPrev,tinySlider_controlsTextNext,tinySlider_nav,tinySlider_autoplay,tinySlider_autoplayHoverPause,tinySlider_autoplayResetOnVisibility,tinySlider_autoplayTextStart,tinySlider_autoplayTextStop,tinySlider_autoplayTimeout,tinySlider_touch,tinySlider_mouseDrag,tinySlider_arrowKeys,tinySlider_disable,tinySlider_skipInit,tinySlider_startIndex;',
+        TinySliderSpreadContainer::PALETTE_CONFIG_RESPONSIVE => '{tiny_slider_config},tinySlider_items,tinySlider_slideBy,tinySlider_speed,tinySlider_autoHeight,tinySlider_fixedWidth,tinySlider_edgePadding,tinySlider_gutter,tinySlider_center,tinySlider_controls,tinySlider_controlsTextPrev,tinySlider_controlsTextNext,tinySlider_nav,tinySlider_autoplay,tinySlider_autoplayHoverPause,tinySlider_autoplayResetOnVisibility,tinySlider_autoplayTextStart,tinySlider_autoplayTextStop,tinySlider_autoplayTimeout,tinySlider_touch,tinySlider_mouseDrag,tinySlider_arrowKeys,tinySlider_disable,tinySlider_skipInit,tinySlider_startIndex;',
     ],
     'subpalettes' => [
         'addTinySlider'        => '
@@ -24,6 +24,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
                             tinySlider_autoWidth,
                             tinySlider_viewportMax,
                             tinySlider_slideBy,
+                            tinySlider_center,
                             tinySlider_controls,
                             tinySlider_controlsPosition,
                             tinySlider_controlsTextPrev,
@@ -297,7 +298,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'       => "varchar(6) NOT NULL default ''",
         ],
         'tinySlider_controlsTextPrev'          => [
-            'label'            => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySliderControlsTextPrev'],
+            'label'            => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_controlsTextPrev'],
             'exclude'          => true,
             'inputType'        => 'select',
             'default'          => 'huh.tiny_slider.prev.default',
@@ -308,7 +309,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'sql'              => "varchar(128) NOT NULL default ''",
         ],
         'tinySlider_controlsTextNext'          => [
-            'label'            => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySliderControlsTextPrev'],
+            'label'            => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_controlsTextNext'],
             'exclude'          => true,
             'default'          => 'huh.tiny_slider.next.default',
             'inputType'        => 'select',
@@ -727,6 +728,15 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             ],
             'sql'       => "varchar(255) NOT NULL default ''",
         ],
+        'tinySlider_center'                  => [
+            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_center'],
+            'inputType' => 'checkbox',
+            'exclude'   => true,
+            'eval'      => [
+                'tl_class' => 'w50',
+            ],
+            'sql'       => "char(1) NOT NULL default ''",
+        ],
         // END: Tiny slider JS defaults / options
         'cssClass'                             => [
             'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['cssClass'],
@@ -738,7 +748,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
     ],
 ];
 
-// flat & responsive palette, renders widtout submitOnChange Field
+// flat & responsive palette, renders without submitOnChange Field
 $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['palettes'][TinySliderSpreadContainer::PALETTE_CONFIG_BASE] = str_replace('addTinySlider', $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['subpalettes']['addTinySlider'], $GLOBALS['TL_DCA']['tl_tiny_slider_spread']['palettes']['default']);
 
 // Gallery Support -- not tl_content type present, set isGallery as default for multiSRC

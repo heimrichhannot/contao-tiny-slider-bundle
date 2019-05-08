@@ -8,20 +8,23 @@
 
 namespace HeimrichHannot\TinySliderBundle\Util;
 
+use Contao\Controller;
+use Contao\StringUtil;
+
 class Dca
 {
     public function getPaletteFields($strPalette, $dc, $table = 'tl_tiny_slider_spread', $type = 'palettes')
     {
-        \Controller::loadDataContainer($table);
+        Controller::loadDataContainer($table);
 
-        $boxes = trimsplit(';', $GLOBALS['TL_DCA'][$table][$type][$strPalette]);
+        $boxes = StringUtil::trimsplit(';', $GLOBALS['TL_DCA'][$table][$type][$strPalette]);
 
         $arrFields = [];
 
         if (!empty($boxes)) {
             foreach ($boxes as $k => $v) {
                 $eCount = 1;
-                $boxes[$k] = trimsplit(',', $v);
+                $boxes[$k] = StringUtil::trimsplit(',', $v);
 
                 foreach ($boxes[$k] as $kk => $vv) {
                     if (preg_match('/^\[.*\]$/', $vv)) {
