@@ -73,6 +73,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
 							',
         'addGallery'           => 'tinySliderMultiSRC,tinySliderSortBy,tinySliderUseHomeDir,tinySliderSize,tinySliderFullsize,tinySliderNumberOfItems,tinySliderGalleryTpl,tinySliderCustomTpl',
         'tinySlider_pausePlay' => 'tinySlider_pauseButton, tinySlider_playButton',
+
     ],
     'fields'      => [
         'tinySliderConfig'                     => [

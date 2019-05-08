@@ -14,8 +14,8 @@ $GLOBALS['TL_LANG']['tl_tiny_slider_config']['title_legend'] = 'Title';
 /**
  * References
  */
-$GLOBALS['TL_LANG']['tl_tiny_slider_config']['reference']['type']['base']       = 'Base config';
-$GLOBALS['TL_LANG']['tl_tiny_slider_config']['reference']['type']['responsive'] = 'Responsive config';
+$GLOBALS['TL_LANG']['tl_tiny_slider_config']['reference']['type'][\HeimrichHannot\TinySliderBundle\DataContainer\TinySliderConfigContainer::TYPE_BASE]       = 'Base config';
+$GLOBALS['TL_LANG']['tl_tiny_slider_config']['reference']['type'][\HeimrichHannot\TinySliderBundle\DataContainer\TinySliderConfigContainer::TYPE_RESPONSIVE] = 'Responsive config';
 
 /**
  * Buttons

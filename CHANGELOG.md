@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.1] - 2019-05-08
+
+### Changed
+* refactored tiny slider config type names to constants
+* enhanced ide autocompletion for config model
+
 ## [1.7.0] - 2019-05-02
 
 ### Changed

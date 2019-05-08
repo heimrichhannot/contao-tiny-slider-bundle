@@ -80,7 +80,10 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_config'] = [
             'sorting'   => true,
             'default'   => 'base',
             'inputType' => 'select',
-            'options'   => ['base', 'responsive'],
+            'options'   => [
+                \HeimrichHannot\TinySliderBundle\DataContainer\TinySliderConfigContainer::TYPE_BASE,
+                \HeimrichHannot\TinySliderBundle\DataContainer\TinySliderConfigContainer::TYPE_RESPONSIVE,
+            ],
             'reference' => $GLOBALS['TL_LANG']['tl_tiny_slider_config']['reference']['type'],
             'eval'      => ['mandatory' => true, 'submitOnChange' => true],
             'sql'       => "varchar(12) NOT NULL default ''",
