@@ -2,7 +2,10 @@ services:
   _instanceof:
     Contao\CoreBundle\Framework\FrameworkAwareInterface:
       calls:
-      - ["setFramework", ["@contao.framework"]]
+        - ["setFramework", ["@contao.framework"]]
+    Symfony\Component\DependencyInjection\ContainerAwareInterface:
+      calls:
+        - ["setContainer", ["@service_container"]]
   huh.tiny_slider.util.config:
     class: HeimrichHannot\TinySliderBundle\Util\Config
     public: true
@@ -12,3 +15,6 @@ services:
   huh.tiny_slider.backend.tiny_slider_spread:
     class: HeimrichHannot\TinySliderBundle\Backend\TinySliderSpread
     public: true
+  huh.twig.extension.tiny_slider:
+    class: HeimrichHannot\TinySliderBundle\Twig\TinySliderExtension
+    tags: [twig.extension]

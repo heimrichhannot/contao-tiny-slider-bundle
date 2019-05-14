@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.9.0] - 2019-05-08
+
+### Added
+* `@ContaoTinySlider/tiny_slider_wrapper.html.twig` template, for better tiny slider `embed` usage inside twig templates, see README.md for more information
+* TwigExtension `tiny_slider_wrapper_class`, see README.md for more information
+* TwigExtension `tiny_slider_container_attributes`, see README.md for more information
+
 ## [1.8.1] - 2019-05-08
 
 ### Fixed
