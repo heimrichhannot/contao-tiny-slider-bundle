@@ -9,6 +9,9 @@
   .tns-lazy-img {
     opacity: .6;
     transition: opacity 0.6s;
+    &.tns-complete {
+      opacity: 1;
+    }
   }
 }
 

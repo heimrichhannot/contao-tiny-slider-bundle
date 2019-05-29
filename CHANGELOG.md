@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.9.1] - 2019-05-29
+
+### Added
+* tns-complete CSS class to default SCSS to fix opacity
+
 ## [1.9.0] - 2019-05-08
 
 ### Added
