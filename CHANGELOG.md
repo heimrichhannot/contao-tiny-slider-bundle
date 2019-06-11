@@ -1,44 +1,49 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.9.2] - 2019-06-11
+
+### Fixed
+- spread subpalette issue while injecting files
+
 ## [1.9.1] - 2019-05-29
 
 ### Added
-* tns-complete CSS class to default SCSS to fix opacity
+- tns-complete CSS class to default SCSS to fix opacity
 
 ## [1.9.0] - 2019-05-08
 
 ### Added
-* `@ContaoTinySlider/tiny_slider_wrapper.html.twig` template, for better tiny slider `embed` usage inside twig templates, see README.md for more information
-* TwigExtension `tiny_slider_wrapper_class`, see README.md for more information
-* TwigExtension `tiny_slider_container_attributes`, see README.md for more information
+- `@ContaoTinySlider/tiny_slider_wrapper.html.twig` template, for better tiny slider `embed` usage inside twig templates, see README.md for more information
+- TwigExtension `tiny_slider_wrapper_class`, see README.md for more information
+- TwigExtension `tiny_slider_container_attributes`, see README.md for more information
 
 ## [1.8.1] - 2019-05-08
 
 ### Fixed
-* missing tl_content palette fields restored
+- missing tl_content palette fields restored
 
 ## [1.8.0] - 2019-05-08
 
 ### Added
-* center option
+- center option
 
 ### Fixed
-* some namespaces
-* some deprecation warnings
-* some translations
+- some namespaces
+- some deprecation warnings
+- some translations
 
 ## [1.7.1] - 2019-05-08
 
 ### Changed
-* refactored tiny slider config type names to constants
-* enhanced ide autocompletion for config model
+- refactored tiny slider config type names to constants
+- enhanced ide autocompletion for config model
 
 ## [1.7.0] - 2019-05-02
 
 ### Changed
-* replaced global constants to class constants of `TinySliderSpreadContainer`
-* deprecated global constants
+- replaced global constants to class constants of `TinySliderSpreadContainer`
+- deprecated global constants
 
 ## [1.6.1] - 2019-04-12
 

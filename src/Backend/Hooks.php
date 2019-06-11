@@ -105,7 +105,7 @@ class Hooks extends Controller
                 $dc['palettes']['__selector__'] = array_merge(is_array($dc['palettes']['__selector__']) ? $dc['palettes']['__selector__'] : [], $arrSelectors);
 
                 foreach ($arrSelectors as $key) {
-                    $arrFields = array_merge($arrFields, System::getContainer()->get('huh.tiny_slider.util.dca')->getPaletteFields($key, $dc, 'subpalettes'));
+                    $arrFields = array_merge($arrFields, System::getContainer()->get('huh.tiny_slider.util.dca')->getPaletteFields($key, $dc, 'tl_tiny_slider_spread', 'subpalettes'));
                 }
 
                 $dc['subpalettes'] = array_merge(is_array($dc['subpalettes']) ? $dc['subpalettes'] : [], $GLOBALS['TL_DCA'][static::$strSpreadDca]['subpalettes']);
