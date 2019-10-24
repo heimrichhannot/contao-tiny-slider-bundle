@@ -1,1 +1,1 @@
-import '@hundh/contao-tiny-slider-bundle';
+import '../../npm-package';

@@ -1,4 +1,4 @@
-import {tns} from 'tiny-slider/src/tiny-slider';
+import {tns} from 'tiny-slider';
 
 window.tns = !window.tns ? tns : window.tns;
 

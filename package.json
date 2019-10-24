@@ -5,10 +5,22 @@
     "@hundh/contao-tiny-slider-bundle": "^1.1"
   },
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.24"
+    "@symfony/webpack-encore": "^0.28",
+    "node-sass": "^4.12.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "autoprefixer": "^9.1.5"
   },
   "scripts": {
     "build-dev": "yarn encore dev",
     "build-production": "yarn encore production"
-  }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }
