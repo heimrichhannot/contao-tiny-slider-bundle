@@ -26,6 +26,7 @@ define('TINY_SLIDER_PALETTE_CONTENT_SLIDER_END', TinySliderSpreadContainer::PALE
  * Hooks
  */
 $GLOBALS['TL_HOOKS']['loadDataContainer'][] = ['HeimrichHannot\TinySliderBundle\Backend\Hooks', 'loadDataContainerHook'];
+$GLOBALS['TL_HOOKS']['loadDataContainer'][] = [\HeimrichHannot\TinySliderBundle\EventListener\LoadDataContainerListener::class, 'onLoadDataContainer'];
 
 /**
  * Supported TL_DCA Entities, spreading efa palette to
@@ -84,7 +85,6 @@ array_insert(
  */
 if (System::getContainer()->get('huh.utils.container')->isFrontend()) {
     $GLOBALS['TL_CSS']['tiny-slider']        = 'assets/tiny-slider/tiny-slider/dist/tiny-slider.css|static';
-
     $GLOBALS['TL_JAVASCRIPT']['tiny-slider'] = 'assets/tiny-slider/tiny-slider/dist/min/tiny-slider.js|static';
     $GLOBALS['TL_JAVASCRIPT']['contao-tiny-slider-bundle'] = 'bundles/contaotinyslider/js/contao-tiny-slider-bundle.js|static';
 }

@@ -9,6 +9,7 @@
 namespace HeimrichHannot\TinySliderBundle\Element;
 
 use Contao\System;
+use HeimrichHannot\TinySliderBundle\Asset\FrontendAssets;
 use HeimrichHannot\TinySliderBundle\Frontend\Gallery;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 
@@ -44,6 +45,8 @@ class ContentGallery extends \Contao\ContentGallery
         if (null === ($config = $tinyConfigModel->findByPk($this->tinySliderConfig))) {
             return '';
         }
+
+        System::getContainer()->get(FrontendAssets::class)->addFrontendAssets();
 
         // Map content fields to tiny slider fields
         $this->arrData['tinySliderMultiSRC']      = $this->arrData['multiSRC'];

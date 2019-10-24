@@ -8,11 +8,16 @@
 
 namespace HeimrichHannot\TinySliderBundle\Frontend;
 
+use Contao\Config;
 use Contao\Controller;
+use Contao\File;
 use Contao\FilesModel;
 use Contao\Frontend;
+use Contao\FrontendTemplate;
+use Contao\Model;
 use Contao\StringUtil;
 use Contao\System;
+use Contao\Validator;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 
 class Gallery extends Frontend
@@ -27,14 +32,14 @@ class Gallery extends Frontend
     /**
      * Current record.
      *
-     * @var \Model
+     * @var Model
      */
     protected $settings;
 
     /**
      * Files object.
      *
-     * @var \FilesModel
+     * @var FilesModel
      */
     protected $files;
 
@@ -50,7 +55,7 @@ class Gallery extends Frontend
         parent::__construct();
         $this->data     = $objSettings->row();
         $this->settings = $objSettings;
-        $this->Template = new \FrontendTemplate($this->strTemplate);
+        $this->Template = new FrontendTemplate($this->strTemplate);
         $this->getFiles();
     }
 
@@ -202,7 +207,7 @@ class Gallery extends Frontend
             case 'meta': // Backwards compatibility
             case 'custom':
                 if ('' != $this->tinySliderOrderSRC) {
-                    $tmp = deserialize($this->tinySliderOrderSRC);
+                    $tmp = StringUtil::deserialize($this->tinySliderOrderSRC);
 
                     if (!empty($tmp) && is_array($tmp)) {
                         // Remove all values
@@ -248,7 +253,7 @@ class Gallery extends Frontend
         $total  = count($images);
         $limit  = $total;
 
-        $intMaxWidth   = (TL_MODE == 'BE') ? floor((640 / $total)) : (\Config::get('maxImageWidth') > 0 ? floor((\Config::get('maxImageWidth') / $total)) : null);
+        $intMaxWidth   = (TL_MODE == 'BE') ? floor((640 / $total)) : (Config::get('maxImageWidth') > 0 ? floor((Config::get('maxImageWidth') / $total)) : null);
         $strLightboxId = 'lightbox[lb'.$this->id.']';
         $body          = [];
 
@@ -259,7 +264,7 @@ class Gallery extends Frontend
             $strTemplate = $this->tinySlidergalleryTpl;
         }
 
-        $objTemplate = new \FrontendTemplate($strTemplate);
+        $objTemplate = new FrontendTemplate($strTemplate);
         $objTemplate->setData($this->data);
 
         $this->Template->setData($this->data);
@@ -269,7 +274,7 @@ class Gallery extends Frontend
             $objImage               = new \stdClass();
             $images[$i]['size']     = $this->tinySliderSize;
             $images[$i]['fullsize'] = $this->tinySliderFullsize;
-            \Controller::addImageToTemplate($objImage, $images[$i], $intMaxWidth, $strLightboxId, $images[$i]['model']);
+            Controller::addImageToTemplate($objImage, $images[$i], $intMaxWidth, $strLightboxId, $images[$i]['model']);
             $body[$i] = $objImage;
         }
 
@@ -301,7 +306,7 @@ class Gallery extends Frontend
         $this->files = System::getContainer()->get('contao.framework')->getAdapter(FilesModel::class)->findMultipleByUuids($this->tinySliderMultiSRC);
 
         if (null === $this->files) {
-            if (!\Validator::isUuid($this->tinySliderMultiSRC[0])) {
+            if (!Validator::isUuid($this->tinySliderMultiSRC[0])) {
                 return '<p class="error">'.$GLOBALS['TL_LANG']['ERR']['version2format'].'</p>';
             }
 
@@ -320,7 +325,7 @@ class Gallery extends Frontend
     {
         global $objPage;
 
-        $file = new \File($model->path);
+        $file = new File($model->path);
 
         if (!$file->isGdImage) {
             return false;

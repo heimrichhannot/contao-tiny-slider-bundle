@@ -15,6 +15,7 @@ use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\ManagerPlugin\Config\ConfigPluginInterface;
 use Contao\ManagerPlugin\Config\ContainerBuilder;
 use Contao\ManagerPlugin\Config\ExtensionPluginInterface;
+use HeimrichHannot\ReaderBundle\HeimrichHannotContaoReaderBundle;
 use HeimrichHannot\TinySliderBundle\ContaoTinySliderBundle;
 use HeimrichHannot\UtilsBundle\Container\ContainerUtil;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -26,8 +27,14 @@ class Plugin implements BundlePluginInterface, ExtensionPluginInterface, ConfigP
      */
     public function getBundles(ParserInterface $parser)
     {
+        $loadAfter = [ContaoCoreBundle::class];
+        if (class_exists('\HeimrichHannot\ReaderBundle\HeimrichHannotContaoReaderBundle')) {
+            $loadAfter[] = HeimrichHannotContaoReaderBundle::class;
+        }
+
+
         return [
-            BundleConfig::create(ContaoTinySliderBundle::class)->setLoadAfter([ContaoCoreBundle::class]),
+            BundleConfig::create(ContaoTinySliderBundle::class)->setLoadAfter($loadAfter),
         ];
     }
 
@@ -37,6 +44,7 @@ class Plugin implements BundlePluginInterface, ExtensionPluginInterface, ConfigP
     public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig)
     {
         $loader->load(__DIR__.'/../Resources/config/services.yml');
+        $loader->load(__DIR__.'/../Resources/config/listeners.yml');
     }
 
 

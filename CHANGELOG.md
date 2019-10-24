@@ -1,6 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.10.0] - 2019-10-24
+
+### Added
+* ReaderConfigElement
+* added support automatic entries points inclusion of encore bundle 1.3
+
+### Changed
+* bundle npm-package now within this repository
+
 ## [1.9.2] - 2019-06-11
 
 ### Fixed

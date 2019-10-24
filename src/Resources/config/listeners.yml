@@ -1,0 +1,7 @@
+services:
+  _defaults:
+    public: false
+    autowire: true
+
+  HeimrichHannot\TinySliderBundle\EventListener\LoadDataContainerListener:
+    public: true

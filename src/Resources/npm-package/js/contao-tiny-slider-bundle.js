@@ -26,7 +26,7 @@ class TinySliderInstance {
 
         let focusElements = this.container.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
 
-        if (this.config.hasOwnProperty('skipInit') && (typeof forceInit === 'undefined' || !forceInit)) {
+        if (this.config.hasOwnProperty('skipInit') && this.config.skipInit === true && (typeof forceInit === 'undefined' || !forceInit)) {
             return;
         }
 

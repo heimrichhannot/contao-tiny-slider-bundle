@@ -18,3 +18,12 @@ services:
   huh.twig.extension.tiny_slider:
     class: HeimrichHannot\TinySliderBundle\Twig\TinySliderExtension
     tags: [twig.extension]
+
+  HeimrichHannot\TinySliderBundle\ConfigElementType\TinySliderConfigElementType:
+    public: false
+    autowire: true
+    tags: ['huh.reader.config_element_type']
+
+  HeimrichHannot\TinySliderBundle\Asset\FrontendAssets:
+    public: true
+    autowire: true
