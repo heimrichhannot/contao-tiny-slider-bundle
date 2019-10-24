@@ -1,4 +1,4 @@
-import {tns} from 'tiny-slider';
+import {tns} from 'tiny-slider/src/tiny-slider';
 
 window.tns = !window.tns ? tns : window.tns;
 
@@ -49,7 +49,7 @@ class TinySliderInstance {
             }
         }.bind(this);
 
-        this.slider = window.tns(this.config);
+        this.slider = tns(this.config);
 
         this.container.addEventListener('keydown', this.keyListener.bind(this), true);
 
