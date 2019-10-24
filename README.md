@@ -64,6 +64,17 @@ In order to use custom transitions for example using [animate.css](https://daned
 - set tiny slider config parameter`Outro animation` to 'fadeOut'
 - empty tiny slider config parameter `Normal animation`
 
+
+## Assets
+
+### NPM/Yarn Package
+
+The assets for this bundle are provided as NPM/Yarn package `@hundh/contao-tiny-slider-bundle`. 
+
+[![npm version](https://badge.fury.io/js/%40hundh%2Fcontao-tiny-slider-bundle.svg)](https://badge.fury.io/js/%40hundh%2Fcontao-tiny-slider-bundle)
+
+You will find the sources under [src/Resources/npm-package](src/Resources/npm-package).
+
 ## Known Issues
 
 ### Lazyload
