@@ -89,8 +89,20 @@ class TinySliderConfigElementType implements ReaderConfigElementTypeInterface
             'tinySliderMultiSRC' => $item->getRawValue($imageField),
             'tinySliderOrderSRC' => $item->getRawValue($readerConfigElement->orderField),
             'tinySliderSortBy' => $item->getRawValue($readerConfigElement->sortingField),
-            'tinySliderSize' => $item->getRawValue($readerConfigElement->imgSize),
+
+            'tinySliderUseHomeDir' => $item->getRawValue('tinySliderUseHomeDir'),
+            'tinySliderFullsize' => $item->getRawValue('tinySliderFullsize'),
+            'tinySliderNumberOfItems' => $item->getRawValue('tinySliderNumberOfItems'),
+            'tinySliderCustomTpl' => $item->getRawValue('tinySliderCustomTpl'),
+            'tinySliderGalleryTpl' => $item->getRawValue('tinySliderGalleryTpl'),
+            'tinySliderConfig' => $tinySliderConfig->id,
         ];
+
+        if ($readerConfigElement->imgSize) {
+            $config['tinySliderSize'] = $readerConfigElement->imgSize;
+        } else {
+            $config['tinySliderSize'] = $item->getFormattedValue('tinySliderSize');
+        }
 
         $gallery = new Gallery($this->container->get('huh.tiny_slider.util.config')->createSettings($config, $tinySliderConfig));
         $galleryImages = $gallery->getImages();

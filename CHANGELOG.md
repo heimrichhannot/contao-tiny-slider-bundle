@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.10.2] - 2019-11-12
+
+- removed symfony/framework-bundle dependency (#4)
+- reader config element now respects configured image
+- fixed an semantic error in twig template
+- updated readme (#2)
+
 ## [1.10.1] - 2019-10-24
 
 ### Fixed

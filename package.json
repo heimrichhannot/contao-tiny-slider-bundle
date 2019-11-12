@@ -22,5 +22,8 @@
   },
   "browserslist": [
     "last 2 versions"
-  ]
+  ],
+  "jshintConfig": {
+    "esversion": 6
+  }
 }

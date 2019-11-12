@@ -1,15 +1,29 @@
 # Tiny slider bundle
 
-Tiny slider, a vanilla javascript content slider for contao based on [tiny-slider](https://github.com/ganlanyuan/tiny-slider).
+A slider bundle for contao based on [Tiny Slider](https://github.com/ganlanyuan/tiny-slider).
 
-**Support only provided for webpack-encore projects using  [heimrichhannot/contao-encore-bundle](https://github.com/heimrichhannot/contao-encore-bundle)!**
+## Features
+* global configuration
+* content elements for image and content sliders
+* [Encore Bundle](https://github.com/heimrichhannot/contao-encore-bundle) support
+* [Reader Bundle](https://github.com/heimrichhannot/contao-reader-bundle) support
 
-## Installation
 
-- Setup your encore project environment, see: https://github.com/heimrichhannot/contao-encore-bundle/blob/master/README.md
-- Install via composer: `composer require heimrichhannot/contao-tiny-slider-bundle` and update your database.
-- Add active entry for `contao-tiny-slider-bundle` within your root page for example.
-- Add active entry for `contao-tiny-slider-bundle-theme` within your root page for example for default slider animations.
+## Usage
+
+### Install
+1. install bundle with composer or contao manager
+
+    ```
+    composer require heimrichhannot/contao-tiny-slider-bundle
+    ```
+1. Call contao install tool and update the database
+
+### Setup
+1. Create a tiny slider config (System -> Tiny-Slider). Please consider the tiny slider documentation for more informations about the different config options.
+1. Select the created config in a content element or an reader config element.
+
+
 
 ## Twig usage
 

@@ -1,5 +1,5 @@
 {% if config|default() %}
-<div class="{{ (config|tiny_slider_wrapper_class ~' ' ~wrapperClass|default())|trim }}"{% if wrapperAttributes|default() %} {{ wrapperAttributes }}{% endif %}><div class="tiny-slider-container"{{ config|tiny_slider_container_attributes(selector|default('.tiny-slider-container'))|raw }}">
+<div class="{{ (config|tiny_slider_wrapper_class ~' ' ~wrapperClass|default())|trim }}"{% if wrapperAttributes|default() %} {{ wrapperAttributes }}{% endif %}><div class="tiny-slider-container"{{ config|tiny_slider_container_attributes(selector|default('.tiny-slider-container'))|raw }}>
 {% endif %}
 {% block slides %}
 {% endblock %}
