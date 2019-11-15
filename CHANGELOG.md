@@ -1,26 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.10.2] - 2019-11-12
+## [1.10.3] - 2019-11-15
+- fixed exception when tiny slider is installed with a fresh contao installation
 
+## [1.10.2] - 2019-11-12
 - removed symfony/framework-bundle dependency (#4)
 - reader config element now respects configured image
 - fixed an semantic error in twig template
 - updated readme (#2)
 
 ## [1.10.1] - 2019-10-24
-
-### Fixed
-* tiny slider initialization
+- fixed tiny slider initialization
 
 ## [1.10.0] - 2019-10-24
-
-### Added
-* ReaderConfigElement
-* added support automatic entries points inclusion of encore bundle 1.3
-
-### Changed
-* bundle npm-package now within this repository
+- added ReaderConfigElement
+- added support automatic entries points inclusion of encore bundle 1.3
+- bundle npm-package now within this repository
 
 ## [1.9.2] - 2019-06-11
 

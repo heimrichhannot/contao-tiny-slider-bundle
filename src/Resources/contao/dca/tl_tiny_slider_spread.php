@@ -141,7 +141,9 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySliderSize'],
             'exclude'   => true,
             'inputType' => 'imageSize',
-            'options'   => System::getContainer()->get('contao.image.image_sizes')->getAllOptions(),
+            'options_callback'   => function() {
+                return System::getContainer()->get('contao.image.image_sizes')->getAllOptions();
+            },
             'reference' => &$GLOBALS['TL_LANG']['MSC'],
             'eval'      => ['rgxp' => 'natural', 'includeBlankOption' => true, 'nospace' => true, 'helpwizard' => true, 'tl_class' => 'w50'],
             'sql'       => "varchar(64) NOT NULL default ''",
