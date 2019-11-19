@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.11.0] - 2019-11-19
+- added list bundle support (integrated contao-tiny-slider-list-bundle)
+- included tiny slider library (instead having a shim repo) (can be unset/overwritten in assets array)
+- fixed non-encore support
+
 ## [1.10.3] - 2019-11-15
 - fixed exception when tiny slider is installed with a fresh contao installation
 

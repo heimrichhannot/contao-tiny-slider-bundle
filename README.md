@@ -6,7 +6,8 @@ A slider bundle for contao based on [Tiny Slider](https://github.com/ganlanyuan/
 * global configuration
 * content elements for image and content sliders
 * [Encore Bundle](https://github.com/heimrichhannot/contao-encore-bundle) support
-* [Reader Bundle](https://github.com/heimrichhannot/contao-reader-bundle) support
+* [List Bundle](https://github.com/heimrichhannot/contao-list-bundle) support (display lists as slider)
+* [Reader Bundle](https://github.com/heimrichhannot/contao-reader-bundle) support (ReaderConfigElement)
 
 
 ## Usage
@@ -21,8 +22,7 @@ A slider bundle for contao based on [Tiny Slider](https://github.com/ganlanyuan/
 
 ### Setup
 1. Create a tiny slider config (System -> Tiny-Slider). Please consider the tiny slider documentation for more informations about the different config options.
-1. Select the created config in a content element or an reader config element.
-
+1. Select the created config in a content element, an reader config element or in an list config after activating "Render as Tiny slider".
 
 
 ## Twig usage
@@ -100,4 +100,3 @@ If you use the TwigExtension `image` that you must provide proper lazyload infor
 ```
 {{ singleSRC|image([240,120,'px'],{lazyload: {class: 'tns-lazy-img', src: 'data-src'} }}
 ```
-

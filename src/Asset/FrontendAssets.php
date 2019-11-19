@@ -48,9 +48,10 @@ class FrontendAssets
                 $this->container->get('huh.encore.asset.frontend')->addActiveEntrypoint('contao-tiny-slider-bundle-theme');
             }
 
-            $GLOBALS['TL_CSS']['tiny-slider']        = 'assets/tiny-slider/tiny-slider/dist/tiny-slider.css|static';
-            $GLOBALS['TL_JAVASCRIPT']['tiny-slider'] = 'assets/tiny-slider/tiny-slider/dist/min/tiny-slider.js|static';
-            $GLOBALS['TL_JAVASCRIPT']['contao-tiny-slider-bundle'] = 'bundles/contaotinyslider/contao-tiny-slider-bundle.js|static';
+            $GLOBALS['TL_CSS']['tiny-slider']                      = 'bundles/contaotinyslider/tiny-slider.css';
+            $GLOBALS['TL_JAVASCRIPT']['tiny-slider']               = 'bundles/contaotinyslider/tiny-slider.js';
+            $GLOBALS['TL_CSS']['contao-tiny-slider-bundle']        = 'bundles/contaotinyslider/contao-tiny-slider-bundle-theme.css';
+            $GLOBALS['TL_JAVASCRIPT']['contao-tiny-slider-bundle'] = 'bundles/contaotinyslider/contao-tiny-slider-bundle.js';
         }
     }
 }

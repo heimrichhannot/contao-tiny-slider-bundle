@@ -15,6 +15,7 @@ use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\ManagerPlugin\Config\ConfigPluginInterface;
 use Contao\ManagerPlugin\Config\ContainerBuilder;
 use Contao\ManagerPlugin\Config\ExtensionPluginInterface;
+use HeimrichHannot\ListBundle\HeimrichHannotContaoListBundle;
 use HeimrichHannot\ReaderBundle\HeimrichHannotContaoReaderBundle;
 use HeimrichHannot\TinySliderBundle\ContaoTinySliderBundle;
 use HeimrichHannot\UtilsBundle\Container\ContainerUtil;
@@ -31,7 +32,9 @@ class Plugin implements BundlePluginInterface, ExtensionPluginInterface, ConfigP
         if (class_exists('\HeimrichHannot\ReaderBundle\HeimrichHannotContaoReaderBundle')) {
             $loadAfter[] = HeimrichHannotContaoReaderBundle::class;
         }
-
+        if (class_exists('\HeimrichHannot\ListBundle\HeimrichHannotContaoListBundle')) {
+            $loadAfter[] = HeimrichHannotContaoListBundle::class;
+        }
 
         return [
             BundleConfig::create(ContaoTinySliderBundle::class)->setLoadAfter($loadAfter),

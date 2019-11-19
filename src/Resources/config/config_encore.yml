@@ -9,3 +9,4 @@ huh:
         - contao-tiny-slider-bundle
       css:
         - tiny-slider
+        - contao-tiny-slider-bundle

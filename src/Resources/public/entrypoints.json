@@ -1,0 +1,23 @@
+{
+  "entrypoints": {
+    "contao-tiny-slider-bundle": {
+      "css": [
+        "/bundles/contaotinyslider/tiny-slider.css"
+      ],
+      "js": [
+        "/bundles/contaotinyslider/tiny-slider.js",
+        "/bundles/contaotinyslider/contao-tiny-slider-bundle.js"
+      ]
+    },
+    "contao-tiny-slider-bundle-theme": {
+      "css": [
+        "/bundles/contaotinyslider/tiny-slider.css",
+        "/bundles/contaotinyslider/contao-tiny-slider-bundle-theme.css"
+      ],
+      "js": [
+        "/bundles/contaotinyslider/tiny-slider.js",
+        "/bundles/contaotinyslider/contao-tiny-slider-bundle-theme.js"
+      ]
+    }
+  }
+}
