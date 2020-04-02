@@ -1,16 +1,14 @@
 <?php
-/**
- * Copyright (c) 2018 Heimrich & Hannot GmbH
+
+/*
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
- * @author  Rico Kaltofen <r.kaltofen@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
+ * @license LGPL-3.0-or-later
  */
 
 namespace HeimrichHannot\TinySliderBundle\Backend;
 
-
 use Contao\Backend;
-use Contao\Controller;
 use Contao\CoreBundle\Framework\FrameworkAwareInterface;
 use Contao\CoreBundle\Framework\FrameworkAwareTrait;
 use Contao\DataContainer;
@@ -22,7 +20,7 @@ class TinySliderSpread implements FrameworkAwareInterface
     use FrameworkAwareTrait;
 
     /**
-     * Return all gallery templates as array
+     * Return all gallery templates as array.
      *
      * @return array
      */
@@ -34,7 +32,7 @@ class TinySliderSpread implements FrameworkAwareInterface
     public function setFileTreeFlags($varValue, DataContainer $dc)
     {
         if ($dc->activeRecord) {
-            if ($dc->activeRecord->type == 'tiny-slider-gallery') {
+            if ('tiny-slider-gallery' == $dc->activeRecord->type) {
                 $GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['isGallery'] = true;
             }
         }

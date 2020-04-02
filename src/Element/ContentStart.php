@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2018 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -26,8 +26,8 @@ class ContentStart extends ContentElement
     public function generate()
     {
         if (System::getContainer()->get('huh.utils.container')->isBackend()) {
-            $this->strTemplate     = 'be_wildcard';
-            $this->Template        = new BackendTemplate($this->strTemplate);
+            $this->strTemplate = 'be_wildcard';
+            $this->Template = new BackendTemplate($this->strTemplate);
             $this->Template->title = $this->headline;
         }
 
@@ -48,7 +48,7 @@ class ContentStart extends ContentElement
 
         System::getContainer()->get(FrontendAssets::class)->addFrontendAssets();
 
-        $this->Template->class      .= ' '.System::getContainer()->get('huh.tiny_slider.util.config')->getCssClass($config);
+        $this->Template->class .= ' '.System::getContainer()->get('huh.tiny_slider.util.config')->getCssClass($config);
         $this->Template->attributes .= System::getContainer()->get('huh.tiny_slider.util.config')->getAttributes($config);
 
         return $this->Template->parse();

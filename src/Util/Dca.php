@@ -1,9 +1,9 @@
 <?php
-/**
- * Copyright (c) 2018 Heimrich & Hannot GmbH
+
+/*
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
- * @author  Rico Kaltofen <r.kaltofen@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
+ * @license LGPL-3.0-or-later
  */
 
 namespace HeimrichHannot\TinySliderBundle\Util;
@@ -29,6 +29,7 @@ class Dca
                 foreach ($boxes[$k] as $kk => $vv) {
                     if (preg_match('/^\[.*\]$/', $vv)) {
                         ++$eCount;
+
                         continue;
                     }
 
@@ -56,7 +57,7 @@ class Dca
             }
 
             // Unset a box if it does not contain any fields
-            if (count($boxes[$k]) < $eCount) {
+            if (\count($boxes[$k]) < $eCount) {
                 unset($boxes[$k]);
             }
         }

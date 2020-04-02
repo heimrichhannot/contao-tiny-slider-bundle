@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2018 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -49,20 +49,20 @@ class ContentGallery extends \Contao\ContentGallery
         System::getContainer()->get(FrontendAssets::class)->addFrontendAssets();
 
         // Map content fields to tiny slider fields
-        $this->arrData['tinySliderMultiSRC']      = $this->arrData['multiSRC'];
-        $this->arrData['tinySliderOrderSRC']      = $this->arrData['orderSRC'];
-        $this->arrData['tinySliderSortBy']        = $this->arrData['sortBy'];
-        $this->arrData['tinySliderUseHomeDir']    = $this->arrData['useHomeDir'];
-        $this->arrData['tinySliderSize']          = $this->arrData['size'];
-        $this->arrData['tinySliderFullsize']      = $this->arrData['fullsize'];
+        $this->arrData['tinySliderMultiSRC'] = $this->arrData['multiSRC'];
+        $this->arrData['tinySliderOrderSRC'] = $this->arrData['orderSRC'];
+        $this->arrData['tinySliderSortBy'] = $this->arrData['sortBy'];
+        $this->arrData['tinySliderUseHomeDir'] = $this->arrData['useHomeDir'];
+        $this->arrData['tinySliderSize'] = $this->arrData['size'];
+        $this->arrData['tinySliderFullsize'] = $this->arrData['fullsize'];
         $this->arrData['tinySliderNumberOfItems'] = $this->arrData['numberOfItems'];
-        $this->arrData['tinySliderCustomTpl']     = $this->arrData['customTpl'];
+        $this->arrData['tinySliderCustomTpl'] = $this->arrData['customTpl'];
 
         $gallery = new Gallery(System::getContainer()->get('huh.tiny_slider.util.config')->createSettings($this->arrData, $config));
 
-        $this->Template->class      .= ' '.System::getContainer()->get('huh.tiny_slider.util.config')->getCssClass($config);
+        $this->Template->class .= ' '.System::getContainer()->get('huh.tiny_slider.util.config')->getCssClass($config);
         $this->Template->attributes .= System::getContainer()->get('huh.tiny_slider.util.config')->getAttributes($config);
-        $this->Template->images     = $gallery->getImages();
+        $this->Template->images = $gallery->getImages();
 
         return $this->Template->parse();
     }

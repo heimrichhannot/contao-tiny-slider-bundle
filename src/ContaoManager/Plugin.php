@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2018 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -29,9 +29,11 @@ class Plugin implements BundlePluginInterface, ExtensionPluginInterface, ConfigP
     public function getBundles(ParserInterface $parser)
     {
         $loadAfter = [ContaoCoreBundle::class];
+
         if (class_exists('\HeimrichHannot\ReaderBundle\HeimrichHannotContaoReaderBundle')) {
             $loadAfter[] = HeimrichHannotContaoReaderBundle::class;
         }
+
         if (class_exists('\HeimrichHannot\ListBundle\HeimrichHannotContaoListBundle')) {
             $loadAfter[] = HeimrichHannotContaoListBundle::class;
         }
@@ -42,14 +44,13 @@ class Plugin implements BundlePluginInterface, ExtensionPluginInterface, ConfigP
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig)
     {
         $loader->load(__DIR__.'/../Resources/config/services.yml');
         $loader->load(__DIR__.'/../Resources/config/listeners.yml');
     }
-
 
     /**
      * {@inheritdoc}

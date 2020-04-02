@@ -1,5 +1,11 @@
 <?php
 
+/*
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
+ *
+ * @license LGPL-3.0-or-later
+ */
+
 namespace HeimrichHannot\TinySliderBundle\EventListener;
 
 use Contao\CoreBundle\Framework\ContaoFramework;
@@ -29,7 +35,6 @@ class ListBeforeRenderListener
         $this->configUtil = $configUtil;
         $this->frontendAssets = $frontendAssets;
     }
-
 
     public function onListBeforeRender(ListBeforeRenderEvent $event)
     {

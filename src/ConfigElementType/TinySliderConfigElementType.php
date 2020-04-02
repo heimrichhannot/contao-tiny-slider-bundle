@@ -1,21 +1,16 @@
 <?php
-/**
- * Contao Open Source CMS
+
+/*
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
- * Copyright (c) 2019 Heimrich & Hannot GmbH
- *
- * @author  Thomas Körner <t.koerner@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
+ * @license LGPL-3.0-or-later
  */
 
-
 namespace HeimrichHannot\TinySliderBundle\ConfigElementType;
-
 
 use HeimrichHannot\ReaderBundle\ConfigElementType\ReaderConfigElementData;
 use HeimrichHannot\ReaderBundle\ConfigElementType\ReaderConfigElementTypeInterface;
 use HeimrichHannot\TinySliderBundle\Asset\FrontendAssets;
-use HeimrichHannot\TinySliderBundle\Element\ContentGallery;
 use HeimrichHannot\TinySliderBundle\Frontend\Gallery;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -42,7 +37,6 @@ class TinySliderConfigElementType implements ReaderConfigElementTypeInterface
         $this->twig = $twig;
         $this->frontendAssets = $frontendAssets;
     }
-
 
     /**
      * Return the reader config element type alias.

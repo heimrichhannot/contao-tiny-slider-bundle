@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2018 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -26,11 +26,11 @@ class Hooks extends Controller
     {
         Controller::loadDataContainer(static::$strSpreadDca);
 
-        if (!is_array($GLOBALS['TL_TINY_SLIDER']['SUPPORTED']) || !in_array($strName, array_keys($GLOBALS['TL_TINY_SLIDER']['SUPPORTED']), true)) {
+        if (!\is_array($GLOBALS['TL_TINY_SLIDER']['SUPPORTED']) || !\in_array($strName, array_keys($GLOBALS['TL_TINY_SLIDER']['SUPPORTED']), true)) {
             return false;
         }
 
-        if (!is_array($GLOBALS['TL_DCA'][static::$strSpreadDca]['fields'])) {
+        if (!\is_array($GLOBALS['TL_DCA'][static::$strSpreadDca]['fields'])) {
             $GLOBALS['TL_DCA'][static::$strSpreadDca]['fields'] = [];
         }
 
@@ -40,8 +40,7 @@ class Hooks extends Controller
             return;
         }
 
-        if(isset($dc['config']['ctable']) && is_array($dc['config']['ctable']) && in_array('tl_content', $dc['config']['ctable']))
-        {
+        if (isset($dc['config']['ctable']) && \is_array($dc['config']['ctable']) && \in_array('tl_content', $dc['config']['ctable'])) {
             Controller::loadDataContainer('tl_content');
         }
 
@@ -56,13 +55,12 @@ class Hooks extends Controller
 
             $replacePaletteName = $matches['placeholder'][0];
 
-            /**
+            /*
              * Backward compatibility with palette constants (before version 1.7, should be removed with version 2.0)
              *
              * @ToDo Remove with version 2.0
              */
-            if (null !== ($replacePaletteNameConstant = @constant($matches['placeholder'][0])))
-            {
+            if (null !== ($replacePaletteNameConstant = @\constant($matches['placeholder'][0]))) {
                 $replacePaletteName = $replacePaletteNameConstant;
             }
 
@@ -94,7 +92,7 @@ class Hooks extends Controller
                 $dc['palettes'][$strPalette] = str_replace($search, $replace, $dc['palettes'][$strPalette]);
             }
 
-            if (!is_array($GLOBALS['TL_DCA'][static::$strSpreadDca]['palettes']['__selector__'])) {
+            if (!\is_array($GLOBALS['TL_DCA'][static::$strSpreadDca]['palettes']['__selector__'])) {
                 $GLOBALS['TL_DCA'][static::$strSpreadDca]['palettes']['__selector__'] = [];
             }
 
@@ -102,29 +100,29 @@ class Hooks extends Controller
             $arrSelectors = array_intersect($GLOBALS['TL_DCA'][static::$strSpreadDca]['palettes']['__selector__'], $arrFieldKeys);
 
             if (!empty($arrSelectors)) {
-                $dc['palettes']['__selector__'] = array_merge(is_array($dc['palettes']['__selector__']) ? $dc['palettes']['__selector__'] : [], $arrSelectors);
+                $dc['palettes']['__selector__'] = array_merge(\is_array($dc['palettes']['__selector__']) ? $dc['palettes']['__selector__'] : [], $arrSelectors);
 
                 foreach ($arrSelectors as $key) {
                     $arrFields = array_merge($arrFields, System::getContainer()->get('huh.tiny_slider.util.dca')->getPaletteFields($key, $dc, 'tl_tiny_slider_spread', 'subpalettes'));
                 }
 
-                $dc['subpalettes'] = array_merge(is_array($dc['subpalettes']) ? $dc['subpalettes'] : [], $GLOBALS['TL_DCA'][static::$strSpreadDca]['subpalettes']);
+                $dc['subpalettes'] = array_merge(\is_array($dc['subpalettes']) ? $dc['subpalettes'] : [], $GLOBALS['TL_DCA'][static::$strSpreadDca]['subpalettes']);
             }
 
-            if (!is_array($arrFields)) {
+            if (!\is_array($arrFields)) {
                 return;
             }
 
             // inject fields
-            $dc['fields'] = array_merge($arrFields, (is_array($dc['fields']) ? $dc['fields'] : []));
+            $dc['fields'] = array_merge($arrFields, (\is_array($dc['fields']) ? $dc['fields'] : []));
         }
 
         Controller::loadLanguageFile(static::$strSpreadDca);
         Controller::loadLanguageFile($strName);
 
         // add language to TL_LANG palette
-        if (is_array($GLOBALS['TL_LANG'][static::$strSpreadDca])) {
-            $GLOBALS['TL_LANG'][$strName] = array_merge(is_array($GLOBALS['TL_LANG'][$strName]) ? $GLOBALS['TL_LANG'][$strName] : [], $GLOBALS['TL_LANG'][static::$strSpreadDca]);
+        if (\is_array($GLOBALS['TL_LANG'][static::$strSpreadDca])) {
+            $GLOBALS['TL_LANG'][$strName] = array_merge(\is_array($GLOBALS['TL_LANG'][$strName]) ? $GLOBALS['TL_LANG'][$strName] : [], $GLOBALS['TL_LANG'][static::$strSpreadDca]);
         }
     }
 }

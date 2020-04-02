@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2018 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -11,8 +11,7 @@ namespace HeimrichHannot\TinySliderBundle\Model;
 use Contao\Model;
 
 /**
- * Class TinySliderConfigModel
- * @package HeimrichHannot\TinySliderBundle\Model
+ * Class TinySliderConfigModel.
  *
  * @property $id
  * @property $tstamp

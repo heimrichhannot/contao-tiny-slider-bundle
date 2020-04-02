@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2019 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -32,7 +32,7 @@ class TinySliderExtension extends AbstractExtension implements ContainerAwareInt
     }
 
     /**
-     * Get tiny slider wrapper css class for given tiny slider config
+     * Get tiny slider wrapper css class for given tiny slider config.
      *
      * @param int $config Tiny slider config id
      *
@@ -45,15 +45,19 @@ class TinySliderExtension extends AbstractExtension implements ContainerAwareInt
         }
 
         $this->container->get(FrontendAssets::class)->addFrontendAssets();
+
         return $this->container->get('huh.tiny_slider.util.config')->getCssClass($config);
     }
 
     /**
-     * Get tiny slider container data attributes for given tiny slider config
+     * Get tiny slider container data attributes for given tiny slider config.
+     *
      * @param int|null $config
-     * @param string $containerSelector
-     * @return string Data attributes as string
+     * @param string   $containerSelector
+     *
      * @throws \Psr\Cache\InvalidArgumentException
+     *
+     * @return string Data attributes as string
      */
     public function getContainerAttributes(int $config = null, string $containerSelector = '.tiny-slider-container'): string
     {
@@ -61,6 +65,7 @@ class TinySliderExtension extends AbstractExtension implements ContainerAwareInt
             return '';
         }
         $this->container->get(FrontendAssets::class)->addFrontendAssets();
+
         return $this->container->get('huh.tiny_slider.util.config')->getAttributes($config, $containerSelector);
     }
 }

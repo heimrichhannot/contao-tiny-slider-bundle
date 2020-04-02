@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2018 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -53,7 +53,7 @@ class Gallery extends Frontend
     public function __construct($objSettings)
     {
         parent::__construct();
-        $this->data     = $objSettings->row();
+        $this->data = $objSettings->row();
         $this->settings = $objSettings;
         $this->Template = new FrontendTemplate($this->strTemplate);
         $this->getFiles();
@@ -102,12 +102,14 @@ class Gallery extends Frontend
     {
         Controller::loadDataContainer('tl_tiny_slider_spread');
         $objSettings = $objConfig;
+
         foreach ($arrData as $key => $value) {
-            if (substr($key, 0, 10) != 'tinySlider') {
+            if ('tinySlider' != substr($key, 0, 10)) {
                 continue;
             }
             $arrData = &$GLOBALS['TL_DCA']['tl_tinyslider_spread']['fields'][$key];
-            if ($arrData['eval']['multiple'] || $key == 'tinySliderOrderSRC') {
+
+            if ($arrData['eval']['multiple'] || 'tinySliderOrderSRC' == $key) {
                 $value = StringUtil::deserialize($value, true);
             }
             $objSettings->{$key} = $value;
@@ -115,7 +117,6 @@ class Gallery extends Frontend
 
         return $objSettings;
     }
-
 
     public function parse()
     {
@@ -126,9 +127,9 @@ class Gallery extends Frontend
 
     public function getImages()
     {
-        $images  = [];
+        $images = [];
         $auxDate = [];
-        $files   = $this->files;
+        $files = $this->files;
 
         if (null === $files) {
             return '';
@@ -189,18 +190,22 @@ class Gallery extends Frontend
         switch ($this->tinySliderSortBy) {
             case 'name_asc':
                 uksort($images, 'basename_natcasecmp');
+
                 break;
 
             case 'name_desc':
                 uksort($images, 'basename_natcasercmp');
+
                 break;
 
             case 'date_asc':
                 array_multisort($images, SORT_NUMERIC, $auxDate, SORT_ASC);
+
                 break;
 
             case 'date_desc':
                 array_multisort($images, SORT_NUMERIC, $auxDate, SORT_DESC);
+
                 break;
 
             case 'meta': // Backwards compatibility
@@ -208,7 +213,7 @@ class Gallery extends Frontend
                 if ('' != $this->tinySliderOrderSRC) {
                     $tmp = StringUtil::deserialize($this->tinySliderOrderSRC);
 
-                    if (!empty($tmp) && is_array($tmp)) {
+                    if (!empty($tmp) && \is_array($tmp)) {
                         // Remove all values
                         $arrOrder = array_map(
                             function () {
@@ -234,10 +239,12 @@ class Gallery extends Frontend
                         unset($arrOrder);
                     }
                 }
+
                 break;
 
             case 'random':
                 shuffle($images);
+
                 break;
         }
 
@@ -245,16 +252,16 @@ class Gallery extends Frontend
 
         // Limit the total number of items (see #2652)
         if ($this->tinySliderNumberOfItems > 0) {
-            $images = array_slice($images, 0, $this->tinySliderNumberOfItems);
+            $images = \array_slice($images, 0, $this->tinySliderNumberOfItems);
         }
 
         $offset = 0;
-        $total  = count($images);
-        $limit  = $total;
+        $total = \count($images);
+        $limit = $total;
 
-        $intMaxWidth   = (TL_MODE == 'BE') ? floor((640 / $total)) : (Config::get('maxImageWidth') > 0 ? floor((Config::get('maxImageWidth') / $total)) : null);
+        $intMaxWidth = (TL_MODE == 'BE') ? floor((640 / $total)) : (Config::get('maxImageWidth') > 0 ? floor((Config::get('maxImageWidth') / $total)) : null);
         $strLightboxId = 'lightbox[lb'.$this->id.']';
-        $body          = [];
+        $body = [];
 
         $strTemplate = 'tiny_slider_gallery_default';
 
@@ -270,14 +277,14 @@ class Gallery extends Frontend
         $this->Template->class .= ' '.System::getContainer()->get('huh.tiny_slider.util.config')->getCssClass($this->settings).' tiny-slider';
 
         for ($i = $offset; $i < $limit; ++$i) {
-            $objImage               = new \stdClass();
-            $images[$i]['size']     = $this->tinySliderSize;
+            $objImage = new \stdClass();
+            $images[$i]['size'] = $this->tinySliderSize;
             $images[$i]['fullsize'] = $this->tinySliderFullsize;
             Controller::addImageToTemplate($objImage, $images[$i], $intMaxWidth, $strLightboxId, $images[$i]['model']);
             $body[$i] = $objImage;
         }
 
-        $objTemplate->body     = $body;
+        $objTemplate->body = $body;
         $objTemplate->headline = $this->headline; // see #1603
 
         return $objTemplate->parse();
@@ -297,7 +304,7 @@ class Gallery extends Frontend
         }
 
         // Return if there are no files
-        if (!is_array($this->tinySliderMultiSRC) || empty($this->tinySliderMultiSRC)) {
+        if (!\is_array($this->tinySliderMultiSRC) || empty($this->tinySliderMultiSRC)) {
             return '';
         }
 
@@ -338,16 +345,16 @@ class Gallery extends Frontend
         }
 
         $image = [
-            'id'        => $model->id,
-            'uuid'      => $model->uuid,
-            'name'      => $file->basename,
-            'file'      => $file,
-            'model'     => $model,
+            'id' => $model->id,
+            'uuid' => $model->uuid,
+            'name' => $file->basename,
+            'file' => $file,
+            'model' => $model,
             'singleSRC' => $model->path,
-            'alt'       => version_compare(VERSION, '4.0', '<') ? $arrMeta['title'] : $arrMeta['alt'],
-            'imageUrl'  => $arrMeta['link'],
-            'caption'   => $arrMeta['caption'],
-            'title'     => $arrMeta['title'],
+            'alt' => version_compare(VERSION, '4.0', '<') ? $arrMeta['title'] : $arrMeta['alt'],
+            'imageUrl' => $arrMeta['link'],
+            'caption' => $arrMeta['caption'],
+            'title' => $arrMeta['title'],
         ];
 
         return $image;
