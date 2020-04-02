@@ -187,7 +187,6 @@ class Gallery extends Frontend
 
         // Sort array
         switch ($this->tinySliderSortBy) {
-            default:
             case 'name_asc':
                 uksort($images, 'basename_natcasecmp');
                 break;

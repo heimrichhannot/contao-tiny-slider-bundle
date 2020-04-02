@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.12.0] - 2020-04-02
+- fixed sortby for reader config element
+- fixed php_cs fixer style
+- fixed comparisons
+
 ## [1.11.0] - 2019-11-19
 - added list bundle support (integrated contao-tiny-slider-list-bundle)
 - included tiny slider library (instead having a shim repo) (can be unset/overwritten in assets array)

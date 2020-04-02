@@ -61,7 +61,7 @@ class TinySliderConfigElementType implements ReaderConfigElementTypeInterface
      */
     public function getPalette(): string
     {
-        return '{config_legend},tinySliderConfig,imageSelectorField,imageField,orderField,sortingField,imgSize;';
+        return '{config_legend},tinySliderConfig,imageSelectorField,imageField,tinySliderSortBy,orderField,imgSize;';
     }
 
     /**
@@ -74,12 +74,12 @@ class TinySliderConfigElementType implements ReaderConfigElementTypeInterface
         $readerConfigElement = $configElementData->getReaderConfigElement();
         $item = $configElementData->getItem();
 
-        if (!$readerConfigElement->tinySliderConfig || !$tinySliderConfig = TinySliderConfigModel::findByPk($readerConfigElement->tinySliderConfig)) {
+        if (!$readerConfigElement->tinySliderConfig || !($tinySliderConfig = TinySliderConfigModel::findByPk($readerConfigElement->tinySliderConfig))) {
             return;
         }
 
-        if (!($imageSelectorField = $readerConfigElement->imageSelectorField) || !$item->getRawValue($imageSelectorField) ||
-            (!$imageField = $readerConfigElement->imageField) || !$item->getRawValue($imageField)) {
+        if (($imageSelectorField = $readerConfigElement->imageSelectorField) && !$item->getRawValue($imageSelectorField) ||
+            !($imageField = $readerConfigElement->imageField) || !$item->getRawValue($imageField)) {
             return;
         }
 
@@ -87,9 +87,6 @@ class TinySliderConfigElementType implements ReaderConfigElementTypeInterface
 
         $config = [
             'tinySliderMultiSRC' => $item->getRawValue($imageField),
-            'tinySliderOrderSRC' => $item->getRawValue($readerConfigElement->orderField),
-            'tinySliderSortBy' => $item->getRawValue($readerConfigElement->sortingField),
-
             'tinySliderUseHomeDir' => $item->getRawValue('tinySliderUseHomeDir'),
             'tinySliderFullsize' => $item->getRawValue('tinySliderFullsize'),
             'tinySliderNumberOfItems' => $item->getRawValue('tinySliderNumberOfItems'),
@@ -97,6 +94,13 @@ class TinySliderConfigElementType implements ReaderConfigElementTypeInterface
             'tinySliderGalleryTpl' => $item->getRawValue('tinySliderGalleryTpl'),
             'tinySliderConfig' => $tinySliderConfig->id,
         ];
+
+        if ($item->getRawValue($readerConfigElement->orderField)) {
+            $config['tinySliderOrderSRC'] = $item->getRawValue($readerConfigElement->orderField);
+            $config['tinySliderSortBy'] = 'custom';
+        } else {
+            $config['tinySliderSortBy'] = $readerConfigElement->tinySliderSortBy;
+        }
 
         if ($readerConfigElement->imgSize) {
             $config['tinySliderSize'] = $readerConfigElement->imgSize;
@@ -113,7 +117,7 @@ class TinySliderConfigElementType implements ReaderConfigElementTypeInterface
             ]),
             'images' => $galleryImages,
         ];
-        $item->setFormattedValue('tinySliderGallery', $tinySliderGallery);
+        $item->setFormattedValue($readerConfigElement->templateVariable ?: 'tinySliderGallery', $tinySliderGallery);
         $configElementData->setItem($item);
     }
 }

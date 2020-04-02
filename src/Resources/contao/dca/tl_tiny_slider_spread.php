@@ -127,7 +127,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'inputType' => 'select',
             'options'   => ['custom', 'name_asc', 'name_desc', 'date_asc', 'date_desc', 'random'],
             'reference' => &$GLOBALS['TL_LANG']['tl_content'],
-            'eval'      => ['tl_class' => 'w50'],
+            'eval'      => ['tl_class' => 'w50', 'includeBlankOption' => true, 'mandatory' => true],
             'sql'       => "varchar(32) NOT NULL default ''",
         ],
         'tinySliderUseHomeDir'                 => [
