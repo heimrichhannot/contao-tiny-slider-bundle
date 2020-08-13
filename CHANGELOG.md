@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.13.0] - 2020-08-13
+- added event AfterGalleryGetImagesBodyEvent (used to modify image data before parsing the template)
+
 ## [1.12.0] - 2020-04-02
 - fixed sortby for reader config element
 - fixed php_cs fixer style

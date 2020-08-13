@@ -19,6 +19,7 @@ use Contao\StringUtil;
 use Contao\System;
 use Contao\Validator;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
+use HeimrichHannot\TinySliderBundle\Event\AfterGalleryGetImagesBodyEvent;
 
 class Gallery extends Frontend
 {
@@ -284,7 +285,9 @@ class Gallery extends Frontend
             $body[$i] = $objImage;
         }
 
-        $objTemplate->body = $body;
+        $event = System::getContainer()->get('event_dispatcher')->dispatch(AfterGalleryGetImagesBodyEvent::NAME, new AfterGalleryGetImagesBodyEvent($body, $images));
+
+        $objTemplate->body = $event->getBody();
         $objTemplate->headline = $this->headline; // see #1603
 
         return $objTemplate->parse();
