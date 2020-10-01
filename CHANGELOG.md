@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.14.0] - 2020-10-01
+- fixed overridable fields
+
 ## [1.13.0] - 2020-08-13
 - added event AfterGalleryGetImagesBodyEvent (used to modify image data before parsing the template)
 

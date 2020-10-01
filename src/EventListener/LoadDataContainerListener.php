@@ -72,5 +72,7 @@ class LoadDataContainerListener
         ];
 
         $dca['fields'] = array_merge($fields, \is_array($dca['fields']) ? $dca['fields'] : []);
+
+        \HeimrichHannot\ListBundle\Backend\ListConfig::addOverridableFields();
     }
 }
