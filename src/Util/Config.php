@@ -23,8 +23,6 @@ class Config
      * @param string $container Selector of the tiny slider container
      *
      * @throws \Psr\Cache\InvalidArgumentException
-     *
-     * @return string
      */
     public function getAttributes($config, $container = '.tiny-slider-container'): string
     {
@@ -191,8 +189,6 @@ class Config
      * Get CSS Class from config model or config model id.
      *
      * @param int|TinySliderConfigModel $config
-     *
-     * @return string
      */
     public function getCssClass($config): string
     {
@@ -210,9 +206,6 @@ class Config
     }
 
     /**
-     * @param array                 $data
-     * @param TinySliderConfigModel $config
-     *
      * @return TinySliderConfigModel
      */
     public function createSettings(array $data, TinySliderConfigModel $config)

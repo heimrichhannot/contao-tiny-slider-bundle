@@ -52,9 +52,6 @@ class TinySliderExtension extends AbstractExtension implements ContainerAwareInt
     /**
      * Get tiny slider container data attributes for given tiny slider config.
      *
-     * @param int|null $config
-     * @param string   $containerSelector
-     *
      * @throws \Psr\Cache\InvalidArgumentException
      *
      * @return string Data attributes as string

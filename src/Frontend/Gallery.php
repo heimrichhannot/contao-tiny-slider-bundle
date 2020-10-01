@@ -18,8 +18,8 @@ use Contao\Model;
 use Contao\StringUtil;
 use Contao\System;
 use Contao\Validator;
-use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 use HeimrichHannot\TinySliderBundle\Event\AfterGalleryGetImagesBodyEvent;
+use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 
 class Gallery extends Frontend
 {
@@ -224,7 +224,7 @@ class Gallery extends Frontend
 
                         // Move the matching elements to their position in $arrOrder
                         foreach ($images as $k => $v) {
-                            if (array_key_exists($v['uuid'], $arrOrder)) {
+                            if (\array_key_exists($v['uuid'], $arrOrder)) {
                                 $arrOrder[$v['uuid']] = $v;
                                 unset($images[$k]);
                             }
@@ -325,8 +325,6 @@ class Gallery extends Frontend
 
     /**
      * Prepare data for image template.
-     *
-     * @param FilesModel $model
      *
      * @return array|bool The image data as array for the image template, or false if invalid image
      */
