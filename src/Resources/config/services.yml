@@ -29,3 +29,8 @@ services:
   HeimrichHannot\TinySliderBundle\Asset\FrontendAssets:
     public: true
     autowire: true
+
+  HeimrichHannot\TinySliderBundle\DataContainer\:
+    resource: '../../DataContainer/*'
+    autowire: true
+    public: true

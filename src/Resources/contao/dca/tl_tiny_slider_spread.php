@@ -166,7 +166,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'label'            => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySliderCustomTpl'],
             'exclude'          => true,
             'inputType'        => 'select',
-            'options_callback' => ['tl_content', 'getElementTemplates'],
+            'options_callback' => [TinySliderSpreadContainer::class, 'onTinySliderCustomTplOptionsCallback'],
             'eval'             => ['includeBlankOption' => true, 'chosen' => true, 'tl_class' => 'w50'],
             'sql'              => "varchar(64) NOT NULL default ''",
         ],
