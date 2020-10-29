@@ -8,20 +8,26 @@
 
 namespace HeimrichHannot\TinySliderBundle\ConfigElementType;
 
-use HeimrichHannot\ReaderBundle\ConfigElementType\ReaderConfigElementData;
-use HeimrichHannot\ReaderBundle\ConfigElementType\ReaderConfigElementTypeInterface;
+use HeimrichHannot\ConfigElementTypeBundle\ConfigElementType\ConfigElementData;
+use HeimrichHannot\ConfigElementTypeBundle\ConfigElementType\ConfigElementResult;
+use HeimrichHannot\ConfigElementTypeBundle\ConfigElementType\ConfigElementTypeInterface;
 use HeimrichHannot\TinySliderBundle\Asset\FrontendAssets;
 use HeimrichHannot\TinySliderBundle\Frontend\Gallery;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use HeimrichHannot\TinySliderBundle\Util\Config;
+use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
 use Twig\Environment;
 
-class TinySliderConfigElementType implements ReaderConfigElementTypeInterface
+class TinySliderConfigElementType implements ConfigElementTypeInterface
 {
     /**
-     * @var ContainerInterface
+     * @var Config
      */
-    private $container;
+    protected $tsConfigUtil;
+    /**
+     * @var TemplateUtil
+     */
+    protected $templateUtil;
     /**
      * @var Environment
      */
@@ -31,11 +37,12 @@ class TinySliderConfigElementType implements ReaderConfigElementTypeInterface
      */
     private $frontendAssets;
 
-    public function __construct(ContainerInterface $container, Environment $twig, FrontendAssets $frontendAssets)
+    public function __construct(Environment $twig, FrontendAssets $frontendAssets, Config $tsConfigUtil, TemplateUtil $templateUtil)
     {
-        $this->container = $container;
         $this->twig = $twig;
         $this->frontendAssets = $frontendAssets;
+        $this->tsConfigUtil = $tsConfigUtil;
+        $this->templateUtil = $templateUtil;
     }
 
     /**
@@ -49,63 +56,64 @@ class TinySliderConfigElementType implements ReaderConfigElementTypeInterface
     /**
      * Return the reader config element type palette.
      */
-    public function getPalette(): string
+    public function getPalette(string $prependPalette, string $appendPalette): string
     {
-        return '{config_legend},tinySliderConfig,imageSelectorField,imageField,tinySliderSortBy,orderField,imgSize;';
+        return $prependPalette
+            .'{config_legend},tinySliderConfig,imageSelectorField,imageField,tinySliderSortBy,orderField,imgSize;'
+            .$appendPalette;
     }
 
-    /**
-     * Update the item data.
-     */
-    public function addToReaderItemData(ReaderConfigElementData $configElementData): void
+    public function applyConfiguration(ConfigElementData $configElementData): ConfigElementResult
     {
-        $readerConfigElement = $configElementData->getReaderConfigElement();
-        $item = $configElementData->getItem();
+        $configuration = $configElementData->getConfiguration();
+        $item = $configElementData->getItemData();
 
-        if (!$readerConfigElement->tinySliderConfig || !($tinySliderConfig = TinySliderConfigModel::findByPk($readerConfigElement->tinySliderConfig))) {
-            return;
+        if (!$configuration->tinySliderConfig || !($tinySliderConfig = TinySliderConfigModel::findByPk($configuration->tinySliderConfig))) {
+            return new ConfigElementResult(ConfigElementResult::TYPE_NONE, null);
         }
 
-        if (($imageSelectorField = $readerConfigElement->imageSelectorField) && !$item->getRawValue($imageSelectorField) ||
-            !($imageField = $readerConfigElement->imageField) || !$item->getRawValue($imageField)) {
-            return;
+
+
+        if (($imageSelectorField = $configuration->imageSelectorField) && !$item[$imageSelectorField] ||
+            !($imageField = $configuration->imageField) || !$item[$imageField]) {
+            return new ConfigElementResult(ConfigElementResult::TYPE_NONE, null);
         }
 
         $this->frontendAssets->addFrontendAssets();
 
         $config = [
-            'tinySliderMultiSRC' => $item->getRawValue($imageField),
-            'tinySliderUseHomeDir' => $item->getRawValue('tinySliderUseHomeDir'),
-            'tinySliderFullsize' => $item->getRawValue('tinySliderFullsize'),
-            'tinySliderNumberOfItems' => $item->getRawValue('tinySliderNumberOfItems'),
-            'tinySliderCustomTpl' => $item->getRawValue('tinySliderCustomTpl'),
-            'tinySliderGalleryTpl' => $item->getRawValue('tinySliderGalleryTpl'),
+            'tinySliderMultiSRC' => $item[$imageField],
+            'tinySliderUseHomeDir' => $item['tinySliderUseHomeDir'],
+            'tinySliderFullsize' => $item['tinySliderFullsize'],
+            'tinySliderNumberOfItems' => $item['tinySliderNumberOfItems'],
+            'tinySliderCustomTpl' => $item['tinySliderCustomTpl'],
+            'tinySliderGalleryTpl' => $item['tinySliderGalleryTpl'],
             'tinySliderConfig' => $tinySliderConfig->id,
         ];
 
-        if ($item->getRawValue($readerConfigElement->orderField)) {
-            $config['tinySliderOrderSRC'] = $item->getRawValue($readerConfigElement->orderField);
+        if ($item[$configuration->orderField]) {
+            $config['tinySliderOrderSRC'] = $item[$configuration->orderField];
             $config['tinySliderSortBy'] = 'custom';
         } else {
-            $config['tinySliderSortBy'] = $readerConfigElement->tinySliderSortBy;
+            $config['tinySliderSortBy'] = $configuration->tinySliderSortBy;
         }
 
-        if ($readerConfigElement->imgSize) {
-            $config['tinySliderSize'] = $readerConfigElement->imgSize;
+        if ($configuration->imgSize) {
+            $config['tinySliderSize'] = $configuration->imgSize;
         } else {
-            $config['tinySliderSize'] = $item->getFormattedValue('tinySliderSize');
+            $config['tinySliderSize'] = $item['tinySliderSize'];
         }
 
-        $gallery = new Gallery($this->container->get('huh.tiny_slider.util.config')->createSettings($config, $tinySliderConfig));
+        $gallery = new Gallery($this->tsConfigUtil->createSettings($config, $tinySliderConfig));
         $galleryImages = $gallery->getImages();
         $tinySliderGallery = [
-            'html' => $this->container->get('huh.utils.template')->renderTwigTemplate('tiny_slider_config_element', [
+            'html' => $this->templateUtil->renderTwigTemplate('tiny_slider_config_element', [
                 'tinySliderSlides' => $galleryImages,
                 'config' => $tinySliderConfig->id,
             ]),
             'images' => $galleryImages,
         ];
-        $item->setFormattedValue($readerConfigElement->templateVariable ?: 'tinySliderGallery', $tinySliderGallery);
-        $configElementData->setItem($item);
+
+        return new ConfigElementResult(ConfigElementResult::TYPE_FORMATTED_VALUE, $tinySliderGallery);
     }
 }
