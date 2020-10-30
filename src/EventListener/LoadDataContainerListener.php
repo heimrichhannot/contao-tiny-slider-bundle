@@ -8,12 +8,16 @@
 
 namespace HeimrichHannot\TinySliderBundle\EventListener;
 
+use Contao\Controller;
+use HeimrichHannot\TinySliderBundle\DcaFieldGenerator;
+
 class LoadDataContainerListener
 {
     public function onLoadDataContainer(string $table)
     {
         switch ($table) {
             case 'tl_reader_config_element':
+            case 'tl_list_config_element':
                 $this->addConfigElementFields($table);
 
                 return;
@@ -25,21 +29,17 @@ class LoadDataContainerListener
         }
     }
 
+    /**
+     * Add field to config type tables
+     *
+     * @param string $table
+     */
     protected function addConfigElementFields(string $table)
     {
+        Controller::loadLanguageFile('tinySliderConfig');
         $dca = &$GLOBALS['TL_DCA'][$table];
-
-        $dca['fields']['tinySliderConfig'] = [
-            'label' => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySliderConfig'],
-            'inputType' => 'select',
-            'exclude' => true,
-            'options_callback' => ['huh.tiny_slider.backend.tiny_slider_spread', 'getBaseConfigurations'],
-            'sql' => "int(10) unsigned NOT NULL default '0'",
-            'eval' => ['tl_class' => 'w50'],
-            'wizard' => [
-                ['huh.tiny_slider.backend.tiny_slider_spread', 'editTinySliderConfig'],
-            ],
-        ];
+        DcaFieldGenerator::addTinySliderConfigSelect($dca);
+        DcaFieldGenerator::addTinySliderSortBySelect($dca);
     }
 
     /**
@@ -47,31 +47,14 @@ class LoadDataContainerListener
      */
     protected function addListConfigDcaFields()
     {
+        Controller::loadLanguageFile('tinySliderConfig');
         $dca = &$GLOBALS['TL_DCA']['tl_list_config'];
         $dca['palettes']['default'] = str_replace('addMasonry', 'addMasonry,addTinySlider', $dca['palettes']['default']);
         $dca['palettes']['__selector__'][] = 'addTinySlider';
         $dca['subpalettes']['addTinySlider'] = 'tinySliderConfig';
 
-        $fields = [
-            'addTinySlider' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_list_config']['addTinySlider'],
-                'exclude' => true,
-                'inputType' => 'checkbox',
-                'eval' => ['tl_class' => 'w50 clr', 'submitOnChange' => true],
-                'sql' => "char(1) NOT NULL default ''",
-            ],
-            'tinySliderConfig' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_list_config']['tinySliderConfig'],
-                'exclude' => true,
-                'filter' => true,
-                'inputType' => 'select',
-                'options_callback' => ['huh.tiny_slider.backend.tiny_slider_spread', 'getBaseConfigurations'],
-                'eval' => ['tl_class' => 'w50', 'mandatory' => true, 'includeBlankOption' => true, 'submitOnChange' => true],
-                'sql' => "int(10) unsigned NOT NULL default '0'",
-            ],
-        ];
-
-        $dca['fields'] = array_merge($fields, \is_array($dca['fields']) ? $dca['fields'] : []);
+        DcaFieldGenerator::addAddTinySliderCheckbox($dca);
+        DcaFieldGenerator::addTinySliderConfigSelect($dca);
 
         \HeimrichHannot\ListBundle\Backend\ListConfig::addOverridableFields();
     }

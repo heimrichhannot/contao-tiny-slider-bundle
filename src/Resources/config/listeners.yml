@@ -6,6 +6,9 @@ services:
   HeimrichHannot\TinySliderBundle\EventListener\LoadDataContainerListener:
     public: true
 
+  HeimrichHannot\TinySliderBundle\EventListener\LoadLanguageFileListener:
+    public: true
+
   HeimrichHannot\TinySliderBundle\EventListener\ListBeforeRenderListener:
     tags:
       - { name: kernel.event_listener, event: huh.list.event.list_before_render, method: onListBeforeRender }

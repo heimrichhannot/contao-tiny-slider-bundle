@@ -24,7 +24,7 @@ services:
   HeimrichHannot\TinySliderBundle\ConfigElementType\TinySliderConfigElementType:
     public: false
     autowire: true
-    tags: ['huh.reader.config_element_type']
+    tags: ['huh.reader.config_element_type', 'huh.list.config_element_type']
 
   HeimrichHannot\TinySliderBundle\Asset\FrontendAssets:
     public: true

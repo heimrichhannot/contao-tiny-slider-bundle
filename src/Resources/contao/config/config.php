@@ -27,6 +27,7 @@ define('TINY_SLIDER_PALETTE_CONTENT_SLIDER_END', TinySliderSpreadContainer::PALE
  */
 $GLOBALS['TL_HOOKS']['loadDataContainer'][] = ['HeimrichHannot\TinySliderBundle\Backend\Hooks', 'loadDataContainerHook'];
 $GLOBALS['TL_HOOKS']['loadDataContainer'][] = [\HeimrichHannot\TinySliderBundle\EventListener\LoadDataContainerListener::class, 'onLoadDataContainer'];
+$GLOBALS['TL_HOOKS']['loadLanguageFile'][] = [\HeimrichHannot\TinySliderBundle\EventListener\LoadLanguageFileListener::class, '__invoke'];
 
 /**
  * Supported TL_DCA Entities, spreading efa palette to
