@@ -6,8 +6,8 @@ A slider bundle for contao based on [Tiny Slider](https://github.com/ganlanyuan/
 * global configuration
 * content elements for image and content sliders
 * [Encore Bundle](https://github.com/heimrichhannot/contao-encore-bundle) support
-* [List Bundle](https://github.com/heimrichhannot/contao-list-bundle) support (display lists as slider)
-* [Reader Bundle](https://github.com/heimrichhannot/contao-reader-bundle) support (ReaderConfigElement)
+* show [List Bundle](https://github.com/heimrichhannot/contao-list-bundle) list as slider
+* bundled config element type for [List Bundle](https://github.com/heimrichhannot/contao-list-bundle) and [Reader Bundle](https://github.com/heimrichhannot/contao-reader-bundle)
 
 
 ## Usage
@@ -23,6 +23,20 @@ A slider bundle for contao based on [Tiny Slider](https://github.com/ganlanyuan/
 ### Setup
 1. Create a tiny slider config (System -> Tiny-Slider). Please consider the tiny slider documentation for more informations about the different config options.
 1. Select the created config in a content element, an reader config element or in an list config after activating "Render as Tiny slider".
+
+
+### Usage as config element type (list and reader bundle)
+
+This bundle comes with an [config element type](https://github.com/heimrichhannot/contao-config-element-type-bundle), already registered for list and reader bundle. 
+
+1. Add 'Slider (Tiny Slider)' as list or reader config element to your configuration
+1. your defined template variable has two keys, html and images. html contains the complete slider, images just the prepared images if you want to define your own wrapper. So your typical template code to output a slider would be:
+
+```twig
+{% if tinySlider.html is defined %}
+    {{ tinySlider.html }}
+{% endif %}
+```
 
 
 ## Twig usage
