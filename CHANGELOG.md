@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.15.0] - 2020-10-30
+- Refactored reader config element type to config element type (#5)
+- made config element usable as list config element
+- added DcaFieldGenerator
+
 ## [1.14.1] - 2020-10-07
 - fixed contao 4.9 support for custom templates
 
