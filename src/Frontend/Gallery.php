@@ -56,6 +56,7 @@ class Gallery extends Frontend
         parent::__construct();
         $this->data = $objSettings->row();
         $this->settings = $objSettings;
+
         $this->Template = new FrontendTemplate($this->strTemplate);
         $this->getFiles();
     }
@@ -282,6 +283,7 @@ class Gallery extends Frontend
             $images[$i]['size'] = $this->tinySliderSize;
             $images[$i]['fullsize'] = $this->tinySliderFullsize;
             Controller::addImageToTemplate($objImage, $images[$i], $intMaxWidth, $strLightboxId, $images[$i]['model']);
+            $objImage->model = $images[$i]['model'];
             $body[$i] = $objImage;
         }
 
@@ -355,7 +357,7 @@ class Gallery extends Frontend
             'alt' => version_compare(VERSION, '4.0', '<') ? $arrMeta['title'] : $arrMeta['alt'],
             'imageUrl' => $arrMeta['link'],
             'caption' => $arrMeta['caption'],
-            'title' => $arrMeta['title'],
+            'title' => $arrMeta['title']
         ];
 
         return $image;
