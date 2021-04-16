@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2020 Heimrich & Hannot GmbH
+ * Copyright (c) 2021 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -27,6 +27,6 @@ class TinySliderSpreadContainer
      */
     public function onTinySliderCustomTplOptionsCallback($dc)
     {
-        return Backend::getTemplateGroup('ce_' . $dc->activeRecord->type);
+        return Backend::getTemplateGroup('ce_'.$dc->activeRecord->type);
     }
 }

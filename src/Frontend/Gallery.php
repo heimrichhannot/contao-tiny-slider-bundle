@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2020 Heimrich & Hannot GmbH
+ * Copyright (c) 2021 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -357,7 +357,7 @@ class Gallery extends Frontend
             'alt' => version_compare(VERSION, '4.0', '<') ? $arrMeta['title'] : $arrMeta['alt'],
             'imageUrl' => $arrMeta['link'],
             'caption' => $arrMeta['caption'],
-            'title' => $arrMeta['title']
+            'title' => $arrMeta['title'],
         ];
 
         return $image;

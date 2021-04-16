@@ -1,16 +1,12 @@
 <?php
-/**
- * Contao Open Source CMS
+
+/*
+ * Copyright (c) 2021 Heimrich & Hannot GmbH
  *
- * Copyright (c) 2020 Heimrich & Hannot GmbH
- *
- * @author  Thomas Körner <t.koerner@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
+ * @license LGPL-3.0-or-later
  */
 
-
 namespace HeimrichHannot\TinySliderBundle;
-
 
 class DcaFieldGenerator
 {
@@ -21,7 +17,7 @@ class DcaFieldGenerator
             'inputType' => 'select',
             'exclude' => true,
             'options_callback' => ['huh.tiny_slider.backend.tiny_slider_spread', 'getBaseConfigurations'],
-            'wizard' => [['huh.tiny_slider.backend.tiny_slider_spread', 'editTinySliderConfig'],],
+            'wizard' => [['huh.tiny_slider.backend.tiny_slider_spread', 'editTinySliderConfig']],
             'filter' => true,
             'eval' => ['tl_class' => 'w50', 'mandatory' => true],
             'sql' => "int(10) unsigned NOT NULL default '0'",
@@ -31,24 +27,24 @@ class DcaFieldGenerator
     public static function addAddTinySliderCheckbox(array &$dca)
     {
         $dca['fields']['addTinySlider'] = [
-            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['addTinySlider'],
-            'exclude'   => true,
+            'label' => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['addTinySlider'],
+            'exclude' => true,
             'inputType' => 'checkbox',
-            'eval'      => ['tl_class' => 'w50 clr', 'submitOnChange' => true],
-            'sql'       => "char(1) NOT NULL default ''",
+            'eval' => ['tl_class' => 'w50 clr', 'submitOnChange' => true],
+            'sql' => "char(1) NOT NULL default ''",
         ];
     }
 
     public static function addTinySliderSortBySelect(array &$dca)
     {
         $dca['fields']['tinySliderSortBy'] = [
-            'label'     => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySliderSortBy'],
-            'exclude'   => true,
+            'label' => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySliderSortBy'],
+            'exclude' => true,
             'inputType' => 'select',
-            'options'   => ['custom', 'name_asc', 'name_desc', 'date_asc', 'date_desc', 'random'],
+            'options' => ['custom', 'name_asc', 'name_desc', 'date_asc', 'date_desc', 'random'],
             'reference' => &$GLOBALS['TL_LANG']['tl_content'],
-            'eval'      => ['tl_class' => 'w50', 'mandatory' => true],
-            'sql'       => "varchar(32) NOT NULL default ''",
+            'eval' => ['tl_class' => 'w50', 'mandatory' => true],
+            'sql' => "varchar(32) NOT NULL default ''",
         ];
     }
 }

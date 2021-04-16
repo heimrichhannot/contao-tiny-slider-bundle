@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2020 Heimrich & Hannot GmbH
+ * Copyright (c) 2021 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -30,9 +30,7 @@ class LoadDataContainerListener
     }
 
     /**
-     * Add field to config type tables
-     *
-     * @param string $table
+     * Add field to config type tables.
      */
     protected function addConfigElementFields(string $table)
     {
