@@ -11,6 +11,7 @@ namespace HeimrichHannot\TinySliderBundle\Util;
 use Contao\Controller;
 use Contao\StringUtil;
 use Contao\System;
+use HeimrichHannot\TinySliderBundle\Asset\FrontendAssets;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
@@ -50,6 +51,8 @@ class Config
 
             $cache->save($cacheItem);
         }
+
+        System::getContainer()->get(FrontendAssets::class)->addFrontendAssets();
 
         $attributes = ' data-tiny-slider-config="'.htmlspecialchars(json_encode($configData), ENT_QUOTES, \Contao\Config::get('characterSet')).'"';
 

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.16.1] - 2021-05-27
+
+- optimized encore handling
+- fixed service definitions
+
 ## [1.16.0] - 2021-04-16
 
 - passed file model to gallery template

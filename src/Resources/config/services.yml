@@ -6,10 +6,12 @@ services:
     Symfony\Component\DependencyInjection\ContainerAwareInterface:
       calls:
         - ["setContainer", ["@service_container"]]
-  huh.tiny_slider.util.config:
+
+  HeimrichHannot\TinySliderBundle\Util\Config:
     class: HeimrichHannot\TinySliderBundle\Util\Config
     public: true
-  HeimrichHannot\TinySliderBundle\Util\Config: '@huh.tiny_slider.util.config'
+
+  huh.tiny_slider.util.config: '@HeimrichHannot\TinySliderBundle\Util\Config'
 
   huh.tiny_slider.util.dca:
     class: HeimrichHannot\TinySliderBundle\Util\Dca
