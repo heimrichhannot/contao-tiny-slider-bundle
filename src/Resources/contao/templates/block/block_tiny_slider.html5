@@ -4,6 +4,9 @@
     <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
     <?php endif; ?>
 
+    <?php $this->block('intro'); ?>
+    <?php $this->endblock(); ?>
+
     <div class="tiny-slider-container"<?= $this->attributes; ?>>
         <?php $this->block('content'); ?>
         <?php $this->endblock(); ?>

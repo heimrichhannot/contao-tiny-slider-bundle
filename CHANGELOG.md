@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.16.3] - 2021-05-28
+
+- added new template block `intro` in `block_tiny_slider.html5`
+
 ## [1.16.2] - 2021-05-28
 
 - fixed service definitions
