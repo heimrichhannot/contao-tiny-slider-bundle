@@ -12,6 +12,7 @@ use Contao\System;
 use HeimrichHannot\TinySliderBundle\Asset\FrontendAssets;
 use HeimrichHannot\TinySliderBundle\Frontend\Gallery;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
+use HeimrichHannot\TinySliderBundle\Util\Config;
 
 class ContentGallery extends \Contao\ContentGallery
 {
@@ -58,10 +59,10 @@ class ContentGallery extends \Contao\ContentGallery
         $this->arrData['tinySliderNumberOfItems'] = $this->arrData['numberOfItems'];
         $this->arrData['tinySliderCustomTpl'] = $this->arrData['customTpl'];
 
-        $gallery = new Gallery(System::getContainer()->get('huh.tiny_slider.util.config')->createSettings($this->arrData, $config));
+        $gallery = new Gallery(System::getContainer()->get(Config::class)->createSettings($this->arrData, $config));
 
-        $this->Template->class .= ' '.System::getContainer()->get('huh.tiny_slider.util.config')->getCssClass($config);
-        $this->Template->attributes .= System::getContainer()->get('huh.tiny_slider.util.config')->getAttributes($config);
+        $this->Template->class .= ' '.System::getContainer()->get(Config::class)->getCssClass($config);
+        $this->Template->attributes .= System::getContainer()->get(Config::class)->getAttributes($config);
         $this->Template->images = $gallery->getImages();
 
         return $this->Template->parse();

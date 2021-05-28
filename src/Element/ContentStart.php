@@ -13,6 +13,7 @@ use Contao\ContentElement;
 use Contao\System;
 use HeimrichHannot\TinySliderBundle\Asset\FrontendAssets;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
+use HeimrichHannot\TinySliderBundle\Util\Config;
 
 class ContentStart extends ContentElement
 {
@@ -48,8 +49,8 @@ class ContentStart extends ContentElement
 
         System::getContainer()->get(FrontendAssets::class)->addFrontendAssets();
 
-        $this->Template->class .= ' '.System::getContainer()->get('huh.tiny_slider.util.config')->getCssClass($config);
-        $this->Template->attributes .= System::getContainer()->get('huh.tiny_slider.util.config')->getAttributes($config);
+        $this->Template->class .= ' '.System::getContainer()->get(Config::class)->getCssClass($config);
+        $this->Template->attributes .= System::getContainer()->get(Config::class)->getAttributes($config);
 
         return $this->Template->parse();
     }

@@ -9,6 +9,7 @@
 namespace HeimrichHannot\TinySliderBundle\Twig;
 
 use HeimrichHannot\TinySliderBundle\Asset\FrontendAssets;
+use HeimrichHannot\TinySliderBundle\Util\Config;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Twig\Extension\AbstractExtension;
@@ -46,7 +47,7 @@ class TinySliderExtension extends AbstractExtension implements ContainerAwareInt
 
         $this->container->get(FrontendAssets::class)->addFrontendAssets();
 
-        return $this->container->get('huh.tiny_slider.util.config')->getCssClass($config);
+        return $this->container->get(Config::class)->getCssClass($config);
     }
 
     /**
@@ -61,8 +62,9 @@ class TinySliderExtension extends AbstractExtension implements ContainerAwareInt
         if (!$config) {
             return '';
         }
+
         $this->container->get(FrontendAssets::class)->addFrontendAssets();
 
-        return $this->container->get('huh.tiny_slider.util.config')->getAttributes($config, $containerSelector);
+        return $this->container->get(Config::class)->getAttributes($config, $containerSelector);
     }
 }
