@@ -276,7 +276,7 @@ class Gallery extends Frontend
         $objTemplate->setData($this->data);
 
         $this->Template->setData($this->data);
-        $this->Template->class .= ' '.System::getContainer()->get(Config::class)->getCssClass($this->settings).' tiny-slider';
+        $this->Template->class .= ' '.System::getContainer()->get(\HeimrichHannot\TinySliderBundle\Util\Config::class)->getCssClass($this->settings).' tiny-slider';
 
         for ($i = $offset; $i < $limit; ++$i) {
             $objImage = new \stdClass();

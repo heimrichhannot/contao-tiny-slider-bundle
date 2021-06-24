@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.16.4] - 2021-06-24
+
+- fixed wrong service call in Gallery
+
 ## [1.16.3] - 2021-05-28
 
 - added new template block `intro` in `block_tiny_slider.html5`
