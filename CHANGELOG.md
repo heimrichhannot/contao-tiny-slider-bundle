@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [1.16.4] - 2021-06-24
 
-- fixed wrong service call in Gallery
+- fixed wrong service call in Gallery ([#6])
 
 ## [1.16.3] - 2021-05-28
 
@@ -297,3 +297,5 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - initial version
+
+[#6]: https://github.com/heimrichhannot/contao-tiny-slider-bundle/issues/6
