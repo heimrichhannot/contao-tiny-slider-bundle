@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.16.5] - 2021-07-29
+
+- fixed ContentGallery not to show if element is hidden(start and stop fields)
+
 ## [1.16.4] - 2021-06-24
 
 - fixed wrong service call in Gallery ([#6])

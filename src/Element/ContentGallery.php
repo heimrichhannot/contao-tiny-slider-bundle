@@ -35,7 +35,11 @@ class ContentGallery extends \Contao\ContentGallery
             return parent::generate();
         }
 
-        parent::generate();
+        $result = parent::generate();
+
+        if (empty($result)) {
+            return '';
+        }
 
         if ($this->tinySliderConfig < 1) {
             return '';
