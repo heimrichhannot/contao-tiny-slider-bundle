@@ -42,6 +42,11 @@ class TinySliderInstance {
             if (this.sliderControls && focusElements.length > 0) {
                 this.sliderControls.removeAttribute('tabindex');
             }
+            // accessibility fix, controls should be tabbable
+            if (this.sliderControls) {
+                let controls = this.sliderControls.querySelectorAll('button[data-controls="prev"], button[data-controls="next"]');
+                controls.forEach(item => item.setAttribute('tabindex', "0"));
+            }
 
             if (onInit) {
                 let onInitFunction = new Function(onInit + '()');
@@ -51,7 +56,11 @@ class TinySliderInstance {
 
         this.slider = tns(this.config);
 
-        this.container.addEventListener('keydown', this.keyListener.bind(this), true);
+        if (this.config.enhanceAccessibility) {
+            this.handleTabindex(this.container);
+        } else {
+            this.container.addEventListener('keydown', this.keyListener.bind(this), true);
+        }
 
         TinySliderBundle.sliders.push(this.slider);
     }
@@ -88,6 +97,33 @@ class TinySliderInstance {
                 current = current.parentNode;
             }
         }
+    }
+
+    handleTabindex(tinySliderContainer) {
+
+        let focusElements = tinySliderContainer.querySelectorAll('button, [href], input:not([type="hidden"]), select, textarea, [tabindex]:not([tabindex="-1"])');
+
+        focusElements.forEach(item => item.setAttribute('tabindex', "-1"));
+        let activeFocusElements = tinySliderContainer.querySelectorAll('.tns-slide-active button, .tns-slide-active [href], .tns-slide-active input:not([type="hidden"]), .tns-slide-active select, .tns-slide-active textarea');
+        activeFocusElements.forEach(item => item.removeAttribute('tabindex'));
+
+        // Set up an observer
+        const config = {attributes: true, subtree: true};
+
+        const callback = (mutationList, observer) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    focusElements.forEach(item => item.setAttribute('tabindex', "-1"));
+                    activeFocusElements = tinySliderContainer.querySelectorAll('.tns-slide-active button, .tns-slide-active [href], .tns-slide-active input:not([type="hidden"]), .tns-slide-active select, .tns-slide-active textarea');
+                    activeFocusElements.forEach(item => item.removeAttribute('tabindex'));
+
+                }
+            }
+        }
+
+        const tinySliderObserver = new MutationObserver(callback);
+        tinySliderObserver.observe(tinySliderContainer, config);
+
     }
 
 }

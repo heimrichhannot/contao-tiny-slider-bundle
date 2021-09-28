@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.17.0] - 2021-09-28
+
+- Added: new accessibility enhancement in slider config. Handle tabindex more graciously.
+- Changed: control buttons are always tabbable
+
 ## [1.16.5] - 2021-07-29
 
 - fixed ContentGallery not to show if element is hidden(start and stop fields)
