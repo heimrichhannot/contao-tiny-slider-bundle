@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.17.1] - 2021-10-19
+
+- Added: navigation aria label translations
+- Added: new slide number display
+
 ## [1.17.0] - 2021-09-28
 
 - Added: new accessibility enhancement in slider config. Handle tabindex more graciously.

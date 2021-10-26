@@ -28,7 +28,7 @@ $lang['tinySlider_responsive_breakpoint'] = ['Breakpoint', ''];
 $lang['tinySlider_responsive_configuration'] = ['Konfiguration', ''];
 $lang['cssClass'] = ['CSS-Klasse', 'Hier können Sie CSS-Klassen, durch Leerzeichen getrennt hinterlegen, die dem Slider Elternelement hinzugefügt werden.'];
 $lang['tinySlider_enhanceAccessibility'] = ['Barrierefreiheit verbessern', 'Nur sichtbare Items sind tabbar. Tab zum Blättern wird deaktiviert.'];
-
+$lang['tinySlider_displayPageNumber'] = ['Slide-Nummer anzeigen', 'Anzeigen von Slide-Nummer wird die Dots aktivieren und verstecken'];
 /*
  * Legends
  */

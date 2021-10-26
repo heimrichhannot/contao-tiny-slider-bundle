@@ -45,6 +45,12 @@ class Config
 
             $configData = $this->createConfig($config);
             $configData['container'] = $container;
+            $configData['language'] = $GLOBALS['TL_LANGUAGE'];
+
+            $translator = System::getContainer()->get('translator');
+            $configData['navAriaLabel'] = $translator->trans('huh.tiny_slider.nav.aria_label.default');
+            $configData['dotAriaLabel'] = $translator->trans('huh.tiny_slider.nav.dot.aria_label.default');
+            $configData['dotCurrentAriaLabel'] = $translator->trans('huh.tiny_slider.nav.dot.current_aria_label.default');
 
             $cacheItem->expiresAfter(\DateInterval::createFromDateString('4 hour'));
             $cacheItem->set($configData);
@@ -54,7 +60,7 @@ class Config
 
         System::getContainer()->get(FrontendAssets::class)->addFrontendAssets();
 
-        $attributes = ' data-tiny-slider-config="'.htmlspecialchars(json_encode($configData), ENT_QUOTES, \Contao\Config::get('characterSet')).'"';
+        $attributes = ' data-tiny-slider-config="'.htmlspecialchars(json_encode($configData), \ENT_QUOTES, \Contao\Config::get('characterSet')).'"';
 
         return $attributes;
     }
@@ -93,7 +99,7 @@ class Config
             }
 
             if ('checkbox' == $arrData['inputType'] && !$arrData['eval']['multiple']) {
-                $value = (bool) filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                $value = (bool) filter_var($value, \FILTER_VALIDATE_BOOLEAN);
             }
 
             if (\is_string($value) && isset($messages[$value])) {

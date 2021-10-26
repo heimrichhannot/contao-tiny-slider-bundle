@@ -17,7 +17,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
         TinySliderSpreadContainer::PALETTE_PRESETCONFIG => '{tiny_slider_config},tinySliderConfig;',
         TinySliderSpreadContainer::PALETTE_GALLERY => '{tiny_slider_gallery},addGallery;',
         TinySliderSpreadContainer::PALETTE_CONTENT => '{type_legend},type,headline;{tiny_slider_config},tinySliderConfig;{source_legend},multiSRC,sortBy,useHomeDir;{image_legend},size,fullsize,numberOfItems;{template_legend:hide},tinySliderGalleryTpl,customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space;{invisible_legend:hide},invisible,start,stop',
-        TinySliderSpreadContainer::PALETTE_CONFIG_RESPONSIVE => '{tiny_slider_config},tinySlider_items,tinySlider_slideBy,tinySlider_speed,tinySlider_autoHeight,tinySlider_fixedWidth,tinySlider_edgePadding,tinySlider_gutter,tinySlider_center,tinySlider_controls,tinySlider_controlsTextPrev,tinySlider_controlsTextNext,tinySlider_nav,tinySlider_autoplay,tinySlider_autoplayHoverPause,tinySlider_autoplayResetOnVisibility,tinySlider_autoplayTextStart,tinySlider_autoplayTextStop,tinySlider_autoplayTimeout,tinySlider_touch,tinySlider_mouseDrag,tinySlider_arrowKeys,tinySlider_disable,tinySlider_skipInit,tinySlider_startIndex, tinySlider_enhanceAccessibility;',
+        TinySliderSpreadContainer::PALETTE_CONFIG_RESPONSIVE => '{tiny_slider_config},tinySlider_items,tinySlider_slideBy,tinySlider_speed,tinySlider_autoHeight,tinySlider_fixedWidth,tinySlider_edgePadding,tinySlider_gutter,tinySlider_center,tinySlider_controls,tinySlider_controlsTextPrev,tinySlider_controlsTextNext,tinySlider_nav,tinySlider_displayPageNumber,tinySlider_autoplay,tinySlider_autoplayHoverPause,tinySlider_autoplayResetOnVisibility,tinySlider_autoplayTextStart,tinySlider_autoplayTextStop,tinySlider_autoplayTimeout,tinySlider_touch,tinySlider_mouseDrag,tinySlider_arrowKeys,tinySlider_disable,tinySlider_skipInit,tinySlider_startIndex, tinySlider_enhanceAccessibility;',
     ],
     'subpalettes' => [
         'addTinySlider' => '
@@ -42,6 +42,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
                             tinySlider_navPosition,
                             tinySlider_navContainer,
                             tinySlider_navAsThumbnails,
+                            tinySlider_displayPageNumber,
                             tinySlider_arrowKeys,
                             tinySlider_speed,
                             tinySlider_autoplay,
@@ -759,6 +760,16 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'inputType' => 'checkbox',
             'exclude' => true,
             'default' => true,
+            'eval' => [
+                'tl_class' => 'w50',
+            ],
+            'sql' => "char(1) NOT NULL default ''",
+        ],
+        'tinySlider_displayPageNumber' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_displayPageNumber'],
+            'inputType' => 'checkbox',
+            'exclude' => true,
+            'default' => false,
             'eval' => [
                 'tl_class' => 'w50',
             ],

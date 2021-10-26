@@ -19,6 +19,7 @@ class TinySliderInstance {
     constructor(element) {
         this.element = element;
         this.container = this.element.querySelector('.tiny-slider-container');
+        this.displayPageNumber = false;
     }
 
     init(forceInit) {
@@ -54,7 +55,46 @@ class TinySliderInstance {
             }
         }.bind(this);
 
+        // Handling responsive config
+        if (this.config.responsive) {
+
+            const currentWidth = window.innerWidth;
+
+            let responsiveConfigs = Object.keys(this.config.responsive).filter(width => width <= currentWidth);
+
+            if (responsiveConfigs.length > 0) {
+
+                var closest = responsiveConfigs.reduce(function(prev, curr) {
+                    return  (Math.abs(curr - currentWidth) < Math.abs(prev - currentWidth) ? curr : prev);
+                });
+
+                this.displayPageNumber = this.config.responsive[closest].displayPageNumber;
+
+            } else {
+
+                this.displayPageNumber = this.config.displayPageNumber;
+
+            }
+
+        } else {
+            this.displayPageNumber = this.config.displayPageNumber;
+        }
+
+        if (this.displayPageNumber) {
+            // nav needs to be generated in order to get page number
+            this.config.nav = true
+        }
+
         this.slider = tns(this.config);
+
+        if(this.displayPageNumber) {
+            this.generateSlideNumber(this.container, this.config.dotAriaLabel);
+            this.slider.events.on('transitionEnd', () => {
+                this.updateSlideNumber(this.container);
+            })
+        } else {
+            this.modifySliderNav(this.container,this.config)
+        }
 
         if (this.config.enhanceAccessibility) {
             this.handleTabindex(this.container);
@@ -124,6 +164,81 @@ class TinySliderInstance {
         const tinySliderObserver = new MutationObserver(callback);
         tinySliderObserver.observe(tinySliderContainer, config);
 
+    }
+
+    modifySliderNav(tinySliderContainer, config) {
+        const navAriaLabel = config.navAriaLabel || false;
+        const dotAriaLabel = config.dotAriaLabel || false;
+        const dotCurrentAriaLabel = config.dotCurrentAriaLabel || false;
+
+        let tnsNav = tinySliderContainer.parentNode.parentNode.parentNode.querySelector('.tns-nav');
+
+        if (tnsNav) {
+
+            this.changeTinySliderNavAriaLabels(tnsNav, navAriaLabel, dotAriaLabel, dotCurrentAriaLabel);
+
+            // Set up an observer
+            const config = {attributes: true, subtree: true};
+
+            const callback = (mutationList, observer) => {
+                for (const mutation of mutationList) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        dotAriaLabel && mutation.target.setAttribute('aria-label', mutation.target.getAttribute('aria-label').replace('Carousel Page', dotAriaLabel));
+                        dotCurrentAriaLabel && mutation.target.setAttribute('aria-label', mutation.target.getAttribute('aria-label').replace('Current Slide', dotCurrentAriaLabel));
+                    }
+                }
+            }
+
+            const tinySliderNavObserver = new MutationObserver(callback);
+            tinySliderNavObserver.observe(tnsNav, config);
+
+        }
+    }
+
+    changeTinySliderNavAriaLabels(tnsNav, navAriaLabel, dotAriaLabel, dotCurrentAriaLabel) {
+
+        navAriaLabel && tnsNav.setAttribute('aria-label', navAriaLabel);
+
+        let navItems = tnsNav.querySelectorAll('button');
+
+        navItems.forEach(item => {
+            dotAriaLabel && item.setAttribute('aria-label', item.getAttribute('aria-label').replace('Carousel Page', dotAriaLabel));
+            dotCurrentAriaLabel && item.setAttribute('aria-label', item.getAttribute('aria-label').replace('Current Slide', dotCurrentAriaLabel));
+        })
+    }
+
+    // Generate slide number based on dots, dots will be hidden as well
+    generateSlideNumber(container, label) {
+
+        let tinySlider = container.parentNode.parentNode.parentNode;
+
+        if(this.slider.getInfo().pages > 1) {
+            let wrapper = document.createElement('DIV');
+            wrapper.classList.add('tns-slide-number');
+            wrapper.insertAdjacentHTML('afterbegin','<p class="sr-only">'+label+'</p><p class="number"></p>')
+            tinySlider.append(wrapper);
+        }
+
+
+        let tnsNav = tinySlider.querySelector('.tns-nav');
+
+        tnsNav.style.display = 'none';
+
+        this.updateSlideNumber(container);
+
+    }
+
+    updateSlideNumber(container) {
+
+        let tinySlider = container.parentNode.parentNode.parentNode;
+
+        const total = this.slider.getInfo().pages;
+
+        const current = this.slider.getInfo().navCurrentIndex;
+
+        if(total > 1) {
+            tinySlider.querySelector('.tns-slide-number .number').innerHTML = current + 1 + '/' + total;
+        }
     }
 
 }

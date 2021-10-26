@@ -81,6 +81,7 @@ $lang['tinySlider_onInit'] = ['Init callback', 'Callback to be run on initializa
 $lang['tinySlider_useLocalStorage'] = ['Use local storage', 'Save browser capability variables to localStorage and without detecting them everytime the slider runs if set to true. Default: true'];
 $lang['cssClass'] = ['CSS class', 'Here you can enter CSS classes seperated by space that will be added to the slider container.'];
 $lang['tinySlider_enhanceAccessibility'] = ['Enhance accessibility', 'Make only active slider items tabbable. Disable tab to slide.'];
+$lang['tinySlider_displayPageNumber'] = ['Show slide number', 'Displaying slide number will activate slider nav and hide it.'];
 /*
  * Legends
  */

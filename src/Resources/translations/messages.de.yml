@@ -16,3 +16,12 @@ huh.tiny_slider.stop.default.text-sr-only: <span class="title sr-only">Anhalten<
 
 # back end
 huh.tiny_slider.backend.editConfig: Tiny-Slider Konfiguration ID %id% bearbeiten
+
+# navigation text
+huh:
+  tiny_slider:
+    nav:
+      aria_label.default: Carousel Navigation
+      dot:
+        aria_label.default: Carousel Seite
+        current_aria_label.default: Aktiv
