@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.18.0] - 2021-10-27
+
+- Added: php8 support
+
 ## [1.17.1] - 2021-10-19
 
 - Added: navigation aria label translations
