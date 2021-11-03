@@ -60,7 +60,7 @@ class Hooks extends Controller
              *
              * @ToDo Remove with version 2.0
              */
-            if (null !== ($replacePaletteNameConstant = @\constant($matches['placeholder'][0]))) {
+            if (defined($matches['placeholder'][0]) && $replacePaletteNameConstant = constant($matches['placeholder'][0])) {
                 $replacePaletteName = $replacePaletteNameConstant;
             }
 

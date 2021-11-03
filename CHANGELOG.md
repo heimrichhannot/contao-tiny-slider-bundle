@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.18.1] - 2021-11-03
+- Fixed: Undefined constant error in php 8
+
 ## [1.18.0] - 2021-10-27
 
 - Added: php8 support
