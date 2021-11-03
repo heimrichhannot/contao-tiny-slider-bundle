@@ -452,7 +452,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
             'label' => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoplayTextStart'],
             'exclude' => true,
             'inputType' => 'select',
-            'default' => 'huh.tiny_slider.prev.default',
+            'default' => 'huh.tiny_slider.start.default',
             'options_callback' => function (DataContainer $dc) {
                 return \Contao\System::getContainer()->get('huh.utils.choice.message')->getCachedChoices('huh.tiny_slider.start');
             },
@@ -462,7 +462,7 @@ $GLOBALS['TL_DCA']['tl_tiny_slider_spread'] = [
         'tinySlider_autoplayTextStop' => [
             'label' => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySlider_autoplayTextStop'],
             'exclude' => true,
-            'default' => 'huh.tiny_slider.next.default',
+            'default' => 'huh.tiny_slider.stop.default',
             'inputType' => 'select',
             'options_callback' => function (DataContainer $dc) {
                 return \Contao\System::getContainer()->get('huh.utils.choice.message')->getCachedChoices('huh.tiny_slider.stop');

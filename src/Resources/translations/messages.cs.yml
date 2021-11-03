@@ -1,15 +1,19 @@
 # prev text
 huh.tiny_slider.prev.default: <span class="title">Předchozí</span>
 huh.tiny_slider.prev.default.text-sr-only: <span class="title sr-only">Předchozí</span>
+huh.tiny_slider.prev.default.text-visually-hidden: <span class="title visually-hidden">Předchozí</span>
 
 # next text
 huh.tiny_slider.next.default: <span class="title">Následující</span>
 huh.tiny_slider.next.default.text-sr-only: <span class="title sr-only">Následující</span>
+huh.tiny_slider.next.default.text-visually-hidden: <span class="title visually-hidden">Následující</span>
 
 # start text
 huh.tiny_slider.start.default: <span class="title">Hrát</span>
 huh.tiny_slider.start.default.text-sr-only: <span class="title sr-only">Hrát</span>
+huh.tiny_slider.start.default.text-visually-hidden: <span class="title visually-hidden">Hrát</span>
 
 # stop text
 huh.tiny_slider.stop.default: <span class="title">Stop</title>
 huh.tiny_slider.stop.default.text-sr-only: <span class="title sr-only">Stop</span>
+huh.tiny_slider.stop.default.text-visually-hidden: <span class="title visually-hidden">Stop</span>

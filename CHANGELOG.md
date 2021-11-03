@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.19.0] - 2021-11-03
+- Added: translations to support new BS5 class (visually-hidden)
+- Fixed: tinySlider_autoplayTextStart and tinySlider_autoplayTextStop default option
+
 ## [1.18.1] - 2021-11-03
 - Fixed: Undefined constant error in php 8
 

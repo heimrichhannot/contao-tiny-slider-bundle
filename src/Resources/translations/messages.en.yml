@@ -1,18 +1,22 @@
 # prev text
 huh.tiny_slider.prev.default: <span class="title">Previous</span>
 huh.tiny_slider.prev.default.text-sr-only: <span class="title sr-only">Previous</span>
+huh.tiny_slider.prev.default.text-visually-hidden: <span class="title visually-hidden">Previous</span>
 
 # next text
 huh.tiny_slider.next.default: <span class="title">Next</span>
 huh.tiny_slider.next.default.text-sr-only: <span class="title sr-only">Next</span>
+huh.tiny_slider.next.default.text-visually-hidden: <span class="title visually-hidden">Next</span>
 
 # start text
 huh.tiny_slider.start.default: <span class="title">Play</span>
 huh.tiny_slider.start.text-sr-only: <span class="title sr-only">Play</span>
+huh.tiny_slider.start.text-visually-hidden: <span class="title visually-hidden">Play</span>
 
 # stop text
 huh.tiny_slider.stop.default: <span class="title">Stop</title>
 huh.tiny_slider.stop.default.text-sr-only: <span class="title sr-only">Stop</span>
+huh.tiny_slider.stop.default.text-visually-hidden: <span class="title visually-hidden">Stop</span>
 
 # back end
 huh.tiny_slider.backend.editConfig: Edit tiny-slider configuration ID %id%
