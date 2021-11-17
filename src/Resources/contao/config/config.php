@@ -74,9 +74,6 @@ array_insert(
             'tiny-slider-content-start'     => 'HeimrichHannot\TinySliderBundle\Element\ContentStart',
             'tiny-slider-content-separator' => 'HeimrichHannot\TinySliderBundle\Element\ContentSeparator',
             'tiny-slider-content-stop'      => 'HeimrichHannot\TinySliderBundle\Element\ContentStop',
-            'tiny-slider-nav-start'         => 'HeimrichHannot\TinySliderBundle\Element\ContentNavStart',
-            'tiny-slider-nav-separator'     => 'HeimrichHannot\TinySliderBundle\Element\ContentNavSeparator',
-            'tiny-slider-nav-stop'          => 'HeimrichHannot\TinySliderBundle\Element\ContentNavStop',
         ],
     ]
 );
@@ -94,11 +91,8 @@ if (System::getContainer()->get('huh.utils.container')->isFrontend()) {
  * Intend elements
  */
 $GLOBALS['TL_WRAPPERS']['start'][]     = 'tiny-slider-content-start';
-$GLOBALS['TL_WRAPPERS']['start'][]     = 'tiny-slider-nav-start';
 $GLOBALS['TL_WRAPPERS']['stop'][]      = 'tiny-slider-content-stop';
-$GLOBALS['TL_WRAPPERS']['stop'][]      = 'tiny-slider-nav-stop';
 $GLOBALS['TL_WRAPPERS']['separator'][] = 'tiny-slider-content-separator';
-$GLOBALS['TL_WRAPPERS']['separator'][] = 'tiny-slider-nav-separator';
 
 /**
  * Models

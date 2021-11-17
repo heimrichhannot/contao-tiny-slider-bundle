@@ -15,6 +15,3 @@ $GLOBALS['TL_LANG']['CTE']['tiny-slider-gallery'][1]           = 'Generates a im
 $GLOBALS['TL_LANG']['CTE']['tiny-slider-content-start'][0]     = 'Content-Slider Start';
 $GLOBALS['TL_LANG']['CTE']['tiny-slider-content-separator'][0] = 'Content-Slider Divider';
 $GLOBALS['TL_LANG']['CTE']['tiny-slider-content-stop'][0]      = 'Content-Slider Stop';
-$GLOBALS['TL_LANG']['CTE']['tiny-slider-nav-start'][0]         = 'Content-Slider-Navigation Start';
-$GLOBALS['TL_LANG']['CTE']['tiny-slider-nav-separator'][0]     = 'Content-Slider-Navigation Element';
-$GLOBALS['TL_LANG']['CTE']['tiny-slider-nav-stop'][0]          = 'Content-Slider-Navigation Stop';
