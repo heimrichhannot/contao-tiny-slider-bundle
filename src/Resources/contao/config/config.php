@@ -1,6 +1,14 @@
 <?php
 
+use HeimrichHannot\TinySliderBundle\Backend\Hooks;
 use HeimrichHannot\TinySliderBundle\DataContainer\TinySliderSpreadContainer;
+use HeimrichHannot\TinySliderBundle\Element\ContentGallery;
+use HeimrichHannot\TinySliderBundle\Element\ContentSeparator;
+use HeimrichHannot\TinySliderBundle\Element\ContentStart;
+use HeimrichHannot\TinySliderBundle\Element\ContentStop;
+use HeimrichHannot\TinySliderBundle\EventListener\LoadDataContainerListener;
+use HeimrichHannot\TinySliderBundle\EventListener\LoadLanguageFileListener;
+use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 
 /**
  * Constants
@@ -25,9 +33,9 @@ define('TINY_SLIDER_PALETTE_CONTENT_SLIDER_END', TinySliderSpreadContainer::PALE
 /**
  * Hooks
  */
-$GLOBALS['TL_HOOKS']['loadDataContainer'][] = ['HeimrichHannot\TinySliderBundle\Backend\Hooks', 'loadDataContainerHook'];
-$GLOBALS['TL_HOOKS']['loadDataContainer'][] = [\HeimrichHannot\TinySliderBundle\EventListener\LoadDataContainerListener::class, 'onLoadDataContainer'];
-$GLOBALS['TL_HOOKS']['loadLanguageFile'][] = [\HeimrichHannot\TinySliderBundle\EventListener\LoadLanguageFileListener::class, '__invoke'];
+$GLOBALS['TL_HOOKS']['loadDataContainer'][] = [Hooks::class, 'loadDataContainerHook'];
+$GLOBALS['TL_HOOKS']['loadDataContainer'][] = [LoadDataContainerListener::class, 'onLoadDataContainer'];
+$GLOBALS['TL_HOOKS']['loadLanguageFile'][] = [LoadLanguageFileListener::class, '__invoke'];
 
 /**
  * Supported TL_DCA Entities, spreading efa palette to
@@ -70,10 +78,10 @@ array_insert(
     3,
     [
         'tiny-slider' => [
-            'tiny-slider-gallery'           => 'HeimrichHannot\TinySliderBundle\Element\ContentGallery',
-            'tiny-slider-content-start'     => 'HeimrichHannot\TinySliderBundle\Element\ContentStart',
-            'tiny-slider-content-separator' => 'HeimrichHannot\TinySliderBundle\Element\ContentSeparator',
-            'tiny-slider-content-stop'      => 'HeimrichHannot\TinySliderBundle\Element\ContentStop',
+            'tiny-slider-gallery'           => ContentGallery::class,
+            'tiny-slider-content-start'     => ContentStart::class,
+            'tiny-slider-content-separator' => ContentSeparator::class,
+            'tiny-slider-content-stop'      => ContentStop::class,
         ],
     ]
 );
@@ -97,4 +105,4 @@ $GLOBALS['TL_WRAPPERS']['separator'][] = 'tiny-slider-content-separator';
 /**
  * Models
  */
-$GLOBALS['TL_MODELS']['tl_tiny_slider_config'] = 'HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel';
+$GLOBALS['TL_MODELS']['tl_tiny_slider_config'] = TinySliderConfigModel::class;
