@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2021 Heimrich & Hannot GmbH
+ * Copyright (c) 2022 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -10,7 +10,7 @@ namespace HeimrichHannot\TinySliderBundle;
 
 class DcaFieldGenerator
 {
-    public static function addTinySliderConfigSelect(array &$dca): void
+    public static function addTinySliderConfigSelect(?array &$dca): void
     {
         $dca['fields']['tinySliderConfig'] = [
             'label' => &$GLOBALS['TL_LANG']['tl_tiny_slider_spread']['tinySliderConfig'],

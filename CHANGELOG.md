@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.19.2] - 2022-02-14
+
+- Fixed: array index issues in php 8+
+
 ## [1.19.1] - 2021-11-18
 - Changed: use class names instead of strings in config ([#8], thanks to [@rabaus])
 - Fixed: removed outdated translations ([#8], thanks to [@rabaus])

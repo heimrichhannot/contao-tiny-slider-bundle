@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2021 Heimrich & Hannot GmbH
+ * Copyright (c) 2022 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -60,7 +60,7 @@ class Hooks extends Controller
              *
              * @ToDo Remove with version 2.0
              */
-            if (defined($matches['placeholder'][0]) && $replacePaletteNameConstant = constant($matches['placeholder'][0])) {
+            if (\defined($matches['placeholder'][0]) && $replacePaletteNameConstant = \constant($matches['placeholder'][0])) {
                 $replacePaletteName = $replacePaletteNameConstant;
             }
 
@@ -69,7 +69,7 @@ class Hooks extends Controller
 
             // prepend config palette
             if ($pos < 1) {
-                $replace = $GLOBALS['TL_DCA'][static::$strSpreadDca]['palettes'][$replacePaletteName].$search;
+                $replace = ($GLOBALS['TL_DCA'][static::$strSpreadDca]['palettes'][$replacePaletteName] ?? null).$search;
             } // append config palette
             else {
                 $replace = $search.$GLOBALS['TL_DCA'][static::$strSpreadDca]['palettes'][$replacePaletteName];

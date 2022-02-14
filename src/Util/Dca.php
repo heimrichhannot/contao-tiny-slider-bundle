@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2021 Heimrich & Hannot GmbH
+ * Copyright (c) 2022 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -17,7 +17,7 @@ class Dca
     {
         Controller::loadDataContainer($table);
 
-        $boxes = StringUtil::trimsplit(';', $GLOBALS['TL_DCA'][$table][$type][$strPalette]);
+        $boxes = StringUtil::trimsplit(';', ($GLOBALS['TL_DCA'][$table][$type][$strPalette] ?? null));
 
         $arrFields = [];
 
@@ -49,7 +49,7 @@ class Dca
                         $arrFields[$vv] = $arrField;
 
                         // orderSRC support
-                        if (isset($arrField['eval']['orderField'])) {
+                        if (isset($arrField['eval']['orderField']) && isset($GLOBALS['TL_DCA'][$table]['fields'][$arrField['eval']['orderField']])) {
                             $arrFields[$arrField['eval']['orderField']] = $GLOBALS['TL_DCA'][$table]['fields'][$arrField['eval']['orderField']];
                         }
                     }
