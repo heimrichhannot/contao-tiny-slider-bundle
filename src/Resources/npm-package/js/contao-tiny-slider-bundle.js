@@ -102,6 +102,26 @@ class TinySliderInstance {
             this.container.addEventListener('keydown', this.keyListener.bind(this), true);
         }
 
+
+        /*
+        * NOTE: using keydown while focusing
+        * on tns-controls(next/prev nav button) sometimes does not
+        * work as expected, so the tns events are removed and sliding
+        * will be manually triggered instead
+        * */
+        let tnsControls = this.element.querySelectorAll('.tns-controls');
+
+        tnsControls && tnsControls.forEach(control => {
+            // clone tns-controls to remove all event listeners
+            let clone = control.cloneNode(true);
+            let leftButton = clone.querySelector('button[data-controls="prev"]');
+            let rightButton = clone.querySelector('button[data-controls="next"]');
+
+            leftButton && leftButton.addEventListener('click', e => this.slider.goTo('prev') )
+            rightButton && rightButton.addEventListener('click', e => this.slider.goTo('next') )
+            control.replaceWith(clone);
+        })
+
         TinySliderBundle.sliders.push(this.slider);
     }
 
