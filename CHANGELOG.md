@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.19.4] - 2022-04-04
+
+- Changed: tns-controls js handling/optimization limited to loop mode
+
 ## [1.19.3] - 2022-03-23
 
 - Added: tns-controls js handling/optimization

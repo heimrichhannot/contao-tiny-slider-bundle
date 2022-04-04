@@ -65,7 +65,7 @@ class TinySliderInstance {
             if (responsiveConfigs.length > 0) {
 
                 var closest = responsiveConfigs.reduce(function(prev, curr) {
-                    return  (Math.abs(curr - currentWidth) < Math.abs(prev - currentWidth) ? curr : prev);
+                    return (Math.abs(curr - currentWidth) < Math.abs(prev - currentWidth) ? curr : prev);
                 });
 
                 this.displayPageNumber = this.config.responsive[closest].displayPageNumber;
@@ -87,13 +87,13 @@ class TinySliderInstance {
 
         this.slider = tns(this.config);
 
-        if(this.displayPageNumber) {
+        if (this.displayPageNumber) {
             this.generateSlideNumber(this.container, this.config.dotAriaLabel);
             this.slider.events.on('transitionEnd', () => {
                 this.updateSlideNumber(this.container);
             })
         } else {
-            this.modifySliderNav(this.container,this.config)
+            this.modifySliderNav(this.container, this.config)
         }
 
         if (this.config.enhanceAccessibility) {
@@ -107,20 +107,23 @@ class TinySliderInstance {
         * NOTE: using keydown while focusing
         * on tns-controls(next/prev nav button) sometimes does not
         * work as expected, so the tns events are removed and sliding
-        * will be manually triggered instead
+        * will be manually triggered instead. Apply only on loop mode.
         * */
-        let tnsControls = this.element.querySelectorAll('.tns-controls');
+        if (this.config.loop) {
+            let tnsControls = this.element.querySelectorAll('.tns-controls');
 
-        tnsControls && tnsControls.forEach(control => {
-            // clone tns-controls to remove all event listeners
-            let clone = control.cloneNode(true);
-            let leftButton = clone.querySelector('button[data-controls="prev"]');
-            let rightButton = clone.querySelector('button[data-controls="next"]');
+            tnsControls.length > 0 && tnsControls.forEach(control => {
+                // clone tns-controls to remove all event listeners
+                let clone = control.cloneNode(true);
+                let leftButton = clone.querySelector('button[data-controls="prev"]');
+                let rightButton = clone.querySelector('button[data-controls="next"]');
 
-            leftButton && leftButton.addEventListener('click', e => this.slider.goTo('prev') )
-            rightButton && rightButton.addEventListener('click', e => this.slider.goTo('next') )
-            control.replaceWith(clone);
-        })
+                leftButton && leftButton.addEventListener('click', e => this.slider.goTo('prev'))
+                rightButton && rightButton.addEventListener('click', e => this.slider.goTo('next'))
+                control.replaceWith(clone);
+            })
+
+        }
 
         TinySliderBundle.sliders.push(this.slider);
     }
@@ -232,10 +235,10 @@ class TinySliderInstance {
 
         let tinySlider = container.parentNode.parentNode.parentNode;
 
-        if(this.slider.getInfo().pages > 1) {
+        if (this.slider.getInfo().pages > 1) {
             let wrapper = document.createElement('DIV');
             wrapper.classList.add('tns-slide-number');
-            wrapper.insertAdjacentHTML('afterbegin','<p class="sr-only">'+label+'</p><p class="number"></p>')
+            wrapper.insertAdjacentHTML('afterbegin', '<p class="sr-only">' + label + '</p><p class="number"></p>')
             tinySlider.append(wrapper);
         }
 
@@ -256,7 +259,7 @@ class TinySliderInstance {
 
         const current = this.slider.getInfo().navCurrentIndex;
 
-        if(total > 1) {
+        if (total > 1) {
             tinySlider.querySelector('.tns-slide-number .number').innerHTML = current + 1 + '/' + total;
         }
     }
