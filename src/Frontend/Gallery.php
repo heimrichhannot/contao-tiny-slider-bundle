@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2021 Heimrich & Hannot GmbH
+ * Copyright (c) 2022 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -201,12 +201,12 @@ class Gallery extends Frontend
                 break;
 
             case 'date_asc':
-                array_multisort($images, SORT_NUMERIC, $auxDate, SORT_ASC);
+                array_multisort($images, \SORT_NUMERIC, $auxDate, \SORT_ASC);
 
                 break;
 
             case 'date_desc':
-                array_multisort($images, SORT_NUMERIC, $auxDate, SORT_DESC);
+                array_multisort($images, \SORT_NUMERIC, $auxDate, \SORT_DESC);
 
                 break;
 
@@ -287,7 +287,10 @@ class Gallery extends Frontend
             $body[$i] = $objImage;
         }
 
-        $event = System::getContainer()->get('event_dispatcher')->dispatch(AfterGalleryGetImagesBodyEvent::NAME, new AfterGalleryGetImagesBodyEvent($body, $images));
+        $event = System::getContainer()->get('event_dispatcher')->dispatch(
+            new AfterGalleryGetImagesBodyEvent($body, $images),
+            AfterGalleryGetImagesBodyEvent::NAME
+        );
 
         $objTemplate->body = $event->getBody();
         $objTemplate->headline = $this->headline; // see #1603
