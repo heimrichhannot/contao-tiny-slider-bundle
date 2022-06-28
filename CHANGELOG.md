@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.20.2] - 2022-06-28
+- Added: tabindex on active tns-nav button
+
 ## [1.20.1] - 2022-05-11
 - Fixed: symfony 5 compatibility
 

@@ -102,6 +102,9 @@ class TinySliderInstance {
             this.container.addEventListener('keydown', this.keyListener.bind(this), true);
         }
 
+        if (this.config.nav && this.element.querySelector('.tns-nav')) {
+            this.handleTabindex(this.element.querySelector('.tns-nav'));
+        }
 
         /*
         * NOTE: using keydown while focusing
@@ -162,13 +165,13 @@ class TinySliderInstance {
         }
     }
 
-    handleTabindex(tinySliderContainer) {
+    handleTabindex(container) {
 
-        let focusElements = tinySliderContainer.querySelectorAll('button, [href], input:not([type="hidden"]), select, textarea, [tabindex]:not([tabindex="-1"])');
+        let focusElements = container.querySelectorAll('button, [href], input:not([type="hidden"]), select, textarea, [tabindex]:not([tabindex="-1"])');
 
         focusElements.forEach(item => item.setAttribute('tabindex', "-1"));
-        let activeFocusElements = tinySliderContainer.querySelectorAll('.tns-slide-active button, .tns-slide-active [href], .tns-slide-active input:not([type="hidden"]), .tns-slide-active select, .tns-slide-active textarea');
-        activeFocusElements.forEach(item => item.removeAttribute('tabindex'));
+        let activeFocusElements = container.querySelectorAll('.tns-slide-active button, .tns-slide-active [href], .tns-slide-active input:not([type="hidden"]), .tns-slide-active select, .tns-slide-active textarea, button.tns-nav-active');
+        activeFocusElements.forEach(item => item.setAttribute('tabindex',0));
 
         // Set up an observer
         const config = {attributes: true, subtree: true};
@@ -177,15 +180,15 @@ class TinySliderInstance {
             for (const mutation of mutationList) {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                     focusElements.forEach(item => item.setAttribute('tabindex', "-1"));
-                    activeFocusElements = tinySliderContainer.querySelectorAll('.tns-slide-active button, .tns-slide-active [href], .tns-slide-active input:not([type="hidden"]), .tns-slide-active select, .tns-slide-active textarea');
-                    activeFocusElements.forEach(item => item.removeAttribute('tabindex'));
+                    activeFocusElements = container.querySelectorAll('.tns-slide-active button, .tns-slide-active [href], .tns-slide-active input:not([type="hidden"]), .tns-slide-active select, .tns-slide-active textarea, button.tns-nav-active');
+                    activeFocusElements.forEach(item => item.setAttribute('tabindex',0));
 
                 }
             }
         }
 
         const tinySliderObserver = new MutationObserver(callback);
-        tinySliderObserver.observe(tinySliderContainer, config);
+        tinySliderObserver.observe(container, config);
 
     }
 
