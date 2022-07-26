@@ -94,11 +94,11 @@ class Config
 
             $tinySliderKey = substr($key, \strlen('tinySlider_')); // trim tinySlider_ prefix
 
-            if ('digit' == $arrData['eval']['rgxp']) {
+            if (isset($arrData['eval']['rgxp']) && 'digit' == $arrData['eval']['rgxp']) {
                 $value = (int) $value;
             }
 
-            if ('checkbox' == $arrData['inputType'] && !$arrData['eval']['multiple']) {
+            if ('checkbox' == $arrData['inputType'] && !isset($arrData['eval']['multiple'])) {
                 $value = (bool) filter_var($value, \FILTER_VALIDATE_BOOLEAN);
             }
 
@@ -113,7 +113,7 @@ class Config
                 continue;
             }
 
-            if ($arrData['eval']['multiple'] || 'multiColumnEditor' == $arrData['inputType']) {
+            if ( (isset($arrData['eval']['multiple']) && $arrData['eval']['multiple']) || 'multiColumnEditor' == $arrData['inputType']) {
                 $value = StringUtil::deserialize($value, true);
             }
 
@@ -152,7 +152,8 @@ class Config
 
                 // only add differences between parent config or previous breakpoint responsive config
                 if (empty($arrResponsive)) {
-                    $arrResponsive[$config['breakpoint']] = array_merge(array_intersect($responsiveConfig, $arrConfig), $responsiveConfig);
+                    $intersectArr = array_map('unserialize',array_intersect(array_map('serialize',$responsiveConfig), array_map('serialize',$arrConfig)));
+                    $arrResponsive[$config['breakpoint']] = array_merge($intersectArr, $responsiveConfig);
                 } else {
                     $prevResponsiveConfig = end($arrResponsive);
                     $arrResponsive[$config['breakpoint']] = array_merge($prevResponsiveConfig, $responsiveConfig);
