@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2021 Heimrich & Hannot GmbH
+ * Copyright (c) 2022 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -113,7 +113,7 @@ class Config
                 continue;
             }
 
-            if ( (isset($arrData['eval']['multiple']) && $arrData['eval']['multiple']) || 'multiColumnEditor' == $arrData['inputType']) {
+            if ((isset($arrData['eval']['multiple']) && $arrData['eval']['multiple']) || 'multiColumnEditor' == $arrData['inputType']) {
                 $value = StringUtil::deserialize($value, true);
             }
 
@@ -152,7 +152,7 @@ class Config
 
                 // only add differences between parent config or previous breakpoint responsive config
                 if (empty($arrResponsive)) {
-                    $intersectArr = array_map('unserialize',array_intersect(array_map('serialize',$responsiveConfig), array_map('serialize',$arrConfig)));
+                    $intersectArr = array_map('unserialize', array_intersect(array_map('serialize', $responsiveConfig), array_map('serialize', $arrConfig)));
                     $arrResponsive[$config['breakpoint']] = array_merge($intersectArr, $responsiveConfig);
                 } else {
                     $prevResponsiveConfig = end($arrResponsive);
@@ -231,7 +231,7 @@ class Config
 
             $data = &$GLOBALS['TL_DCA']['tl_tiny_slider_spread']['fields'][$key];
 
-            if ($data['eval']['multiple'] || 'tinySliderOrderSRC' == $key) {
+            if ((isset($data['eval']['multiple']) && $data['eval']['multiple']) || 'tinySliderOrderSRC' == $key) {
                 $value = StringUtil::deserialize($value, true);
             }
 

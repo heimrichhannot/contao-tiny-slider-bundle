@@ -346,7 +346,7 @@ class Gallery extends Frontend
         $arrMeta = $this->getMetaData($model->meta, $objPage->language);
 
         // Use the file name as title if none is given
-        if ('' == $arrMeta['title']) {
+        if (!isset($arrMeta['title']) || '' == $arrMeta['title']) {
             $arrMeta['title'] = StringUtil::specialchars($file->basename);
         }
 
@@ -357,10 +357,10 @@ class Gallery extends Frontend
             'file' => $file,
             'model' => $model,
             'singleSRC' => $model->path,
-            'alt' => version_compare(VERSION, '4.0', '<') ? $arrMeta['title'] : $arrMeta['alt'],
-            'imageUrl' => $arrMeta['link'],
-            'caption' => $arrMeta['caption'],
-            'title' => $arrMeta['title'],
+            'alt' => version_compare(VERSION, '4.0', '<') ? $arrMeta['title'] : $arrMeta['alt'] ?? '',
+            'imageUrl' => $arrMeta['link'] ?? '',
+            'caption' => $arrMeta['caption'] ?? '',
+            'title' => $arrMeta['title'] ?? '',
         ];
 
         return $image;
