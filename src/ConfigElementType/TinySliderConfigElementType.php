@@ -89,7 +89,7 @@ class TinySliderConfigElementType implements ConfigElementTypeInterface
             'tinySliderConfig' => $tinySliderConfig->id,
         ];
 
-        if ($item[$configuration->orderField]) {
+        if ($configuration->orderField && ($item[$configuration->orderField] ?? false)) {
             $config['tinySliderOrderSRC'] = $item[$configuration->orderField];
             $config['tinySliderSortBy'] = 'custom';
         } else {
