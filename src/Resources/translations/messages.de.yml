@@ -1,12 +1,12 @@
 # prev text
-huh.tiny_slider.prev.default: <span class="title">Vorheriger</span>
-huh.tiny_slider.prev.default.text-sr-only: <span class="title sr-only">Vorheriger</span>
-huh.tiny_slider.prev.default.text-visually-hidden: <span class="title visually-hidden">Vorheriger</span>
+huh.tiny_slider.prev.default: <span class="title">Zurückblättern</span>
+huh.tiny_slider.prev.default.text-sr-only: <span class="title sr-only">Zurückblättern</span>
+huh.tiny_slider.prev.default.text-visually-hidden: <span class="title visually-hidden">Zurückblättern</span>
 
 # next text
-huh.tiny_slider.next.default: <span class="title">Nächster</span>
-huh.tiny_slider.next.default.text-sr-only: <span class="title sr-only">Nächster</span>
-huh.tiny_slider.next.default.text-visually-hidden: <span class="title visually-hidden">Nächster</span>
+huh.tiny_slider.next.default: <span class="title">Vorblättern</span>
+huh.tiny_slider.next.default.text-sr-only: <span class="title sr-only">Vorblättern</span>
+huh.tiny_slider.next.default.text-visually-hidden: <span class="title visually-hidden">Vorblättern</span>
 
 # start text
 huh.tiny_slider.start.default: <span class="title">Abspielen</span>

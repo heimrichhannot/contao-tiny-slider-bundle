@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.20.6] - 2022-09-16
+- Fixed: changed translations to improve accessibility
 
 ## [1.20.5] - 2022-08-15
 - Fixed: php8 warning
