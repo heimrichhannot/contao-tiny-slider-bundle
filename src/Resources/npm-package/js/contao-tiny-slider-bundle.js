@@ -39,10 +39,16 @@ class TinySliderInstance {
             this.element.classList.add('tiny-slider-initialized');
             this.sliderControls = this.element.querySelector('.tns-controls');
 
-            // accessibility fix, control div should not have an tabindex if nested elements can have focus
+            // accessibility fix, control div should not have a tabindex if nested elements can have focus
             if (this.sliderControls && focusElements.length > 0) {
                 this.sliderControls.removeAttribute('tabindex');
             }
+
+            // accessibility fix, control div should not have an aria-label
+            if (this.sliderControls) {
+                this.sliderControls.removeAttribute('aria-label');
+            }
+
             // accessibility fix, controls should be tabbable
             if (this.sliderControls) {
                 let controls = this.sliderControls.querySelectorAll('button[data-controls="prev"], button[data-controls="next"]');

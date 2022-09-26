@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.20.7] - 2022-09-26
+- Fixed: removed aria-label from .tns-controls
+
 ## [1.20.6] - 2022-09-16
 - Fixed: changed translations to improve accessibility
 
