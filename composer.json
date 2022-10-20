@@ -65,7 +65,6 @@
         }
     },
     "extra": {
-        "contao-manager-plugin": "HeimrichHannot\\TinySliderBundle\\ContaoManager\\Plugin",
-        "foxy": true
+        "contao-manager-plugin": "HeimrichHannot\\TinySliderBundle\\ContaoManager\\Plugin"
     }
 }
