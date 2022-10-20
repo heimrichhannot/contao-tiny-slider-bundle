@@ -9,17 +9,28 @@
 namespace HeimrichHannot\TinySliderBundle\Asset;
 
 use HeimrichHannot\EncoreContracts\PageAssetsTrait;
+use HeimrichHannot\UtilsBundle\Util\Utils;
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
 
 class FrontendAssets implements ServiceSubscriberInterface
 {
     use PageAssetsTrait;
 
+    private Utils $utils;
+
+    public function __construct(Utils $utils)
+    {
+        $this->utils = $utils;
+    }
+
     /**
      * Setup the frontend assets needed for tiny slider bundle.
      */
     public function addFrontendAssets()
     {
+        if (!$this->utils->container()->isFrontend()) {
+            return;
+        }
         $this->addPageEntrypoint('contao-tiny-slider-bundle', [
             'TL_CSS' => [
                 'tiny-slider' => 'bundles/contaotinyslider/tiny-slider.css',
