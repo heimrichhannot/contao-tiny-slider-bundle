@@ -33,8 +33,6 @@ class EncoreExtension implements \HeimrichHannot\EncoreContracts\EncoreExtension
                 ->addCssEntryToRemoveFromGlobals('contao-tiny-slider-bundle')
                 ->addJsEntryToRemoveFromGlobals('tiny-slider')
                 ->addJsEntryToRemoveFromGlobals('contao-tiny-slider-bundle'),
-            EncoreEntry::create('contao-tiny-slider-bundle', 'src/Resources/assets/js/contao-tiny-slider-bundle-theme.js')
-                ->setRequireCss(true),
         ];
     }
 }

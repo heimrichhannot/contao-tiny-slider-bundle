@@ -34,11 +34,15 @@ class FrontendAssets implements ServiceSubscriberInterface
         $this->addPageEntrypoint('contao-tiny-slider-bundle', [
             'TL_CSS' => [
                 'tiny-slider' => 'bundles/contaotinyslider/tiny-slider.css',
-                'contao-tiny-slider-bundle' => 'bundles/contaotinyslider/contao-tiny-slider-bundle-theme.css',
             ],
             'TL_JAVASCRIPT' => [
                 'tiny-slider' => 'bundles/contaotinyslider/tiny-slider.js',
                 'contao-tiny-slider-bundle' => 'bundles/contaotinyslider/contao-tiny-slider-bundle.js',
+            ],
+        ]);
+        $this->addPageEntryPoint('contao-tiny-slider-bundle-theme', [
+            'TL_CSS' => [
+                'contao-tiny-slider-bundle' => 'bundles/contaotinyslider/contao-tiny-slider-bundle-theme.css',
             ],
         ]);
     }
