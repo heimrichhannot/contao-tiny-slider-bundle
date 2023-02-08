@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.20.8] - 2023-02-08
+- Fixed: title at tiny slider gallery template
+
 ## [1.20.7] - 2022-09-26
 - Fixed: removed aria-label from .tns-controls
 
