@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2022 Heimrich & Hannot GmbH
+ * Copyright (c) 2023 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -33,6 +33,8 @@ class EncoreExtension implements \HeimrichHannot\EncoreContracts\EncoreExtension
                 ->addCssEntryToRemoveFromGlobals('contao-tiny-slider-bundle')
                 ->addJsEntryToRemoveFromGlobals('tiny-slider')
                 ->addJsEntryToRemoveFromGlobals('contao-tiny-slider-bundle'),
+            EncoreEntry::create('contao-tiny-slider-bundle-theme', 'src/Resources/assets/js/contao-tiny-slider-bundle-theme.js')
+                ->setRequiresCss(true),
         ];
     }
 }
