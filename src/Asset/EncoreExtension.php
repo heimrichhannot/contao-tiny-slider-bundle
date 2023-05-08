@@ -9,9 +9,10 @@
 namespace HeimrichHannot\TinySliderBundle\Asset;
 
 use HeimrichHannot\EncoreContracts\EncoreEntry;
+use HeimrichHannot\EncoreContracts\EncoreExtensionInterface;
 use HeimrichHannot\TinySliderBundle\ContaoTinySliderBundle;
 
-class EncoreExtension implements \HeimrichHannot\EncoreContracts\EncoreExtensionInterface
+class EncoreExtension implements EncoreExtensionInterface
 {
     /**
      * {@inheritDoc}
