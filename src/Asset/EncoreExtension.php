@@ -9,7 +9,7 @@
 namespace HeimrichHannot\TinySliderBundle\Asset;
 
 use HeimrichHannot\EncoreContracts\EncoreEntry;
-use HeimrichHannot\TinySliderBundle\HeimrichHannotContaoTinySliderBundle;
+use HeimrichHannot\TinySliderBundle\ContaoTinySliderBundle;
 
 class EncoreExtension implements \HeimrichHannot\EncoreContracts\EncoreExtensionInterface
 {
@@ -18,7 +18,7 @@ class EncoreExtension implements \HeimrichHannot\EncoreContracts\EncoreExtension
      */
     public function getBundle(): string
     {
-        return HeimrichHannotContaoTinySliderBundle::class;
+        return ContaoTinySliderBundle::class;
     }
 
     /**
@@ -28,7 +28,7 @@ class EncoreExtension implements \HeimrichHannot\EncoreContracts\EncoreExtension
     {
         return [
             EncoreEntry::create('contao-tiny-slider-bundle', 'src/Resources/assets/js/contao-tiny-slider-bundle.js')
-                ->setRequireCss(true)
+                ->setRequiresCss(true)
                 ->addCssEntryToRemoveFromGlobals('tiny-slider')
                 ->addCssEntryToRemoveFromGlobals('contao-tiny-slider-bundle')
                 ->addJsEntryToRemoveFromGlobals('tiny-slider')
