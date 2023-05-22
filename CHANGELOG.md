@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.21.0] - 2023-05-22
+- Changed: Use encore contracts ([#11])
+
 ## [1.20.8] - 2023-02-08
 - Fixed: title at tiny slider gallery template
 

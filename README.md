@@ -9,7 +9,6 @@ A slider bundle for contao based on [Tiny Slider](https://github.com/ganlanyuan/
 * show [List Bundle](https://github.com/heimrichhannot/contao-list-bundle) list as slider
 * bundled config element type for [List Bundle](https://github.com/heimrichhannot/contao-list-bundle) and [Reader Bundle](https://github.com/heimrichhannot/contao-reader-bundle)
 
-
 ## Usage
 
 ### Install
