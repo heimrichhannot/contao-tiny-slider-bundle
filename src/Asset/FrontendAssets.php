@@ -1,34 +1,26 @@
 <?php
 
 /*
- * Copyright (c) 2021 Heimrich & Hannot GmbH
+ * Copyright (c) 2022 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
 
 namespace HeimrichHannot\TinySliderBundle\Asset;
 
-use HeimrichHannot\UtilsBundle\Container\ContainerUtil;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use HeimrichHannot\EncoreContracts\PageAssetsTrait;
+use HeimrichHannot\UtilsBundle\Util\Utils;
+use Symfony\Contracts\Service\ServiceSubscriberInterface;
 
-class FrontendAssets
+class FrontendAssets implements ServiceSubscriberInterface
 {
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
-    /**
-     * @var ContainerUtil
-     */
-    private $containerUtil;
+    use PageAssetsTrait;
 
-    /**
-     * FrontendAssets constructor.
-     */
-    public function __construct(ContainerInterface $container, ContainerUtil $containerUtil)
+    private Utils $utils;
+
+    public function __construct(Utils $utils)
     {
-        $this->container = $container;
-        $this->containerUtil = $containerUtil;
+        $this->utils = $utils;
     }
 
     /**
@@ -36,16 +28,22 @@ class FrontendAssets
      */
     public function addFrontendAssets()
     {
-        if ($this->containerUtil->isFrontend()) {
-            if ($this->container->has('huh.encore.asset.frontend')) {
-                $this->container->get('huh.encore.asset.frontend')->addActiveEntrypoint('contao-tiny-slider-bundle');
-                $this->container->get('huh.encore.asset.frontend')->addActiveEntrypoint('contao-tiny-slider-bundle-theme');
-            }
-
-            $GLOBALS['TL_CSS']['tiny-slider'] = 'bundles/contaotinyslider/tiny-slider.css';
-            $GLOBALS['TL_JAVASCRIPT']['tiny-slider'] = 'bundles/contaotinyslider/tiny-slider.js';
-            $GLOBALS['TL_CSS']['contao-tiny-slider-bundle'] = 'bundles/contaotinyslider/contao-tiny-slider-bundle-theme.css';
-            $GLOBALS['TL_JAVASCRIPT']['contao-tiny-slider-bundle'] = 'bundles/contaotinyslider/contao-tiny-slider-bundle.js';
+        if (!$this->utils->container()->isFrontend()) {
+            return;
         }
+        $this->addPageEntrypoint('contao-tiny-slider-bundle', [
+            'TL_CSS' => [
+                'tiny-slider' => 'bundles/contaotinyslider/tiny-slider.css',
+            ],
+            'TL_JAVASCRIPT' => [
+                'tiny-slider' => 'bundles/contaotinyslider/tiny-slider.js',
+                'contao-tiny-slider-bundle' => 'bundles/contaotinyslider/contao-tiny-slider-bundle.js',
+            ],
+        ]);
+        $this->addPageEntryPoint('contao-tiny-slider-bundle-theme', [
+            'TL_CSS' => [
+                'contao-tiny-slider-bundle' => 'bundles/contaotinyslider/contao-tiny-slider-bundle-theme.css',
+            ],
+        ]);
     }
 }

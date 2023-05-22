@@ -37,3 +37,6 @@ services:
     resource: '../../DataContainer/*'
     autowire: true
     public: true
+
+  HeimrichHannot\TinySliderBundle\Asset\EncoreExtension:
+    autoconfigure: true
