@@ -370,6 +370,7 @@ All notable changes to this project will be documented in this file.
 
 - initial version
 
+[#11]: https://github.com/heimrichhannot/contao-tiny-slider-bundle/pull/11
 [#8]: https://github.com/heimrichhannot/contao-tiny-slider-bundle/pull/8
 [#6]: https://github.com/heimrichhannot/contao-tiny-slider-bundle/issues/6
 [#5]: https://github.com/heimrichhannot/contao-tiny-slider-bundle/pull/5
