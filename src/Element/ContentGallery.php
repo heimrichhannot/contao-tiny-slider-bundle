@@ -13,6 +13,7 @@ use HeimrichHannot\TinySliderBundle\Asset\FrontendAssets;
 use HeimrichHannot\TinySliderBundle\Frontend\Gallery;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 use HeimrichHannot\TinySliderBundle\Util\Config;
+use HeimrichHannot\UtilsBundle\Util\Utils;
 
 class ContentGallery extends \Contao\ContentGallery
 {
@@ -31,7 +32,7 @@ class ContentGallery extends \Contao\ContentGallery
     public function generate()
     {
         // show gallery instead of tidy slider in backend mode
-        if (System::getContainer()->get('huh.utils.container')->isBackend()) {
+        if (System::getContainer()->get(Utils::class)->container()->isBackend()) {
             return parent::generate();
         }
 

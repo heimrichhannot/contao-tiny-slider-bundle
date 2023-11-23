@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.21.1] - 2023-11-23
+- Changed: removed unused test setup
+- Fixed: issues with config caching
+
 ## [1.21.0] - 2023-05-22
 - Changed: Use encore contracts ([#11])
 

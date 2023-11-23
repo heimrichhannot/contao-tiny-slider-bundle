@@ -30,17 +30,8 @@
         "heimrichhannot/contao-utils-bundle": "^2.3",
         "heimrichhannot/contao-encore-contracts": "^1.0",
         "symfony/event-dispatcher-contracts": "^1.0 || ^2.0 || ^3.0",
-        "symfony/service-contracts": "^1.0 || ^2.0 || ^3.0"
-    },
-    "require-dev": {
-        "contao/test-case": "^1.1",
-        "contao/manager-plugin": "^2.0",
-        "friendsofphp/php-cs-fixer": "^2.2",
-        "phpunit/phpunit": ">=6.0 <6.5",
-        "php-http/guzzle6-adapter": "^1.1",
-        "php-http/message-factory": "^1.0.2",
-        "php-coveralls/php-coveralls": "^2.0",
-        "symfony/phpunit-bridge": "^3.2"
+        "symfony/service-contracts": "^1.0 || ^2.0 || ^3.0",
+        "terminal42/service-annotation-bundle": "^1.0"
     },
     "replace": {
         "heimrichhannot/contao-tiny-slider-list-bundle": "*"
@@ -58,11 +49,6 @@
             "src/Resources/contao/languages/",
             "src/Resources/contao/templates/"
         ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "HeimrichHannot\\TinySliderBundle\\Test\\": "tests/"
-        }
     },
     "extra": {
         "contao-manager-plugin": "HeimrichHannot\\TinySliderBundle\\ContaoManager\\Plugin"

@@ -13,6 +13,7 @@ use HeimrichHannot\ListBundle\Event\ListBeforeRenderEvent;
 use HeimrichHannot\TinySliderBundle\Asset\FrontendAssets;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 use HeimrichHannot\TinySliderBundle\Util\Config;
+use Terminal42\ServiceAnnotationBundle\Annotation\ServiceTag;
 
 class ListBeforeRenderListener
 {
@@ -36,6 +37,9 @@ class ListBeforeRenderListener
         $this->frontendAssets = $frontendAssets;
     }
 
+    /**
+     * @ServiceTag("kernel.event_listener", event="huh.list.event.list_before_render")
+     */
     public function onListBeforeRender(ListBeforeRenderEvent $event)
     {
         $templateData = $event->getTemplateData();

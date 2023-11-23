@@ -7,6 +7,12 @@ services:
       calls:
         - ["setContainer", ["@service_container"]]
 
+  HeimrichHannot\TinySliderBundle\:
+    resource: '../../{DataContainer,EventListener}/*'
+    autoconfigure: true
+    autowire: true
+    public: true
+
   HeimrichHannot\TinySliderBundle\Util\Config:
     public: true
 
@@ -32,11 +38,6 @@ services:
   HeimrichHannot\TinySliderBundle\Asset\FrontendAssets:
     public: true
     autowire: true
-
-  HeimrichHannot\TinySliderBundle\DataContainer\:
-    resource: '../../DataContainer/*'
-    autowire: true
-    public: true
 
   HeimrichHannot\TinySliderBundle\Asset\EncoreExtension:
     autoconfigure: true

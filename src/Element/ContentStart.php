@@ -14,6 +14,7 @@ use Contao\System;
 use HeimrichHannot\TinySliderBundle\Asset\FrontendAssets;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 use HeimrichHannot\TinySliderBundle\Util\Config;
+use HeimrichHannot\UtilsBundle\Util\Utils;
 
 class ContentStart extends ContentElement
 {
@@ -26,7 +27,7 @@ class ContentStart extends ContentElement
 
     public function generate()
     {
-        if (System::getContainer()->get('huh.utils.container')->isBackend()) {
+        if (System::getContainer()->get(Utils::class)->container->isBackend()) {
             $this->strTemplate = 'be_wildcard';
             $this->Template = new BackendTemplate($this->strTemplate);
             $this->Template->title = $this->headline;

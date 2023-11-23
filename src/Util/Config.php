@@ -12,6 +12,7 @@ use Contao\Controller;
 use Contao\StringUtil;
 use Contao\System;
 use HeimrichHannot\TinySliderBundle\Asset\FrontendAssets;
+use HeimrichHannot\TinySliderBundle\EventListener\CacheListener;
 use HeimrichHannot\TinySliderBundle\Model\TinySliderConfigModel;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
@@ -27,9 +28,8 @@ class Config
      */
     public function getAttributes($config, $container = '.tiny-slider-container'): string
     {
-        $cache = new FilesystemAdapter('', 0, System::getContainer()->get('kernel')->getCacheDir());
-        $cacheKey = 'tinySliderConfig_'.System::getContainer()->get('kernel')->getEnvironment().'_'.(is_numeric($config) ? $config : $config->id).''.$container;
-        $cacheItem = $cache->getItem($cacheKey);
+        $cache = new FilesystemAdapter(CacheListener::CACHE_NAMESPACE, 0, System::getContainer()->get('kernel')->getCacheDir());
+        $cacheItem = $cache->getItem(CacheListener::getCacheKey((int)(is_numeric($config) ? $config : $config->id)));
         $configData = $cacheItem->get();
 
         if (true === System::getContainer()->getParameter('kernel.debug') || !$cacheItem->isHit() || empty($configData)) {
@@ -77,7 +77,11 @@ class Config
         $translations = System::getContainer()->get('translator')->getCatalogue()->all();
         $messages = $translations['messages'];
 
-        $fields = System::getContainer()->get('huh.tiny_slider.util.dca')->getPaletteFields($palette, $GLOBALS['TL_DCA']['tl_tiny_slider_spread'], 'tl_tiny_slider_config');
+        $fields = System::getContainer()->get('huh.tiny_slider.util.dca')->getPaletteFields(
+            $palette,
+            $GLOBALS['TL_DCA']['tl_tiny_slider_spread'],
+            'tl_tiny_slider_config'
+        );
 
         $data = array_intersect_key($objConfig->row(), $fields);
 
