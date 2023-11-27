@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.21.2] - 2023-11-27
+- Fixed: incompatibility issue with contao 4.9
+
 ## [1.21.1] - 2023-11-23
 - Changed: removed unused test setup
 - Fixed: issues with config caching

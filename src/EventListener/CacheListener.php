@@ -41,7 +41,7 @@ class CacheListener implements CacheClearerInterface
         return 'config_'.$configId;
     }
 
-    public function clear(string $cacheDir)
+    public function clear($cacheDir)
     {
         $cache = new FilesystemAdapter(static::CACHE_NAMESPACE, 0, $this->parameterBag->get('kernel.cache_dir'));
         $cache->clear();
