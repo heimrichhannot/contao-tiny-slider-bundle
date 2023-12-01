@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.21.3] - 2023-12-01
+- Fixed: exception in start element ([#12])
+
 ## [1.21.2] - 2023-11-27
 - Fixed: incompatibility issue with contao 4.9
 
@@ -377,6 +380,7 @@ All notable changes to this project will be documented in this file.
 
 - initial version
 
+[#12]: https://github.com/heimrichhannot/contao-tiny-slider-bundle/issues/12
 [#11]: https://github.com/heimrichhannot/contao-tiny-slider-bundle/pull/11
 [#8]: https://github.com/heimrichhannot/contao-tiny-slider-bundle/pull/8
 [#6]: https://github.com/heimrichhannot/contao-tiny-slider-bundle/issues/6

@@ -27,7 +27,7 @@ class ContentStart extends ContentElement
 
     public function generate()
     {
-        if (System::getContainer()->get(Utils::class)->container->isBackend()) {
+        if (System::getContainer()->get(Utils::class)->container()->isBackend()) {
             $this->strTemplate = 'be_wildcard';
             $this->Template = new BackendTemplate($this->strTemplate);
             $this->Template->title = $this->headline;
