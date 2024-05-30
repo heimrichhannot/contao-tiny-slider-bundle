@@ -40,7 +40,7 @@ class ListBeforeRenderListener
     /**
      * @ServiceTag("kernel.event_listener", event="huh.list.event.list_before_render")
      */
-    public function onListBeforeRender(ListBeforeRenderEvent $event)
+    public function onListBeforeRender(ListBeforeRenderEvent $event): void
     {
         $templateData = $event->getTemplateData();
         $listConfig = $event->getListConfig();

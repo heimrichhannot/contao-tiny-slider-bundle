@@ -23,15 +23,15 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
     /**
      * {@inheritdoc}
      */
-    public function getBundles(ParserInterface $parser)
+    public function getBundles(ParserInterface $parser): array
     {
         $loadAfter = [ContaoCoreBundle::class];
 
-        if (class_exists('\HeimrichHannot\ReaderBundle\HeimrichHannotContaoReaderBundle')) {
+        if (class_exists(HeimrichHannotContaoReaderBundle::class)) {
             $loadAfter[] = HeimrichHannotContaoReaderBundle::class;
         }
 
-        if (class_exists('\HeimrichHannot\ListBundle\HeimrichHannotContaoListBundle')) {
+        if (class_exists(HeimrichHannotContaoListBundle::class)) {
             $loadAfter[] = HeimrichHannotContaoListBundle::class;
         }
 
@@ -43,7 +43,7 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
     /**
      * {@inheritdoc}
      */
-    public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig)
+    public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig): void
     {
         $loader->load(__DIR__.'/../Resources/config/services.yml');
     }

@@ -9,22 +9,20 @@
 namespace HeimrichHannot\TinySliderBundle\EventListener;
 
 use Contao\Controller;
+use HeimrichHannot\ListBundle\Backend\ListConfig;
 use HeimrichHannot\TinySliderBundle\DcaFieldGenerator;
 
 class LoadDataContainerListener
 {
-    public function onLoadDataContainer(string $table)
+    public function onLoadDataContainer(string $table): void
     {
         switch ($table) {
             case 'tl_reader_config_element':
             case 'tl_list_config_element':
                 $this->addConfigElementFields($table);
-
                 return;
-
             case 'tl_list_config':
                 $this->addListConfigDcaFields();
-
                 return;
         }
     }
@@ -32,7 +30,7 @@ class LoadDataContainerListener
     /**
      * Add field to config type tables.
      */
-    protected function addConfigElementFields(string $table)
+    protected function addConfigElementFields(string $table): void
     {
         Controller::loadLanguageFile('tinySliderConfig');
         $dca = &$GLOBALS['TL_DCA'][$table];
@@ -43,7 +41,7 @@ class LoadDataContainerListener
     /**
      * Add fields to tl_list_config if list bundle is installed.
      */
-    protected function addListConfigDcaFields()
+    protected function addListConfigDcaFields(): void
     {
         Controller::loadLanguageFile('tinySliderConfig');
         $dca = &$GLOBALS['TL_DCA']['tl_list_config'];
@@ -54,6 +52,8 @@ class LoadDataContainerListener
         DcaFieldGenerator::addAddTinySliderCheckbox($dca);
         DcaFieldGenerator::addTinySliderConfigSelect($dca);
 
-        \HeimrichHannot\ListBundle\Backend\ListConfig::addOverridableFields();
+        if (class_exists(ListConfig::class)) {
+            ListConfig::addOverridableFields();
+        }
     }
 }
