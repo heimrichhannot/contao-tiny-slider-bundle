@@ -44,7 +44,13 @@ class LoadDataContainerListener
     protected function addListConfigDcaFields(): void
     {
         Controller::loadLanguageFile('tinySliderConfig');
+
+        if (!class_exists(ListConfig::class)) {
+            return;
+        }
+
         $dca = &$GLOBALS['TL_DCA']['tl_list_config'];
+
         $dca['palettes']['default'] = str_replace('addMasonry', 'addMasonry,addTinySlider', $dca['palettes']['default']);
         $dca['palettes']['__selector__'][] = 'addTinySlider';
         $dca['subpalettes']['addTinySlider'] = 'tinySliderConfig';
@@ -52,8 +58,6 @@ class LoadDataContainerListener
         DcaFieldGenerator::addAddTinySliderCheckbox($dca);
         DcaFieldGenerator::addTinySliderConfigSelect($dca);
 
-        if (class_exists(ListConfig::class)) {
-            ListConfig::addOverridableFields();
-        }
+        ListConfig::addOverridableFields();
     }
 }
