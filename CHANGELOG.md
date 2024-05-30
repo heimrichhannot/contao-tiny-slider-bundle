@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.21.4] - 2024-05-30
+- Fixed: optional dependency of the [list bundle](https://github.com/heimrichhannot/contao-list-bundle)
+
 ## [1.21.3] - 2023-12-01
 - Fixed: exception in start element ([#12])
 
