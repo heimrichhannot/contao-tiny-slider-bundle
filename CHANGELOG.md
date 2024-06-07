@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.22.0] - 2024-06-07
+- Added: role="navigation" to tns-nav
+- Changed: improved german translations
+
 ## [1.21.4] - 2024-05-30
 - Fixed: optional dependency of the [list bundle](https://github.com/heimrichhannot/contao-list-bundle)
 

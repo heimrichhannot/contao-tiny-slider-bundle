@@ -25,7 +25,7 @@ huh.tiny_slider.backend.editConfig: Tiny-Slider Konfiguration ID %id% bearbeiten
 huh:
   tiny_slider:
     nav:
-      aria_label.default: Carousel Navigation
+      aria_label.default: Slideshow Navigation
       dot:
-        aria_label.default: Carousel Seite
+        aria_label.default: Slideshow Seite
         current_aria_label.default: Aktiv

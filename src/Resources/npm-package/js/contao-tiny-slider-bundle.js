@@ -231,6 +231,8 @@ class TinySliderInstance {
 
         navAriaLabel && tnsNav.setAttribute('aria-label', navAriaLabel);
 
+        tnsNav.setAttribute('role', 'navigation');
+
         let navItems = tnsNav.querySelectorAll('button');
 
         navItems.forEach(item => {
