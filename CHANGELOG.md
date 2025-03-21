@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.22.1] - 2025-03-21
+- Fixed: caching issue with multiple sliders using same config
+
 ## [1.22.0] - 2024-06-07
 - Added: role="navigation" to tns-nav
 - Changed: improved german translations

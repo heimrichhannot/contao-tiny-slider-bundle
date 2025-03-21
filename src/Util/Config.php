@@ -28,7 +28,11 @@ class Config
      */
     public function getAttributes($config, $container = '.tiny-slider-container'): string
     {
-        $cache = new FilesystemAdapter(CacheListener::CACHE_NAMESPACE, 0, System::getContainer()->get('kernel')->getCacheDir());
+        $cache = new FilesystemAdapter(
+            CacheListener::CACHE_NAMESPACE,
+            0,
+            System::getContainer()->get('kernel')->getCacheDir()
+        );
         $cacheItem = $cache->getItem(CacheListener::getCacheKey((int)(is_numeric($config) ? $config : $config->id)));
         $configData = $cacheItem->get();
 
@@ -59,6 +63,8 @@ class Config
         }
 
         System::getContainer()->get(FrontendAssets::class)->addFrontendAssets();
+
+        $configData['container'] = $container;
 
         $attributes = ' data-tiny-slider-config="'.htmlspecialchars(json_encode($configData), \ENT_QUOTES, \Contao\Config::get('characterSet')).'"';
 
